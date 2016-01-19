@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  width: 50vw;
+  margin: 0 auto;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.buttons button {
+  width: 30%;
+  margin: 1.5%;
+}
+
+#start {
+  width: 97%;
+  margin: 0 auto;
+  display: block;
+}
+
+output {
+  padding: 1em;
+  text-align: center;
+  display: block;
+  width: 100%;
+}

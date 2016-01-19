@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nedteller</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main>
+      <output>0</output>
+      <div class="buttons">
+        <button data-number="1" type="button" name="button">1</button>
+        <button data-number="2" type="button" name="button">2</button>
+        <button data-number="3" type="button" name="button">3</button>
+        <button data-number="4" type="button" name="button">4</button>
+        <button data-number="5" type="button" name="button">5</button>
+        <button data-number="6" type="button" name="button">6</button>
+        <button data-number="7" type="button" name="button">7</button>
+        <button data-number="8" type="button" name="button">8</button>
+        <button data-number="9" type="button" name="button">9</button>
+        <button data-number="0" type="button" name="button">0</button>
+      </div>
+      <button id="start" type="button" name="button">Start</button>
+    </main>
+    <script type="text/javascript">
+      document.querySelector('.buttons').addEventListener('click', function(e) {
+        var el = e.target;
+        if(el.nodeName === 'BUTTON') {
+          var text = el.dataset.number;
+          var output = document.querySelector('output');
+          var num = output.textContent;
+          output.textContent = num === '0'? text : output.textContent += text;
+        }
+      });
+      document.querySelector('#start').addEventListener('click', function(e) {
+        var interval = setInterval(function() {
+          var output = document.querySelector('output');
+          var num = output.textContent;
+          if(num === '0') {
+            clearInterval(interval);
+            return;
+          }
+          output.textContent = parseInt(num, 10) - 1;
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
