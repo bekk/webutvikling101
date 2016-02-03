@@ -17,6 +17,183 @@ class: front-page
 
 
 ---
+class: middle center
+
+# Introduksjon
+
+---
+class: middle center
+
+![HTML](resources/html.jpg)
+
+.source[http://flic.kr/p/5HzQsy]
+
+
+---
+
+# HTML
+
+```html
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <title>En enkel HTML-side</title>
+    </head>
+
+    <body>
+      <header>
+        <h1>Velkommen</h1>
+        <nav>
+          <a href="/side2.html">Side2</a>
+        </nav>
+      </header>
+      <main>
+        <article>En artikkel</article>
+      </main>
+      <footer>The end</footer>
+    </body>
+
+  </html>
+```
+
+???
+
+HTML er enkle tekstfiler.
+
+HTML beskriver strukturen og innholdet til en nettside.
+
+
+Denne strukturen brukes av CSS og JS.
+
+
+HTML sier ingenting om utseende.
+
+HTML sier ingenting om oppførsel.
+
+
+HTML er ikke et programmeringsspråk
+
+HTML er et markeringsspråk som beskriver semantikken til et dokument.
+
+---
+
+class: fullscreen
+
+![](resources/abakus.png)
+
+---
+
+class: fullscreen
+
+![](resources/abakus-html.png)
+
+
+---
+
+class: center middle
+
+![](resources/css-gangnam.jpg)
+
+
+---
+
+class: fullscreen
+
+![](resources/abakus.png)
+
+
+---
+
+class: fullscreen
+
+![](resources/abakus-uten-css.png)
+
+---
+
+#css
+
+```css
+  selector {
+    property: value;
+  }
+```
+--
+
+```css
+  div {
+    font: Arial;
+    font-size: 20px;
+    color: red;
+    background-color: white;
+  }
+```
+--
+
+<br>
+
+<div style="
+  font: Arial;
+  font-size: 20px;
+  color: red;
+  background-color: white;
+  padding: 20px;
+">
+
+  NTNU
+
+</div>
+
+---
+
+class: center middle
+
+![](resources/opera.png)
+
+.source[http://v2.desandro.com/articles/opera-logo-css/]
+
+---
+
+class: center middle
+
+![](resources/iOS-css-icons.png)
+
+.source[http://codepen.io/peterschmiz/pen/xmqCg]
+
+
+---
+
+exclude:true
+class: center middle
+
+![](resources/family-guy-css.gif)
+
+---
+
+class: center middle
+
+![](resources/javascript.png)
+
+.source[http://codepen.io/peterschmiz/pen/xmqCg]
+
+
+---
+
+# JavaScript
+
+  <img id="danse-ape" src="resources/danse-ape.png" style="display:block;margin:80px auto;cursor:pointer">
+
+---
+
+class: center middle
+
+![](resources/browser-layered-cake.jpeg)
+
+---
+
+#Oppgave
+
+
+---
 
 class: center middle bekk-top
 
@@ -41,6 +218,13 @@ bekk.no
       var dateStr = new Date().toLocaleString('nb-NO', { year: 'numeric', month: 'long', day: 'numeric' });
 
       document.querySelector('.today-date').textContent = dateStr;
+
+      document.querySelector('#danse-ape').addEventListener('click', function(event) {
+        var src = event.currentTarget.getAttribute('src');
+        src = src.replace(/(gif|png)/, src.includes('png') ? 'gif' : 'png');
+
+        event.currentTarget.setAttribute('src', src);
+      });
     </script>
 
   </body>
