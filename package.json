@@ -7,5 +7,8 @@
     "url": "https://github.com//bekk/webutvikling101"
   },
   "author": "BEKK Frontend",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "remark-bekk": "bekk/remark"
+  }
 }
