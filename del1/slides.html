@@ -178,6 +178,39 @@ class: center middle
 
 ---
 
+#JavaScript
+
+```javascript
+  console.log('Hello world!'); // Hello world!
+```
+
+--
+
+```javascript
+  var num = 1;
+  var str = 'Bekk';
+  var arr = [1, 2, 3, 4, 5];
+  var obj = {
+    key:  'value',
+    key2: 'value2'
+  };
+```
+--
+
+```javascript
+  function hello(name) {
+    return `Hello, ${name}!`;
+  }
+
+  var hello = (name) => {
+    return `Hello, ${name}!`;
+  };
+
+  hello('Bob'); // Hello, Bob!
+```
+
+---
+
 # JavaScript
 
   <img id="danse-ape" src="resources/danse-ape.png" style="display:block;margin:80px auto;cursor:pointer">
@@ -190,6 +223,94 @@ class: center middle
 
 ---
 
+# JavaScript DOM-api
+
+```javascript
+  var boks = document.querySelector('.boks'); // HTMLElement
+  var bokser = document.querySelectorAll('.boks'); // NodeList
+```
+
+--
+
+```javascript
+  document.querySelector('.boks').innerHTML;
+  // <a href="mer.html">Klikk her</a> for å lære mer
+```
+--
+
+```javascript
+  document.querySelector('.boks').textContent;
+  // Klikk her for å lære mer
+```
+
+--
+
+```javascript
+  document.querySelector('#danse-ape').addEventListener('click', (event) => {
+    var el = event.currentTarget;
+    var src = el.getAttribute('src').replace('.png', '.gif');
+    el.setAttribute('src', src);
+  });
+```
+
+---
+
+class: center middle
+
+![](resources/mozilla-developer-network.png)
+.source[https://developer.mozilla.org]
+
+---
+
+class: center middle
+
+![](resources/mozilla-developer-network-result.png)
+.source[https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove]
+
+---
+
+class: center middle
+
+![](resources/remove-element-search.png)
+
+---
+
+class: center middle
+
+![](resources/remove-element-result.png)
+
+---
+
+class: center middle
+
+![](resources/youmightnotneedjquery.png)
+.source[http://youmightnotneedjquery.com]
+
+---
+class: center middle
+
+![](resources/youmightnotneedjquery-result.png)
+.source[http://youmightnotneedjquery.com]
+
+---
+
+class: center middle
+
+![](resources/online.png)
+
+---
+
+class: center middle
+
+![](resources/online-devtool.png)
+
+---
+class: middle center
+
+# Demo
+
+---
+
 #Oppgave
 
 
@@ -199,7 +320,7 @@ class: center middle bekk-top
 
 # Takk for oss!
 
-bekk.no
+bekk.no/jobb
 
 
 
