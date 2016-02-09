@@ -2,6 +2,50 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 2vw;
+}
+
+body {
+  font-family: 'Conduit ITC W01 Light';
+  background-color: #262626;
+  color: #fff;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  display: inline-block;
+  padding: 0.5em 1.7em;
+  font-size: 1.8rem;
+  font-family: inherit;
+  line-height: 1;
+  color: #ebebeb;
+  cursor: pointer;
+  border: 1px solid #c6c8ca;
+  text-transform: uppercase;
+  transition: background 0.2s ease-out, border 0.2s ease-out;
+}
+
+button:hover {
+  background: #df565b;
+  border-color: #df565b;
+}
+
+
+#start {
+  background-color: #FD5158;
+  border-color: #FD5158;
+  font-size: 2.2rem;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+  margin: 2rem auto;
+  display: block;
+
+  color: #fff;
+
+}
+
 main {
   width: 50vw;
   margin: 0 auto;
@@ -18,14 +62,9 @@ main {
   margin: 1.5%;
 }
 
-#start {
-  width: 97%;
-  margin: 0 auto;
-  display: block;
-}
-
 output {
-  padding: 1em;
+  font-size: 5.5rem;
+  padding: 1rem;
   text-align: center;
   display: block;
   width: 100%;
