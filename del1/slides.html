@@ -198,11 +198,11 @@ class: center middle
 --
 
 ```javascript
-  function hello(name) {
-    return `Hello, ${name}!`;
-  }
+  function hello(name) {                          var hello = function() {
+    return `Hello, ${name}!`;                       return `Hello, ${name}!`;
+  }                                               }
 
-  var hello = (name) => {
+  var hello = (name) => {                         var hello = name => `Hello, ${name}!`;
     return `Hello, ${name}!`;
   };
 
@@ -246,7 +246,7 @@ class: center middle
 --
 
 ```javascript
-  document.querySelector('#danse-ape').addEventListener('click', (event) => {
+  document.querySelector('#danse-ape').addEventListener('click', function(event) {
     var el = event.currentTarget;
     var src = el.getAttribute('src').replace('.png', '.gif');
     el.setAttribute('src', src);
