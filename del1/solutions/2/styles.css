@@ -1,0 +1,19 @@
+body {
+  background-color: #262626;
+  color: #ffffff;
+}
+
+.console {
+  font-size: 200%;
+  margin: 1em;
+}
+
+
+.button {
+  width: 2.5em;
+  padding: 0.5em 0;
+  font-size: 200%;
+  background: #ffffff;
+  color: #262626;
+  border: none;
+}
