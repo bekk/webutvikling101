@@ -110,55 +110,204 @@ class: fullscreen
 
 ---
 
-#css
+
+class: center middle
+
+#CSS
+
+
+
+---
+
+# CSS
 
 ```css
-  selector {
-    property: value;
-  }
+selector {
+  property: value;
+  property: value;
+}
 ```
+
+???
+
+En eller annen intro
+Som nevnt tar css-en seg av hvordan html-strukturen skal se ut..
+
+
 --
+
+&nbsp;
 
 ```css
-  div {
-    font: Arial;
-    font-size: 20px;
-    color: red;
-    background-color: white;
-  }
+div {
+  background: white;
+  font-size: 32px;
+  color: red;
+}
+/* <div>Hei på deg</div> */
 ```
+
 --
 
-<br>
+&nbsp;
 
 <div style="
-  font: Arial;
-  font-size: 20px;
+ background: white;
+ color: red;
+ font-size: 32px;
+">Hei på deg</div>
+
+
+---
+
+# CSS - Hvor?
+
+  ```html
+  <div style="property:value;"></div>
+  ```
+
+???
+
+Første steg er å finne ut hvor css-koden skal ligge. Her er det i hovedsak 3 muligheter. 
+
+Man kan legge stylingen rett på html-elementene. Ulempen med dette er at css-regler ikke kan gjenbrukes. F. eks. om du har mange knapper med rød bakgrunn, der alle bruker sånn her inline styling, hva skjer om du senere ønsker at knapper skal ha en annen farge? Da må du finne alle knappene og endre på dem! Så denne metoden bør ikke brukes, annet enn til litt kjapp testing.
+
+--
+
+  ```html
+  <head>
+    ...
+    <style type="text/css">
+      selector { property:value; }
+    </style>
+  </head>
+  ```
+
+???
+
+Metode nr. 2 er å samle all css inni en style-tag som man legger inni head-taggen i html-fila. Her kan man så lage en felles regel som gjelder alle knapper. Det fungerer okey, men er dumt om du har flere html-filer som også skulle hatt samme styling.
+
+--
+  ```html
+  <head>
+    ...
+    <link href="style.css" type="text/css" rel="stylesheet">
+
+  // I style.css fila
+  selector { 
+    property:value;
+  }
+  ```
+  
+
+???
+
+Så den beste løsningen er å lage en egen css-fil der man legger all styling, og så lenke til denne i de forskjellige html-filene. Det gjøres da slik.
+
+---
+
+#CSS - Hva?
+
+```css
+body { background: red; } /* <body> ... </body> */
+button { color: blue; } /* <button>Trykk meg!</button>
+```
+
+
+```css
+.btn-danger { background: red; } /* <button class="btn-danger">Slett!</button> */
+.btn-ok { background: green; } /* <button class="btn-ok">Lagre!</button> */
+```
+
+
+```
+#unikid { color: #ff00ff; } /* <div id="unikid"> ... </div> */
+```
+
+???
+
+Steg 2 er å fortelle nettleseren hva det er som skal styles. Det gjør man ved å skrive en selektor som "treffer" det man ønsker å style. Det kan enten være noe som treffer alle html-tager av en type, f. Eks. Body-tagen eller alle knapper. 
+
+Eller så kan man style ting mer spesifikt, ved å lage såkalte klasser, som man så kan bruke i htmlen. En selector for en klasse lager man ved å sette et punktum foran.
+
+Tredje måten er å selecte ETT spesifikt html-element med en gitt id, ved å bruke firkanttegn. En slik css-regel blir ikke veldig gjenbrukbar. I praksis styler man ofte tags på en generell måte, og så lager man klasser med mer spesifikke regler.
+
+
+--
+
+Avansert
+
+```css
+.klasse1 .klasse2 { ... } /* alle av type klasse2 som ligger inni klasse1 */
+/* eks: <div class="klasse1"><span class="klasse2">meg</span></div> */
+
+.klasse1.klasse2 { ... } /* element som har begge klassene */
+/* eks: <div class="klasse1 klasse2">meg</div> */
+
+button.klasse1 { ... } /* alle knapper som har klasse 1 */
+/* eks: <button class="klasse1">meg</button> */
+```
+
+???
+
+Disse kan også kombineres for å selecte enda mer spesifikke ting...
+
+---
+
+#CSS - Hvordan?
+
+```css
+selector {
+  background: #ff0000;
   color: red;
-  background-color: white;
-  padding: 20px;
-">
+  border-color: rgba(255, 0, 0, 0.3);
 
-  NTNU
+  font-size: 20px;
+  height: 20rem;
+  width: 50vw;
+  margin: 5%;
 
-</div>
+  border: 1px solid blue;
+  border-radius: 10px;
+}
+```
+
+???
+
+Etter å ha valgt hva som skal styles kommer man endelig til moroa, det å si hvordan det skal se ut! Som dere har sett litt av allerede gjøres det ved å ha en liste, separert med semikolon, over egenskaper og hvilken verdi man ønsker de skal ha.
+
+Her er et knippe eksempler. Som vist på toppen finnes det flere måter å definere farger på. Tre er vist her, en hexcode, navn eller rgba med gjennomsiktighet.
+
+Av lengder finnes det også flere enheter. Piksler er rett frem. En bredde i prosent vil si... hvor mye gå inn på dem?
+
 
 ---
 
 class: center middle
 
-![](resources/opera.png)
+#DevTools
 
-.source[http://v2.desandro.com/articles/opera-logo-css/]
+### ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
+
+???
+
+* Hvordan se på css
+* Se styles fra nettleseren
+* Kjapt teste redigering av css property
 
 ---
 
-class: center middle
+#Oppgave
 
-![](resources/iOS-css-icons.png)
+## Lag en css-fil og link til den i HTML-fila
+## Sett en bakgrunn på nettsiden
+## Endre font, farge og skriftstørrelse på teller-verdien
+## Endre bakgrunnsfarge, border/ramme og tekst-farge på knappen(e?)
+## osv.
 
-.source[http://codepen.io/peterschmiz/pen/xmqCg]
+???
 
+Avhenger av hvordan oppgaven blir splittet opp
 
 ---
 
