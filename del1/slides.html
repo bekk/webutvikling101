@@ -581,6 +581,114 @@ class: middle center
 
 ---
 
+class: center middle
+
+# Interaksjon
+
+---
+
+#Events
+
+## Recap:
+
+--
+
+```html
+  <button role="button" id="btn">Element</button>
+```
+
+--
+
+```javascript
+  let button = document.querySelector('#btn');
+  
+  button.addEventListener('click', function() {
+    console.log('heia');
+  });
+```
+---
+# Events
+
+```html
+<div id="buttons">
+  <button role="button" id="btn1">Element</button>
+  <button role="button" id="btn2">Element</button>
+  <button role="button" id="btn3">Element</button>
+  <button role="button" id="btn4">Element</button>
+</div>
+```
+--
+##  Må vi legge til 4 individuelle listeners?
+
+---
+class: middle center
+
+# Event Propagation
+
+---
+# Event Propagation
+
+TODO: Finn et bilde på event propagation
+
+---
+# Event Propagation
+
+```html
+<div id="buttons">
+  <button role="button" id="btn1">Element</button>
+  <button role="button" id="btn2">Element</button>
+  <button role="button" id="btn3">Element</button>
+  <button role="button" id="btn4">Element</button>
+</div>
+```
+--
+```javascript
+let container = document.querySelector('#buttons');
+
+container.addEventListener('click', function() {
+  console.log('heia');
+});
+```
+---
+# Event Propagation
+
+## `event`-objektet
+
+```javascript
+let container = document.querySelector('#buttons');
+
+container.addEventListener('click', function(event) {
+  let element = event.target;
+  console.log(element.nodeName) //=>BUTTON
+});
+```
+--
+Les mer om Event på Mozilla Developer Network:
+
+https://developer.mozilla.org/en-US/docs/Web/API/Event
+
+---
+class: middle center
+# Bonus: Dataset
+---
+# Dataset
+
+```html
+<button data-number="1" role="button" id="btn1">Element</button>
+```
+--
+```javascript
+let button = document.querySelector("#btn1");
+
+let number = button.dataset.number;
+console.log(number); //=> 1
+```
+---
+# Oppgave
+
+TODO: Skriv oppgavetekst
+---
+
 class: center middle bekk-top
 
 # Takk for oss!
