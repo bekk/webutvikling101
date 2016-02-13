@@ -80,8 +80,15 @@ class: center middle
 #HTML
 
 ```html
+  <tag />
+
   <tag>Innhold</tag>
 ```
+
+???
+
+Hovedregel er at alle tagger trenger åpne / lukke<br>
+Kun elementer som ikke **kan** ha innhold avsluttes dirrekte
 
 --
 
@@ -92,7 +99,7 @@ class: center middle
 --
 
 ```html
-  <tag attributt="verdi">
+  <tag>
     <tag></tag>
     <tag></tag>
     <tag>
@@ -132,20 +139,21 @@ class: center middle
 
 ```html
   <div id="unik-id"></div>
-```
 
-```html
   <div class="klasse-av-elementer"></div>
-```
 
-```html
   <div title="Tittle på element"></div>
 ```
 
 --
+&nbsp;
 
 ```html
   <a href="side2.html"></a>
+
+  <img src="bilde.png" />
+
+  <input type="checkbox" />
 ```
 
 ---
