@@ -19,23 +19,141 @@ class: front-page
 ---
 class: middle center
 
-# Introduksjon
-
----
-class: middle center
-
 ![HTML](resources/html.jpg)
 
 .source[http://flic.kr/p/5HzQsy]
 
+---
+
+class: center middle
+
+![](resources/css-gangnam.jpg)
 
 ---
 
+class: center middle
+
+![](resources/javascript.png)
+
+.source[http://codepen.io/peterschmiz/pen/xmqCg]
+
+---
+
+class: center middle
+
+![](resources/browser-layered-cake.jpeg)
+
+---
+
+class: fullscreen
+
+![](resources/abakus.png)
+
+
+---
+
+class: fullscreen
+
+![](resources/abakus-html.png)
+
+
+---
+
+class: fullscreen
+
+![](resources/abakus-uten-css.png)
+
+---
+class: fullscreen
+
+  <iframe src="resources/abakus.no.html" />
+
+---
+
+class: center middle
+
+#HTML
+
+## HyperText Markup Language
+
+---
+#HTML
+
+```html
+  <tag>Innhold</tag>
+```
+
+--
+
+```html
+  <tag attributt="verdi">Innhold</tag>
+```
+
+--
+
+```html
+  <tag attributt="verdi">
+    <tag></tag>
+    <tag></tag>
+    <tag>
+      <tag></tag>
+      <tag></tag>
+    </tag>
+  </tag>
+```
+
+---
+.source[https://developer.mozilla.org/en/docs/Web/HTML/Element]
+
 # HTML
+
+
+## Semantiske
+```html
+  <header></header>
+  <nav></nav>
+  <main></main>
+  <footer></footer>
+
+  <h1></h1>
+  <p></p>
+  <a></a>
+  <button></button>
+```
+
+## Ikke-Semantiske
+```html
+  <div></div>
+  <span></span>
+```
+
+---
+# HTML
+
+```html
+  <div id="unik-id"></div>
+```
+
+```html
+  <div class="klasse-av-elementer"></div>
+```
+
+```html
+  <div title="Tittle på element"></div>
+```
+
+--
+
+```html
+  <a href="side2.html"></a>
+```
+
+---
 
 ```html
   <!doctype html>
   <html lang="en">
+
     <head>
       <title>En enkel HTML-side</title>
     </head>
@@ -44,7 +162,7 @@ class: middle center
       <header>
         <h1>Velkommen</h1>
         <nav>
-          <a href="/side2.html">Side2</a>
+          <a href="side2.html">Side2</a>
         </nav>
       </header>
       <main>
@@ -56,76 +174,36 @@ class: middle center
   </html>
 ```
 
-???
+---
+class: center middle
 
-HTML er enkle tekstfiler.
+# DevTool
 
-HTML beskriver strukturen og innholdet til en nettside.
-
-
-Denne strukturen brukes av CSS og JS.
-
-
-HTML sier ingenting om utseende.
-
-HTML sier ingenting om oppførsel.
-
-
-HTML er ikke et programmeringsspråk
-
-HTML er et markeringsspråk som beskriver semantikken til et dokument.
+## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
 
 ---
 
-class: fullscreen
+# Oppgave
 
-![](resources/abakus.png)
+TODO: Oppgavetekst
 
----
-
-class: fullscreen
-
-![](resources/abakus-html.png)
 
 
 ---
 
 class: center middle
 
-![](resources/css-gangnam.jpg)
-
-
----
-
-class: fullscreen
-
-![](resources/abakus.png)
-
-
----
-
-class: fullscreen
-
-![](resources/abakus-uten-css.png)
-
----
-
-
-class: center middle
-
-#CSS
-
-
-
+# CSS
+## Cascading Style Sheets
 ---
 
 # CSS
 
 ```css
-selector {
-  property: value;
-  property: value;
-}
+  selector {
+    property: value;
+    property: value;
+  }
 ```
 
 ???
@@ -139,12 +217,12 @@ Som nevnt tar css-en seg av hvordan html-strukturen skal se ut..
 &nbsp;
 
 ```css
-div {
-  background: white;
-  font-size: 32px;
-  color: red;
-}
-/* <div>Hei på deg</div> */
+  div {
+    background: white;
+    font-size: 32px;
+    color: red;
+  }
+  /* <div>Hei på deg</div> */
 ```
 
 --
@@ -168,7 +246,7 @@ div {
 
 ???
 
-Første steg er å finne ut hvor css-koden skal ligge. Her er det i hovedsak 3 muligheter. 
+Første steg er å finne ut hvor css-koden skal ligge. Her er det i hovedsak 3 muligheter.
 
 Man kan legge stylingen rett på html-elementene. Ulempen med dette er at css-regler ikke kan gjenbrukes. F. eks. om du har mange knapper med rød bakgrunn, der alle bruker sånn her inline styling, hva skjer om du senere ønsker at knapper skal ha en annen farge? Da må du finne alle knappene og endre på dem! Så denne metoden bør ikke brukes, annet enn til litt kjapp testing.
 
@@ -194,11 +272,11 @@ Metode nr. 2 er å samle all css inni en style-tag som man legger inni head-tagg
     <link href="style.css" type="text/css" rel="stylesheet">
 
   // I style.css fila
-  selector { 
+  selector {
     property:value;
   }
   ```
-  
+
 
 ???
 
@@ -226,7 +304,7 @@ button { color: blue; } /* <button>Trykk meg!</button>
 
 ???
 
-Steg 2 er å fortelle nettleseren hva det er som skal styles. Det gjør man ved å skrive en selektor som "treffer" det man ønsker å style. Det kan enten være noe som treffer alle html-tager av en type, f. Eks. Body-tagen eller alle knapper. 
+Steg 2 er å fortelle nettleseren hva det er som skal styles. Det gjør man ved å skrive en selektor som "treffer" det man ønsker å style. Det kan enten være noe som treffer alle html-tager av en type, f. Eks. Body-tagen eller alle knapper.
 
 Eller så kan man style ting mer spesifikt, ved å lage såkalte klasser, som man så kan bruke i htmlen. En selector for en klasse lager man ved å sette et punktum foran.
 
@@ -285,9 +363,9 @@ Av lengder finnes det også flere enheter. Piksler er rett frem. En bredde i pro
 
 class: center middle
 
-#DevTools
+#DevTool
 
-### ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
+## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
 
 ???
 
@@ -311,12 +389,6 @@ Avhenger av hvordan oppgaven blir splittet opp
 
 ---
 
-class: center middle
-
-#Element State
-
-
----
 
 class: center middle
 
@@ -413,9 +485,9 @@ class: middle center
 ---
 class: center middle
 
-## DevTool Demo
+# DevTool
 
-### ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
+## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
 
 ---
 
@@ -430,16 +502,14 @@ class: center middle
 
 ![](resources/family-guy-css.gif)
 
----
 
+---
 class: center middle
 
-![](resources/javascript.png)
-
-.source[http://codepen.io/peterschmiz/pen/xmqCg]
-
+#JavaScript
 
 ---
+
 
 #JavaScript
 
@@ -477,12 +547,6 @@ class: center middle
 # JavaScript
 
   <img id="danse-ape" src="resources/danse-ape.png" style="display:block;margin:80px auto;cursor:pointer">
-
----
-
-class: center middle
-
-![](resources/browser-layered-cake.jpeg)
 
 ---
 
@@ -570,7 +634,7 @@ class: center middle
 ---
 class: middle center
 
-# DevTool Demo
+# DevTool
 
 ## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
 
@@ -601,7 +665,7 @@ class: center middle
 
 ```javascript
   let button = document.querySelector('#btn');
-  
+
   button.addEventListener('click', function() {
     console.log('heia');
   });
