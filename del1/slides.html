@@ -581,6 +581,335 @@ class: middle center
 
 ---
 
+class: center middle
+
+# Interaksjon
+
+---
+
+#Events
+
+## Recap:
+
+--
+
+```html
+  <button role="button" id="btn">Element</button>
+```
+
+--
+
+```javascript
+  let button = document.querySelector('#btn');
+  
+  button.addEventListener('click', function() {
+    console.log('heia');
+  });
+```
+---
+# Events
+
+```html
+<div id="buttons">
+  <button role="button" id="btn1">Element</button>
+  <button role="button" id="btn2">Element</button>
+  <button role="button" id="btn3">Element</button>
+  <button role="button" id="btn4">Element</button>
+</div>
+```
+--
+##  Må vi legge til 4 individuelle listeners?
+
+---
+class: middle center
+
+# Event Propagation
+
+---
+# Event Propagation
+
+TODO: Finn et bilde på event propagation
+
+---
+# Event Propagation
+
+```html
+<div id="buttons">
+  <button role="button" id="btn1">Element</button>
+  <button role="button" id="btn2">Element</button>
+  <button role="button" id="btn3">Element</button>
+  <button role="button" id="btn4">Element</button>
+</div>
+```
+--
+```javascript
+let container = document.querySelector('#buttons');
+
+container.addEventListener('click', function() {
+  console.log('heia');
+});
+```
+---
+# Event Propagation
+
+## `event`-objektet
+
+```javascript
+let container = document.querySelector('#buttons');
+
+container.addEventListener('click', function(event) {
+  let element = event.target;
+  console.log(element.nodeName) //=>BUTTON
+});
+```
+--
+Les mer om Event på Mozilla Developer Network:
+
+https://developer.mozilla.org/en-US/docs/Web/API/Event
+
+---
+class: middle center
+# Bonus: Dataset
+---
+# Dataset
+
+```html
+<button data-number="1" role="button" id="btn1">Element</button>
+```
+--
+```javascript
+let button = document.querySelector("#btn1");
+
+let number = button.dataset.number;
+console.log(number); //=> 1
+```
+---
+# Oppgave
+
+TODO: Skriv oppgavetekst
+---
+class: center middle
+# Asynkronitet
+
+---
+# Asynkronitet
+
+Hva vil bli printet til konsollet?
+--
+
+```javascript
+console.log('hello');
+
+setTimeout(function() {
+  console.log('asyncronous');
+}, 100);
+
+console.log('world!');
+```
+--
+```javascript
+hello
+world
+asyncronous
+```
+---
+
+# Asynkronitet
+
+Hva vil bli printet til konsollet?
+--
+
+```javascript
+console.log('hello');
+
+setTimeout(function() {
+  console.log('asyncronous');
+}, 0);
+
+console.log('world!');
+```
+--
+```javascript
+hello
+world
+asyncronous
+```
+
+???
+
+Hva er det egentlig som skjer her?
+
+Når JavaScript-motoren tolker denne koden og kommer til setTimeout ser den at
+her skal det registreres noe kode som skal kjøres senere. Motoren legger en
+beskjed på "stacken" om at denne snutten med kode skal kjøres om 0ms.
+
+Så beveger motoren seg videre, ser neste log-statement og logger det. Nå er
+motoren ferdig med all koden i filen og den kikker på "stacken" sin og ser at
+her ligger det noe kode som skulle kjøres om 0ms. Siden det har gått minst 0ms
+siden kodesnutten ble lagt på stacken så er det OK å kjøre den koden.
+---
+# Asynkronitet
+
+Hva vil bli printet til konsollet?
+
+--
+
+```javascript
+setTimeout(function() {
+  console.log('heia');
+}, 100);
+
+while(true) {
+  //Do something
+}
+```
+--
+```
+//Ingenting!
+```
+---
+# Funksjoner
+
+--
+```javascript
+function printNumbersUntil(number) {
+  for (let i = 0; i < number; i++) {
+    console.log(i);
+  }
+}
+```
+---
+# Funksjoner
+
+```javascript
+function printNumbersUntil(number) {
+  for (let i = 0; i < number; i++) {
+    console.log(i);
+  }
+}
+
+printNumbersUntil(10);
+```
+--
+```javascript
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setTimeout(printHeia, 1000);
+```
+--
+```javascript
+heia
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+--
+```javascript
+heia
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+
+```javascript
+heia
+heia
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+
+```javascript
+heia
+heia
+heia
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+
+```javascript
+heia
+heia
+heia
+heia
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+
+```javascript
+heia
+heia
+heia
+heia
+...
+```
+---
+# Vil du vite mer?
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
+
+---
+# Oppgave
+
+TODO: Oppgavetekst
+
+---
+
+
 class: center middle bekk-top
 
 # Takk for oss!
