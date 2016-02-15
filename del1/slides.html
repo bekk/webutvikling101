@@ -204,6 +204,11 @@ class: center middle
 
 # CSS
 ## Cascading Style Sheets
+
+???
+
+Cascading Style Sheets, eller CSS, tar seg av stylingen av HTMLen.
+
 ---
 
 # CSS
@@ -217,8 +222,9 @@ class: center middle
 
 ???
 
-En eller annen intro
-Som nevnt tar css-en seg av hvordan html-strukturen skal se ut..
+Det gjøres ved hjelp av et sett med regler for hvordan ting skal styles.
+
+En slik regel har en selector, som sier HVA det er som skal styles, og så inni krøllparanteser en liste over hvordan man ønsker det skal styles. Denne listen består da av egenskaper og deres verdier. Separert med semikolon.
 
 
 --
@@ -231,8 +237,16 @@ Som nevnt tar css-en seg av hvordan html-strukturen skal se ut..
     font-size: 32px;
     color: red;
   }
-  /* <div>Hei på deg</div> */
 ```
+```html
+<div>Hei på deg</div>
+```
+
+???
+
+I dette eksempelet sier selectoren at disse egenskapene skal gjelde for alle diver i html-dokumentet. Og egenskapene sier da at disse divene skal ha hvit bakgrunn og stor, rød tekst.
+
+Med HTMLen under, vil det bli seendes slik ut
 
 --
 
@@ -244,71 +258,126 @@ Som nevnt tar css-en seg av hvordan html-strukturen skal se ut..
  font-size: 32px;
 ">Hei på deg</div>
 
+---
+
+#CSS - Hvordan?
+
+
+Søketips:
+`<det du vil style> + css + mdn`
+
+```css
+selector {
+  background: #ff0000;
+  color: red;
+  border-color: rgba(255, 0, 0, 0.3);
+
+  width: 200px; width: 20rem; width: 50%; width: 25vw;
+  font-size: 20px;
+  height: 270px;
+  margin: 5px;
+  margin-top: 20px;
+
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: blue;
+  border: 1px solid blue;
+}
+```
+
+???
+
+søke etter "bold text css mdn"
+
+Her er et knippe eksempler. Som vist på toppen finnes det flere måter å definere farger på. Tre er vist her, en hexcode, navn eller rgba med gjennomsiktighet.
+
+Av lengder finnes det også flere enheter.
+
+* Piksler er rett frem. 
+* rem, r=relative til en størrelse man definerer selv. Responsiv
+* %, i forhold til parent container ved bredde
+* vw
+
+Mange egenskaper gjelder 4 sider, sånn som margin og border, men kan også definere per side.
+
+Shorthand syntax
+
+
 
 ---
 
-# CSS - Hvor?
 
-  ```html
-  <div style="property:value;"></div>
-  ```
+#CSS - Hva?
 
-???
+##Tag-selector
 
-Første steg er å finne ut hvor css-koden skal ligge. Her er det i hovedsak 3 muligheter.
+```css
+body { 
+  background: red;
+}
 
-Man kan legge stylingen rett på html-elementene. Ulempen med dette er at css-regler ikke kan gjenbrukes. F. eks. om du har mange knapper med rød bakgrunn, der alle bruker sånn her inline styling, hva skjer om du senere ønsker at knapper skal ha en annen farge? Da må du finne alle knappene og endre på dem! Så denne metoden bør ikke brukes, annet enn til litt kjapp testing.
-
---
-
-  ```html
-  <head>
-    ...
-    <style type="text/css">
-      selector { property:value; }
-    </style>
-  </head>
-  ```
-
-???
-
-Metode nr. 2 er å samle all css inni en style-tag som man legger inni head-taggen i html-fila. Her kan man så lage en felles regel som gjelder alle knapper. Det fungerer okey, men er dumt om du har flere html-filer som også skulle hatt samme styling.
-
---
-  ```html
-  <head>
-    ...
-    <link href="style.css" type="text/css" rel="stylesheet">
-
-  // I style.css fila
-  selector {
-    property:value;
-  }
-  ```
-
+button {
+  color: blue;
+} 
+```
+```html
+<body>
+  Rød bakgrunn på hele siden.
+  <button>Jeg har blå tekst</button>
+  <button>Jeg har også blå tekst</button>
+</body>
+```
 
 ???
 
-Så den beste løsningen er å lage en egen css-fil der man legger all styling, og så lenke til denne i de forskjellige html-filene. Det gjøres da slik.
+Så, selektorer. Hvordan velge hva som skal styles? Viste nylig et eksempel på hvordan man stylet alle divs på en side, og det var en såkalt tag-selector.
+
+En tag-selector er rett og slett bare navnet på en html-tag, og stylingen vil da gjelder for alle html-tags av den typen. 
+
+I eksempelet her selecter vi på html-taggene body og button, og sier hvordan disse skal se ut.
 
 ---
 
 #CSS - Hva?
 
-```css
-body { background: red; } /* <body> ... </body> */
-button { color: blue; } /* <button>Trykk meg!</button>
-```
-
+##Klasse-selector
 
 ```css
-.btn-danger { background: red; } /* <button class="btn-danger">Slett!</button> */
-.btn-ok { background: green; } /* <button class="btn-ok">Lagre!</button> */
+.btn-danger {
+  background: red;
+}
+
+.btn-ok {
+  background: green;
+}
+```
+```html
+<button class="btn-danger">Slett!</button> 
+<button class="btn-ok">Lagre!</button> 
 ```
 
+???
 
+Ønsker jo ikke alltid at alle knapper skal se like ut. F. eks vil man kanskje at en slett-knapp skal være litt skummel å trykke på. Da kan man lage en klasse-selector.
+
+Istedet for å skrive
+
+De begynner med punktum, og så spesifiserer man i htmlen at man ønsker at dette elementet skal bruke stylingen fra denne klassen.
+
+---
+
+#CSS - Hva?
+
+##Id-selector
+
+```css
+#unikid {
+  color: #ff00ff;
+}
 ```
-#unikid { color: #ff00ff; } /* <div id="unikid"> ... </div> */
+```html
+<div id="unikid"> ... </div>
 ```
 
 ???
@@ -319,78 +388,97 @@ Eller så kan man style ting mer spesifikt, ved å lage såkalte klasser, som ma
 
 Tredje måten er å selecte ETT spesifikt html-element med en gitt id, ved å bruke firkanttegn. En slik css-regel blir ikke veldig gjenbrukbar. I praksis styler man ofte tags på en generell måte, og så lager man klasser med mer spesifikke regler.
 
+<!--
 
---
+#CSS - HVA?
 
-Avansert
+##Avanserte selectorer
 
-```css
-.klasse1 .klasse2 { ... } /* alle av type klasse2 som ligger inni klasse1 */
-/* eks: <div class="klasse1"><span class="klasse2">meg</span></div> */
 
-.klasse1.klasse2 { ... } /* element som har begge klassene */
-/* eks: <div class="klasse1 klasse2">meg</div> */
 
-button.klasse1 { ... } /* alle knapper som har klasse 1 */
-/* eks: <button class="klasse1">meg</button> */
+```html
+.klasse1 .klasse2 { ... } /* alle av type klasse2 som ligger inni klasse1  */
+
+<div class="klasse1">
+  <span class="klasse2">meg</span>
+</div>
+<span class="klasse2">ikke meg</span>
 ```
+
+```html
+.klasse1.klasse2 { ... } /* element som har begge klassene */
+
+<div class="klasse1 klasse2">meg</div>
+```
+
+```html
+button.klasse1 { ... } /* alle knapper som har klasse 1 */
+
+<button class="klasse1">meg</button>
+<a class="klasse1">Ikke meg</a>
+```
+
 
 ???
 
 Disse kan også kombineres for å selecte enda mer spesifikke ting...
 
+-->
 ---
 
-#CSS - Hvordan?
+
+# CSS - Hvor?
+
+I HTML-fila:
+
+```html
+<head>
+  <!-- ... -->
+  <link href="style.css" type="text/css" rel="stylesheet">
+  <!-- ...    ^^^^^^^^^ -->
+</head>
+```
+
+&nbsp;
+
+En fil med navn `style.css`:
 
 ```css
-selector {
-  background: #ff0000;
-  color: red;
-  border-color: rgba(255, 0, 0, 0.3);
-
-  font-size: 20px;
-  height: 20rem;
-  width: 50vw;
-  margin: 5%;
-
-  border: 1px solid blue;
-  border-radius: 10px;
+body {
+  background: red;
 }
 ```
 
 ???
 
-Etter å ha valgt hva som skal styles kommer man endelig til moroa, det å si hvordan det skal se ut! Som dere har sett litt av allerede gjøres det ved å ha en liste, separert med semikolon, over egenskaper og hvilken verdi man ønsker de skal ha.
+For at nettleseren skal kunne bruke css-reglene man har skrevet, må man fortelle den for disse reglene finnes. Det gjøres ved at man i head-delen av html-fila peker til hvor css-filen finnes.
 
-Her er et knippe eksempler. Som vist på toppen finnes det flere måter å definere farger på. Tre er vist her, en hexcode, navn eller rgba med gjennomsiktighet.
-
-Av lengder finnes det også flere enheter. Piksler er rett frem. En bredde i prosent vil si... hvor mye gå inn på dem?
-
+Når nettsiden lastet vil så nettleseren søke opp filen det pekes til, og utføre all styling på html-dokumentet.
 
 ---
 
+
 class: center middle
 
-#DevTool
+#Devtools
 
 ## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
 
 ???
 
 * Hvordan se på css
-* Se styles fra nettleseren
 * Kjapt teste redigering av css property
 
 ---
 
 #Oppgave
 
-## Lag en css-fil og link til den i HTML-fila
-## Sett en bakgrunn på nettsiden
-## Endre font, farge og skriftstørrelse på teller-verdien
-## Endre bakgrunnsfarge, border/ramme og tekst-farge på knappen(e?)
-## osv.
+* Lag en css-fil og link til den i HTML-fila
+* Sett en bakgrunnsfarge på nettsiden
+* Endre font, farge og skriftstørrelse på teller-verdien
+* Endre størrelse, bakgrunnsfarge, border/ramme og tekstfarge på knappene
+
+
 
 ???
 
@@ -398,6 +486,152 @@ Avhenger av hvordan oppgaven blir splittet opp
 
 ---
 
+
+class: center middle
+
+#Layout
+## med CSS
+
+---
+
+#Box model
+
+```css
+.min-boks {
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  border: 5px solid red;
+  margin: 20px;
+}
+```
+
+<img src="resources/boxmodel.png" style="width: 50%; position: absolute; right: 50px; top: 120px;">
+
+
+???
+
+
+Pakke-metafor.
+
+---
+
+#Box sizing
+
+```css
+div {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;
+}
+```
+
+<div style="width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;">Lorem ipsum</div>
+
+
+```css
+div {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;
+}
+```
+<div style="box-sizing:border-box; width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+#Display
+
+```html
+<div>
+  <h1>Overskrift</h1> <!-- block -->
+  <p>Litt tekst</p> <!-- block -->
+  <button>En knapp</button> <!-- inline-block -->
+  <button>Enda en knapp</button>
+  <a href="#">Lenke</a> <!-- inline -->
+  <div>mer tekst</div> <!-- blokk -->
+</div>
+```
+
+<div style="background-color: #1a1a1a; font-size: 25px;">
+  <h1 style="margin-bottom: 5px;">Overskrift</h1>
+  <p>Litt tekst</p>
+  <button style="padding: 15px; font-size: 25px;">En knapp</button>
+  <button style="padding: 15px; font-size: 25px;">Enda en knapp</button>
+  <a href="#">Lenke</a>
+  <div>mer tekst</div>
+</div>
+
+???
+
+Her vises litt html-kode, og hvordan det blir seendes ut.
+Som man kan se, vises det man har i html-en etterhverandre i den rekkefølge det er i i html-en.
+
+Det man også kan se, er at det noen ganger havner under hverandre, og andre ganger ved siden av hverandre. Mange elementer kalles for blokk-elementer, og når nettleseren viser de vil de alltid havne på en egen linje. Når nettleseren derimot skal vise inline-elementer ser den om det er plass på samme linje, og om det er det puttes det der.
+
+Blir jo ikke veldig spenstige design når alt bare kommer slik etter hverandre, så det skal vi gjøre noe med.
+
+---
+class: split
+
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+```
+
+<img src="resources/justify-content.svg" style="width: 40%; padding-right: 20px;">
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+
+???
+
+---
+
+class: split
+
+# Oppgave
+
+* Lag et `<main>`-element og putt alt innholdet i det.
+ *  Gi det en bredde, og midtstill det vha `margin: 0 auto`
+* Midtstill telleren og gi den en stor skriftstørrelse.
+* Lag en div og putt 10 stk `<button>` inni den
+ * Bruk flexbox på diven for å få knappene til å ligge som til høyre
+* Midtstill og style start-knappen
+
+
+Farger:
+
+* Gråfarge: `#262626`
+* Rødfarge: `#fd5158`
+
+???
+
+trenger ikke få til samme størrelser og farger, men prøv å få til selve layouten
+
+
+
+<iframe src="solutions/3/index.html" style="width: 50%" />
+
+---
 
 class: center middle
 
