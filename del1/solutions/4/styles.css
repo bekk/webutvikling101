@@ -47,6 +47,12 @@ main {
   border-color: #fd5158;
 }
 
+.button--number:focus {
+    background: orange;
+    border-color: orange;
+    outline: none;
+}
+
 .button--main {
   font-size: 2.2rem;
   padding: 0.5em 2.5em;
@@ -54,4 +60,9 @@ main {
   color: #ffffff;
   border: none;
   margin: 0 auto;
+}
+
+.button--main:hover {
+    background: white;
+    color: #000000;
 }
