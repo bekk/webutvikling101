@@ -194,9 +194,9 @@ class: split
 
 # Oppgave
 
-TODO: Oppgavetekst
+Bruk html for å lage dette eksemplet til høyre
 
-<iframe src="solutions/final/index.html" style="width: 50%" />
+<iframe src="solutions/1/index.html" style="width: 50%; background-color:#fff" />
 
 
 ---
@@ -413,12 +413,14 @@ selector {
   color: red;
   border-color: rgba(255, 0, 0, 0.3);
 
-  width: 200px; width: 20rem; width: 50%; width: 25vw;
-  font-size: 20px;
-  height: 270px;
-  margin: 5px;
-  margin-top: 20px;
+  width: 200px;
+  width: 20rem;
+  width: 50%;
+  width: 25vw;
 
+  margin: 5px;
+  margin: 5px 10px;
+  margin-top: 20px;
 
   border-width: 1px;
   border-style: solid;
@@ -435,7 +437,7 @@ Her er et knippe eksempler. Som vist på toppen finnes det flere måter å defin
 
 Av lengder finnes det også flere enheter.
 
-* Piksler er rett frem. 
+* Piksler er rett frem.
 * rem, r=relative til en størrelse man definerer selv. Responsiv
 * %, i forhold til parent container ved bredde
 * vw
@@ -454,13 +456,13 @@ Shorthand syntax
 ##Tag-selector
 
 ```css
-body { 
+body {
   background: red;
 }
 
 button {
   color: blue;
-} 
+}
 ```
 ```html
 <body>
@@ -474,7 +476,7 @@ button {
 
 Så, selektorer. Hvordan velge hva som skal styles? Viste nylig et eksempel på hvordan man stylet alle divs på en side, og det var en såkalt tag-selector.
 
-En tag-selector er rett og slett bare navnet på en html-tag, og stylingen vil da gjelder for alle html-tags av den typen. 
+En tag-selector er rett og slett bare navnet på en html-tag, og stylingen vil da gjelder for alle html-tags av den typen.
 
 I eksempelet her selecter vi på html-taggene body og button, og sier hvordan disse skal se ut.
 
@@ -494,8 +496,8 @@ I eksempelet her selecter vi på html-taggene body og button, og sier hvordan di
 }
 ```
 ```html
-<button class="btn-danger">Slett!</button> 
-<button class="btn-ok">Lagre!</button> 
+<button class="btn-danger">Slett!</button>
+<button class="btn-ok">Lagre!</button>
 ```
 
 ???
@@ -612,12 +614,18 @@ class: center middle
 
 ---
 
+class: split
+
 #Oppgave
 
 * Lag en css-fil og link til den i HTML-fila
 * Sett en bakgrunnsfarge på nettsiden
 * Endre font, farge og skriftstørrelse på teller-verdien
 * Endre størrelse, bakgrunnsfarge, border/ramme og tekstfarge på knappene
+
+
+
+<iframe src="solutions/2/index.html" style="width: 50%" />
 
 
 
@@ -764,13 +772,13 @@ Farger:
 * Gråfarge: `#262626`
 * Rødfarge: `#fd5158`
 
+
+<iframe src="solutions/3/index.html" style="width: 50%" />
+
+
 ???
 
 trenger ikke få til samme størrelser og farger, men prøv å få til selve layouten
-
-
-
-<iframe src="solutions/3/index.html" style="width: 50%" />
 
 ---
 
@@ -965,7 +973,7 @@ class: middle center
 ---
 # Event Propagation
 
-TODO: Finn et bilde på event propagation
+![](resources/events.jpg)
 
 ---
 # Event Propagation
@@ -1023,7 +1031,10 @@ console.log(number); //=> 1
 ---
 # Oppgave
 
-TODO: Skriv oppgavetekst
+Dere skal gjøre kalkulatoren interaktiv!
+
+- Fang opp klikk-events på knappene
+- Oppdatere konsollet på kalkulatoren med tall
 ---
 class: center middle
 # Asynkronitet
@@ -1242,7 +1253,10 @@ heia
 ---
 # Oppgave
 
-TODO: Oppgavetekst
+Dere skal implementere nedtelling!
+
+- Lag en lytter til `Start`-knappen
+- Oppdater konsollet etterhvert som tiden teller ned
 
 ---
 
