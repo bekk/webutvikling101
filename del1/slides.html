@@ -198,6 +198,147 @@ TODO: Oppgavetekst
 
 <iframe src="solutions/final/index.html" style="width: 50%" />
 
+
+---
+class: center middle
+
+#JavaScript
+
+---
+
+
+#JavaScript
+
+```javascript
+  console.log('Hello world!'); // Hello world!
+```
+
+--
+
+```javascript
+  var num = 1;
+  var str = 'Bekk';
+  var arr = [1, 2, 3, 4, 5];
+  var obj = {
+    key:  'value',
+    key2: 'value2'
+  };
+```
+--
+
+```javascript
+  function hello(name) {                          var hello = function() {
+    return `Hello, ${name}!`;                       return `Hello, ${name}!`;
+  }                                               }
+
+  var hello = (name) => {                         var hello = name => `Hello, ${name}!`;
+    return `Hello, ${name}!`;
+  };
+
+  hello('Bob'); // Hello, Bob!
+```
+
+---
+
+# JavaScript
+
+  <img id="danse-ape" src="resources/danse-ape.png" style="display:block;margin:80px auto;cursor:pointer">
+
+---
+
+# JavaScript DOM-api
+
+```javascript
+  var boks = document.querySelector('.boks'); // HTMLElement
+  var bokser = document.querySelectorAll('.boks'); // NodeList
+```
+
+--
+
+```javascript
+  document.querySelector('.boks').innerHTML;
+  // <a href="mer.html">Klikk her</a> for å lære mer
+```
+--
+
+```javascript
+  document.querySelector('.boks').textContent;
+  // Klikk her for å lære mer
+```
+
+--
+
+```javascript
+  document.querySelector('#danse-ape').addEventListener('click', function(event) {
+    var el = event.currentTarget;
+    var src = el.getAttribute('src').replace('.png', '.gif');
+    el.setAttribute('src', src);
+  });
+```
+
+---
+
+class: center middle
+
+![](resources/mozilla-developer-network.png)
+.source[https://developer.mozilla.org]
+
+---
+
+class: center middle
+
+![](resources/mozilla-developer-network-result.png)
+.source[https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove]
+
+---
+
+class: center middle
+
+![](resources/remove-element-search.png)
+
+---
+
+class: center middle
+
+![](resources/remove-element-result.png)
+
+---
+
+class: center middle
+
+![](resources/youmightnotneedjquery.png)
+.source[http://youmightnotneedjquery.com]
+
+---
+class: center middle
+
+![](resources/youmightnotneedjquery-result.png)
+.source[http://youmightnotneedjquery.com]
+
+---
+
+class: center middle
+
+![](resources/online.png)
+
+---
+
+class: center middle
+
+![](resources/online-devtool.png)
+
+---
+class: middle center
+
+# DevTool
+
+## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
+
+---
+
+#Oppgave
+
+
 ---
 
 class: center middle
@@ -774,147 +915,6 @@ exclude:true
 class: center middle
 
 ![](resources/family-guy-css.gif)
-
-
----
-class: center middle
-
-#JavaScript
-
----
-
-
-#JavaScript
-
-```javascript
-  console.log('Hello world!'); // Hello world!
-```
-
---
-
-```javascript
-  var num = 1;
-  var str = 'Bekk';
-  var arr = [1, 2, 3, 4, 5];
-  var obj = {
-    key:  'value',
-    key2: 'value2'
-  };
-```
---
-
-```javascript
-  function hello(name) {                          var hello = function() {
-    return `Hello, ${name}!`;                       return `Hello, ${name}!`;
-  }                                               }
-
-  var hello = (name) => {                         var hello = name => `Hello, ${name}!`;
-    return `Hello, ${name}!`;
-  };
-
-  hello('Bob'); // Hello, Bob!
-```
-
----
-
-# JavaScript
-
-  <img id="danse-ape" src="resources/danse-ape.png" style="display:block;margin:80px auto;cursor:pointer">
-
----
-
-# JavaScript DOM-api
-
-```javascript
-  var boks = document.querySelector('.boks'); // HTMLElement
-  var bokser = document.querySelectorAll('.boks'); // NodeList
-```
-
---
-
-```javascript
-  document.querySelector('.boks').innerHTML;
-  // <a href="mer.html">Klikk her</a> for å lære mer
-```
---
-
-```javascript
-  document.querySelector('.boks').textContent;
-  // Klikk her for å lære mer
-```
-
---
-
-```javascript
-  document.querySelector('#danse-ape').addEventListener('click', function(event) {
-    var el = event.currentTarget;
-    var src = el.getAttribute('src').replace('.png', '.gif');
-    el.setAttribute('src', src);
-  });
-```
-
----
-
-class: center middle
-
-![](resources/mozilla-developer-network.png)
-.source[https://developer.mozilla.org]
-
----
-
-class: center middle
-
-![](resources/mozilla-developer-network-result.png)
-.source[https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove]
-
----
-
-class: center middle
-
-![](resources/remove-element-search.png)
-
----
-
-class: center middle
-
-![](resources/remove-element-result.png)
-
----
-
-class: center middle
-
-![](resources/youmightnotneedjquery.png)
-.source[http://youmightnotneedjquery.com]
-
----
-class: center middle
-
-![](resources/youmightnotneedjquery-result.png)
-.source[http://youmightnotneedjquery.com]
-
----
-
-class: center middle
-
-![](resources/online.png)
-
----
-
-class: center middle
-
-![](resources/online-devtool.png)
-
----
-class: middle center
-
-# DevTool
-
-## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
-
----
-
-#Oppgave
-
 
 ---
 
