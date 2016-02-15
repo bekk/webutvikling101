@@ -494,6 +494,57 @@ class: center middle
 
 ---
 
+#Box model
+
+```css
+.min-boks {
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  border: 5px solid red;
+  margin: 20px;
+}
+```
+
+<img src="resources/boxmodel.png" style="width: 50%; position: absolute; right: 50px; top: 120px;">
+
+
+???
+
+
+Pakke-metafor.
+
+---
+
+#Box sizing
+
+```css
+div {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;
+}
+```
+
+<div style="width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;">Lorem ipsum</div>
+
+
+```css
+div {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;
+}
+```
+<div style="box-sizing:border-box; width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;">Lorem ipsum</div>
+
+---
+
 #Display
 
 ```html
@@ -526,14 +577,59 @@ Det man også kan se, er at det noen ganger havner under hverandre, og andre gan
 Blir jo ikke veldig spenstige design når alt bare kommer slik etter hverandre, så det skal vi gjøre noe med.
 
 ---
+class: split
 
-#Box model
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+```
+
+<img src="resources/justify-content.svg" style="width: 40%; padding-right: 20px;">
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
 
 ???
 
-Men før vi kommer dit må vi se litt på hvordan nettleseren beregner størrelsen til et element.
+---
 
-Pakke-metafor.
+class: split
+
+# Oppgave
+
+* Lag et `<main>`-element og putt alt innholdet i det.
+ *  Gi det en bredde, og midtstill det vha `margin: 0 auto`
+* Midtstill telleren og gi den en stor skriftstørrelse.
+* Lag en div og putt 10 stk `<button>` inni den
+ * Bruk flexbox på diven for å få knappene til å ligge som til høyre
+* Midtstill og style start-knappen
+
+
+Farger:
+
+* Gråfarge: `#262626`
+* Rødfarge: `#fd5158`
+
+???
+
+trenger ikke få til samme størrelser og farger, men prøv å få til selve layouten
+
+
+
+<iframe src="solutions/3/index.html" style="width: 50%" />
 
 ---
 
