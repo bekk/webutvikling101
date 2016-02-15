@@ -19,23 +19,149 @@ class: front-page
 ---
 class: middle center
 
-# Introduksjon
-
----
-class: middle center
-
 ![HTML](resources/html.jpg)
 
 .source[http://flic.kr/p/5HzQsy]
 
+---
+
+class: center middle
+
+![](resources/css-gangnam.jpg)
 
 ---
 
+class: center middle
+
+![](resources/javascript.png)
+
+.source[http://codepen.io/peterschmiz/pen/xmqCg]
+
+---
+
+class: center middle
+
+![](resources/browser-layered-cake.jpeg)
+
+---
+
+class: fullscreen
+
+![](resources/abakus.png)
+
+
+---
+
+class: fullscreen
+
+![](resources/abakus-html.png)
+
+
+---
+
+class: fullscreen
+
+![](resources/abakus-uten-css.png)
+
+---
+class: fullscreen
+
+  <iframe src="resources/abakus.no.html" />
+
+---
+
+class: center middle
+
+#HTML
+
+## HyperText Markup Language
+
+---
+#HTML
+
+```html
+  <tag />
+
+  <tag>Innhold</tag>
+```
+
+???
+
+Hovedregel er at alle tagger trenger åpne / lukke<br>
+Kun elementer som ikke **kan** ha innhold avsluttes dirrekte
+
+--
+
+```html
+  <tag attributt="verdi">Innhold</tag>
+```
+
+--
+
+```html
+  <tag>
+    <tag></tag>
+    <tag></tag>
+    <tag>
+      <tag></tag>
+      <tag></tag>
+    </tag>
+  </tag>
+```
+
+---
+.source[https://developer.mozilla.org/en/docs/Web/HTML/Element]
+
 # HTML
+
+
+## Semantiske
+```html
+  <header></header>
+  <nav></nav>
+  <main></main>
+  <footer></footer>
+
+  <h1></h1>
+  <p></p>
+  <a></a>
+  <button></button>
+```
+
+## Ikke-Semantiske
+```html
+  <div></div>
+  <span></span>
+```
+
+---
+# HTML
+
+```html
+  <div id="unik-id"></div>
+
+  <div class="klasse-av-elementer"></div>
+
+  <div title="Tittle på element"></div>
+```
+
+--
+&nbsp;
+
+```html
+  <a href="side2.html"></a>
+
+  <img src="bilde.png" />
+
+  <input type="checkbox" />
+```
+
+---
 
 ```html
   <!doctype html>
   <html lang="en">
+
     <head>
       <title>En enkel HTML-side</title>
     </head>
@@ -44,7 +170,7 @@ class: middle center
       <header>
         <h1>Velkommen</h1>
         <nav>
-          <a href="/side2.html">Side2</a>
+          <a href="side2.html">Side2</a>
         </nav>
       </header>
       <main>
@@ -56,116 +182,454 @@ class: middle center
   </html>
 ```
 
-???
+---
+class: center middle
 
-HTML er enkle tekstfiler.
+# DevTool
 
-HTML beskriver strukturen og innholdet til en nettside.
-
-
-Denne strukturen brukes av CSS og JS.
-
-
-HTML sier ingenting om utseende.
-
-HTML sier ingenting om oppførsel.
-
-
-HTML er ikke et programmeringsspråk
-
-HTML er et markeringsspråk som beskriver semantikken til et dokument.
+## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
 
 ---
+class: split
 
-class: fullscreen
+# Oppgave
 
-![](resources/abakus.png)
+TODO: Oppgavetekst
 
----
-
-class: fullscreen
-
-![](resources/abakus-html.png)
-
+<iframe src="solutions/final/index.html" style="width: 50%" />
 
 ---
 
 class: center middle
 
-![](resources/css-gangnam.jpg)
+# CSS
+## Cascading Style Sheets
 
+???
 
----
-
-class: fullscreen
-
-![](resources/abakus.png)
-
+Cascading Style Sheets, eller CSS, tar seg av stylingen av HTMLen.
 
 ---
 
-class: fullscreen
-
-![](resources/abakus-uten-css.png)
-
----
-
-#css
+# CSS
 
 ```css
   selector {
     property: value;
+    property: value;
   }
 ```
+
+???
+
+Det gjøres ved hjelp av et sett med regler for hvordan ting skal styles.
+
+En slik regel har en selector, som sier HVA det er som skal styles, og så inni krøllparanteser en liste over hvordan man ønsker det skal styles. Denne listen består da av egenskaper og deres verdier. Separert med semikolon.
+
+
 --
+
+&nbsp;
 
 ```css
   div {
-    font: Arial;
-    font-size: 20px;
+    background: white;
+    font-size: 32px;
     color: red;
-    background-color: white;
   }
 ```
+```html
+<div>Hei på deg</div>
+```
+
+???
+
+I dette eksempelet sier selectoren at disse egenskapene skal gjelde for alle diver i html-dokumentet. Og egenskapene sier da at disse divene skal ha hvit bakgrunn og stor, rød tekst.
+
+Med HTMLen under, vil det bli seendes slik ut
+
 --
 
-<br>
+&nbsp;
 
 <div style="
-  font: Arial;
-  font-size: 20px;
+ background: white;
+ color: red;
+ font-size: 32px;
+">Hei på deg</div>
+
+---
+
+#CSS - Hvordan?
+
+
+Søketips:
+`<det du vil style> + css + mdn`
+
+```css
+selector {
+  background: #ff0000;
   color: red;
-  background-color: white;
+  border-color: rgba(255, 0, 0, 0.3);
+
+  width: 200px; width: 20rem; width: 50%; width: 25vw;
+  font-size: 20px;
+  height: 270px;
+  margin: 5px;
+  margin-top: 20px;
+
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: blue;
+  border: 1px solid blue;
+}
+```
+
+???
+
+søke etter "bold text css mdn"
+
+Her er et knippe eksempler. Som vist på toppen finnes det flere måter å definere farger på. Tre er vist her, en hexcode, navn eller rgba med gjennomsiktighet.
+
+Av lengder finnes det også flere enheter.
+
+* Piksler er rett frem. 
+* rem, r=relative til en størrelse man definerer selv. Responsiv
+* %, i forhold til parent container ved bredde
+* vw
+
+Mange egenskaper gjelder 4 sider, sånn som margin og border, men kan også definere per side.
+
+Shorthand syntax
+
+
+
+---
+
+
+#CSS - Hva?
+
+##Tag-selector
+
+```css
+body { 
+  background: red;
+}
+
+button {
+  color: blue;
+} 
+```
+```html
+<body>
+  Rød bakgrunn på hele siden.
+  <button>Jeg har blå tekst</button>
+  <button>Jeg har også blå tekst</button>
+</body>
+```
+
+???
+
+Så, selektorer. Hvordan velge hva som skal styles? Viste nylig et eksempel på hvordan man stylet alle divs på en side, og det var en såkalt tag-selector.
+
+En tag-selector er rett og slett bare navnet på en html-tag, og stylingen vil da gjelder for alle html-tags av den typen. 
+
+I eksempelet her selecter vi på html-taggene body og button, og sier hvordan disse skal se ut.
+
+---
+
+#CSS - Hva?
+
+##Klasse-selector
+
+```css
+.btn-danger {
+  background: red;
+}
+
+.btn-ok {
+  background: green;
+}
+```
+```html
+<button class="btn-danger">Slett!</button> 
+<button class="btn-ok">Lagre!</button> 
+```
+
+???
+
+Ønsker jo ikke alltid at alle knapper skal se like ut. F. eks vil man kanskje at en slett-knapp skal være litt skummel å trykke på. Da kan man lage en klasse-selector.
+
+Istedet for å skrive
+
+De begynner med punktum, og så spesifiserer man i htmlen at man ønsker at dette elementet skal bruke stylingen fra denne klassen.
+
+---
+
+#CSS - Hva?
+
+##Id-selector
+
+```css
+#unikid {
+  color: #ff00ff;
+}
+```
+```html
+<div id="unikid"> ... </div>
+```
+
+???
+
+Steg 2 er å fortelle nettleseren hva det er som skal styles. Det gjør man ved å skrive en selektor som "treffer" det man ønsker å style. Det kan enten være noe som treffer alle html-tager av en type, f. Eks. Body-tagen eller alle knapper.
+
+Eller så kan man style ting mer spesifikt, ved å lage såkalte klasser, som man så kan bruke i htmlen. En selector for en klasse lager man ved å sette et punktum foran.
+
+Tredje måten er å selecte ETT spesifikt html-element med en gitt id, ved å bruke firkanttegn. En slik css-regel blir ikke veldig gjenbrukbar. I praksis styler man ofte tags på en generell måte, og så lager man klasser med mer spesifikke regler.
+
+<!--
+
+#CSS - HVA?
+
+##Avanserte selectorer
+
+
+
+```html
+.klasse1 .klasse2 { ... } /* alle av type klasse2 som ligger inni klasse1  */
+
+<div class="klasse1">
+  <span class="klasse2">meg</span>
+</div>
+<span class="klasse2">ikke meg</span>
+```
+
+```html
+.klasse1.klasse2 { ... } /* element som har begge klassene */
+
+<div class="klasse1 klasse2">meg</div>
+```
+
+```html
+button.klasse1 { ... } /* alle knapper som har klasse 1 */
+
+<button class="klasse1">meg</button>
+<a class="klasse1">Ikke meg</a>
+```
+
+
+???
+
+Disse kan også kombineres for å selecte enda mer spesifikke ting...
+
+-->
+---
+
+
+# CSS - Hvor?
+
+I HTML-fila:
+
+```html
+<head>
+  <!-- ... -->
+  <link href="style.css" type="text/css" rel="stylesheet">
+  <!-- ...    ^^^^^^^^^ -->
+</head>
+```
+
+&nbsp;
+
+En fil med navn `style.css`:
+
+```css
+body {
+  background: red;
+}
+```
+
+???
+
+For at nettleseren skal kunne bruke css-reglene man har skrevet, må man fortelle den for disse reglene finnes. Det gjøres ved at man i head-delen av html-fila peker til hvor css-filen finnes.
+
+Når nettsiden lastet vil så nettleseren søke opp filen det pekes til, og utføre all styling på html-dokumentet.
+
+---
+
+
+class: center middle
+
+#Devtools
+
+## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
+
+???
+
+* Hvordan se på css
+* Kjapt teste redigering av css property
+
+---
+
+#Oppgave
+
+* Lag en css-fil og link til den i HTML-fila
+* Sett en bakgrunnsfarge på nettsiden
+* Endre font, farge og skriftstørrelse på teller-verdien
+* Endre størrelse, bakgrunnsfarge, border/ramme og tekstfarge på knappene
+
+
+
+???
+
+Avhenger av hvordan oppgaven blir splittet opp
+
+---
+
+
+class: center middle
+
+#Layout
+## med CSS
+
+---
+
+#Box model
+
+```css
+.min-boks {
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  border: 5px solid red;
+  margin: 20px;
+}
+```
+
+<img src="resources/boxmodel.png" style="width: 50%; position: absolute; right: 50px; top: 120px;">
+
+
+???
+
+
+Pakke-metafor.
+
+---
+
+#Box sizing
+
+```css
+div {
+  width: 300px;
   padding: 20px;
-">
+  border: 5px solid #FD5158;
+}
+```
 
-  NTNU
+<div style="width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;">Lorem ipsum</div>
 
+
+```css
+div {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;
+}
+```
+<div style="box-sizing:border-box; width: 300px;
+  padding: 20px;
+  border: 5px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+#Display
+
+```html
+<div>
+  <h1>Overskrift</h1> <!-- block -->
+  <p>Litt tekst</p> <!-- block -->
+  <button>En knapp</button> <!-- inline-block -->
+  <button>Enda en knapp</button>
+  <a href="#">Lenke</a> <!-- inline -->
+  <div>mer tekst</div> <!-- blokk -->
+</div>
+```
+
+<div style="background-color: #1a1a1a; font-size: 25px;">
+  <h1 style="margin-bottom: 5px;">Overskrift</h1>
+  <p>Litt tekst</p>
+  <button style="padding: 15px; font-size: 25px;">En knapp</button>
+  <button style="padding: 15px; font-size: 25px;">Enda en knapp</button>
+  <a href="#">Lenke</a>
+  <div>mer tekst</div>
 </div>
 
----
+???
 
-class: center middle
+Her vises litt html-kode, og hvordan det blir seendes ut.
+Som man kan se, vises det man har i html-en etterhverandre i den rekkefølge det er i i html-en.
 
-![](resources/opera.png)
+Det man også kan se, er at det noen ganger havner under hverandre, og andre ganger ved siden av hverandre. Mange elementer kalles for blokk-elementer, og når nettleseren viser de vil de alltid havne på en egen linje. Når nettleseren derimot skal vise inline-elementer ser den om det er plass på samme linje, og om det er det puttes det der.
 
-.source[http://v2.desandro.com/articles/opera-logo-css/]
-
----
-
-class: center middle
-
-![](resources/iOS-css-icons.png)
-
-.source[http://codepen.io/peterschmiz/pen/xmqCg]
-
+Blir jo ikke veldig spenstige design når alt bare kommer slik etter hverandre, så det skal vi gjøre noe med.
 
 ---
+class: split
 
-class: center middle
 
-#Element State
+# Grunnleggende Flexbox
 
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+```
+
+<img src="resources/justify-content.svg" style="width: 40%; padding-right: 20px;">
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+
+???
+
+---
+
+class: split
+
+# Oppgave
+
+* Lag et `<main>`-element og putt alt innholdet i det.
+ *  Gi det en bredde, og midtstill det vha `margin: 0 auto`
+* Midtstill telleren og gi den en stor skriftstørrelse.
+* Lag en div og putt 10 stk `<button>` inni den
+ * Bruk flexbox på diven for å få knappene til å ligge som til høyre
+* Midtstill og style start-knappen
+
+
+Farger:
+
+* Gråfarge: `#262626`
+* Rødfarge: `#fd5158`
+
+???
+
+trenger ikke få til samme størrelser og farger, men prøv å få til selve layouten
+
+
+
+<iframe src="solutions/3/index.html" style="width: 50%" />
 
 ---
 
@@ -294,9 +758,9 @@ class: middle center
 ---
 class: center middle
 
-## DevTool Demo
+# DevTool
 
-### ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
+## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
 
 ---
 
@@ -311,16 +775,14 @@ class: center middle
 
 ![](resources/family-guy-css.gif)
 
----
 
+---
 class: center middle
 
-![](resources/javascript.png)
-
-.source[http://codepen.io/peterschmiz/pen/xmqCg]
-
+#JavaScript
 
 ---
+
 
 #JavaScript
 
@@ -358,12 +820,6 @@ class: center middle
 # JavaScript
 
   <img id="danse-ape" src="resources/danse-ape.png" style="display:block;margin:80px auto;cursor:pointer">
-
----
-
-class: center middle
-
-![](resources/browser-layered-cake.jpeg)
 
 ---
 
@@ -451,7 +907,7 @@ class: center middle
 ---
 class: middle center
 
-# DevTool Demo
+# DevTool
 
 ## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
 
@@ -461,6 +917,335 @@ class: middle center
 
 
 ---
+
+class: center middle
+
+# Interaksjon
+
+---
+
+#Events
+
+## Recap:
+
+--
+
+```html
+  <button role="button" id="btn">Element</button>
+```
+
+--
+
+```javascript
+  let button = document.querySelector('#btn');
+
+  button.addEventListener('click', function() {
+    console.log('heia');
+  });
+```
+---
+# Events
+
+```html
+<div id="buttons">
+  <button role="button" id="btn1">Element</button>
+  <button role="button" id="btn2">Element</button>
+  <button role="button" id="btn3">Element</button>
+  <button role="button" id="btn4">Element</button>
+</div>
+```
+--
+##  Må vi legge til 4 individuelle listeners?
+
+---
+class: middle center
+
+# Event Propagation
+
+---
+# Event Propagation
+
+TODO: Finn et bilde på event propagation
+
+---
+# Event Propagation
+
+```html
+<div id="buttons">
+  <button role="button" id="btn1">Element</button>
+  <button role="button" id="btn2">Element</button>
+  <button role="button" id="btn3">Element</button>
+  <button role="button" id="btn4">Element</button>
+</div>
+```
+--
+```javascript
+let container = document.querySelector('#buttons');
+
+container.addEventListener('click', function() {
+  console.log('heia');
+});
+```
+---
+# Event Propagation
+
+## `event`-objektet
+
+```javascript
+let container = document.querySelector('#buttons');
+
+container.addEventListener('click', function(event) {
+  let element = event.target;
+  console.log(element.nodeName) //=>BUTTON
+});
+```
+--
+Les mer om Event på Mozilla Developer Network:
+
+https://developer.mozilla.org/en-US/docs/Web/API/Event
+
+---
+class: middle center
+# Bonus: Dataset
+---
+# Dataset
+
+```html
+<button data-number="1" role="button" id="btn1">Element</button>
+```
+--
+```javascript
+let button = document.querySelector("#btn1");
+
+let number = button.dataset.number;
+console.log(number); //=> 1
+```
+---
+# Oppgave
+
+TODO: Skriv oppgavetekst
+---
+class: center middle
+# Asynkronitet
+
+---
+# Asynkronitet
+
+Hva vil bli printet til konsollet?
+--
+
+```javascript
+console.log('hello');
+
+setTimeout(function() {
+  console.log('asyncronous');
+}, 100);
+
+console.log('world!');
+```
+--
+```javascript
+hello
+world
+asyncronous
+```
+---
+
+# Asynkronitet
+
+Hva vil bli printet til konsollet?
+--
+
+```javascript
+console.log('hello');
+
+setTimeout(function() {
+  console.log('asyncronous');
+}, 0);
+
+console.log('world!');
+```
+--
+```javascript
+hello
+world
+asyncronous
+```
+
+???
+
+Hva er det egentlig som skjer her?
+
+Når JavaScript-motoren tolker denne koden og kommer til setTimeout ser den at
+her skal det registreres noe kode som skal kjøres senere. Motoren legger en
+beskjed på "stacken" om at denne snutten med kode skal kjøres om 0ms.
+
+Så beveger motoren seg videre, ser neste log-statement og logger det. Nå er
+motoren ferdig med all koden i filen og den kikker på "stacken" sin og ser at
+her ligger det noe kode som skulle kjøres om 0ms. Siden det har gått minst 0ms
+siden kodesnutten ble lagt på stacken så er det OK å kjøre den koden.
+---
+# Asynkronitet
+
+Hva vil bli printet til konsollet?
+
+--
+
+```javascript
+setTimeout(function() {
+  console.log('heia');
+}, 100);
+
+while(true) {
+  //Do something
+}
+```
+--
+```
+//Ingenting!
+```
+---
+# Funksjoner
+
+--
+```javascript
+function printNumbersUntil(number) {
+  for (let i = 0; i < number; i++) {
+    console.log(i);
+  }
+}
+```
+---
+# Funksjoner
+
+```javascript
+function printNumbersUntil(number) {
+  for (let i = 0; i < number; i++) {
+    console.log(i);
+  }
+}
+
+printNumbersUntil(10);
+```
+--
+```javascript
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setTimeout(printHeia, 1000);
+```
+--
+```javascript
+heia
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+--
+```javascript
+heia
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+
+```javascript
+heia
+heia
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+
+```javascript
+heia
+heia
+heia
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+
+```javascript
+heia
+heia
+heia
+heia
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+
+```javascript
+heia
+heia
+heia
+heia
+...
+```
+---
+# Vil du vite mer?
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
+
+---
+# Oppgave
+
+TODO: Oppgavetekst
+
+---
+
 
 class: center middle bekk-top
 
