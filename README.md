@@ -28,3 +28,14 @@ Dag tre vil være en litt friere dag. Vi kommer til å presentere en rekke
 utfordringer som tar for seg et aspekt ved webutvikling som dere kan få bryne
 dere på. Målet med denne dagen er å utforske mulighetene webben gir. Vi stiller
 med spisskompetanse og dere stiller med nysgjerrighet og ståpå-vilje.
+
+## Egenstudie?
+
+Kursets tre deler er fordelt på hver sine mapper. Du finner nærmere instrukser i
+de mappene.
+
+### [Del1](https://github.com/bekk/webutvikling101/tree/master/del1)
+
+### TBA: Del2
+
+### TBA: Del3
