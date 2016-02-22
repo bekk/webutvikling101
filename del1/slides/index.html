@@ -670,29 +670,117 @@ Pakke-metafor.
 ```css
 div {
   width: 300px;
-  padding: 20px;
-  border: 5px solid #FD5158;
+  height: 100px;
+  padding: 0px;
+  border: 0px solid #FD5158;
 }
 ```
 
-<div style="width: 300px;
-  padding: 20px;
-  border: 5px solid #FD5158;">Lorem ipsum</div>
+<div style="width: 300px; height: 100px;
+  padding: 0px;
+  background: black;
+  border: 0px solid #FD5158;">Lorem ipsum</div>
 
+---
+
+#Box sizing
+
+```css
+div {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 0px solid #FD5158;
+}
+```
+
+<div style="width: 300px;  height: 100px;
+  padding: 20px;
+  background: black;
+  border: 0px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+#Box sizing
+
+```css
+div {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid #FD5158;
+}
+```
+
+<div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+#Box sizing: border-box
 
 ```css
 div {
   box-sizing: border-box;
   width: 300px;
-  padding: 20px;
-  border: 5px solid #FD5158;
+  height: 100px;
+  padding: 0px;
+  border: 0px solid #FD5158;
 }
 ```
-<div style="box-sizing:border-box; width: 300px;
-  padding: 20px;
-  border: 5px solid #FD5158;">Lorem ipsum</div>
+<div style="box-sizing:border-box; width: 300px; height: 100px;
+  padding: 0px;
+  background: black;
+  border: 0px solid #FD5158;">Lorem ipsum</div>
 
 ---
+
+#Box sizing: border-box
+
+```css
+div {
+  box-sizing: border-box;
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 0px solid #FD5158;
+}
+```
+<div style="box-sizing:border-box; width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 0px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+#Box sizing: border-box
+
+```css
+div {
+  box-sizing: border-box;
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid #FD5158;
+}
+```
+<div style="box-sizing:border-box; width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158;">Lorem ipsum</div>
+
+--
+
+
+<div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158;">Lorem ipsum</div>
+
+---
+
 
 #Display
 
