@@ -1322,6 +1322,10 @@ container.addEventListener('click', function() {
 ---
 # Event Propagation
 
+<iframe src="../solutions/4/index.html" style="width: 100%; height: 100%;" />
+---
+# Event Propagation
+
 ## `event`-objektet
 
 ```javascript
@@ -1332,11 +1336,56 @@ container.addEventListener('click', function(event) {
   console.log(element.nodeName) //=>BUTTON
 });
 ```
+---
+# Event Propagation
+
+## `event`-objektet
+
+```javascript
+let container = document.querySelector('#buttons');
+
+container.addEventListener('click', function(event) {
+  let element = event.target;
+  if(element.classList.contains("btn") {
+    doIncrement();
+  } else {
+    //do nothing
+  }
+});
+```
 --
 Les mer om Event på Mozilla Developer Network:
 
 https://developer.mozilla.org/en-US/docs/Web/API/Event
+---
+class: center middle
 
+# JavaScript-filer
+
+---
+# JavaScript-filer
+
+## `index.html`:
+```html
+<body>
+  <script type="text/javascript">
+    console.log('heia');
+  </script>
+</body>
+```
+---
+# JavaScript-filer
+
+## `index.html`:
+```html
+<body>
+  <script type="text/javascript" src="heia.js"></script>
+</body>
+```
+## `heia.js`:
+```js
+console.log('heia');
+```
 ---
 class: middle center
 # Bonus: Dataset
@@ -1354,12 +1403,18 @@ let number = button.dataset.number;
 console.log(number); //=> 1
 ```
 ---
+class: split
+
 # Oppgave
 
-Dere skal gjøre kalkulatoren interaktiv!
+Dere skal gjøre nedtelleren interaktiv!
 
+- Lag en ekstern JavaScript-fil som blir referert fra HTML
 - Fang opp klikk-events på knappene
-- Oppdatere konsollet på kalkulatoren med tall
+- Oppdatere konsollet på nedtelleren med tallet som ble klikket på
+
+
+<iframe src="../solutions/5/index.html" style="width: 50%" />
 ---
 class: center middle
 # Asynkronitet
@@ -1571,17 +1626,52 @@ heia
 ...
 ```
 ---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+let id = setInterval(printHeia, 1000);
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+let id = setInterval(printHeia, 1000);
+
+stopInterval(id);
+```
+---
 # Vil du vite mer?
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
 
 ---
+class: split
 # Oppgave
 
 Dere skal implementere nedtelling!
 
-- Lag en lytter til `Start`-knappen
-- Oppdater konsollet etterhvert som tiden teller ned
+- Starte nedtelling fra tallet i konsollet når du trykker på start
+- Stoppe nedtelling konsollet kommer til null
+
+<iframe src="../solutions/final/index.html" style="width: 50%" />
 
 ---
 
