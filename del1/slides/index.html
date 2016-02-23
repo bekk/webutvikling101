@@ -1402,7 +1402,7 @@ class: center middle
 --
 
 ```javascript
-  let button = document.querySelector('#btn');
+  var button = document.querySelector('#btn');
 
   button.addEventListener('click', function() {
     console.log('heia');
@@ -1445,7 +1445,7 @@ class: middle center
 ```
 --
 ```javascript
-let container = document.querySelector('#buttons');
+var container = document.querySelector('#buttons');
 
 container.addEventListener('click', function() {
   console.log('heia');
@@ -1461,10 +1461,10 @@ container.addEventListener('click', function() {
 ## `event`-objektet
 
 ```javascript
-let container = document.querySelector('#buttons');
+var container = document.querySelector('#buttons');
 
 container.addEventListener('click', function(event) {
-  let element = event.target;
+  var element = event.target;
   console.log(element.nodeName) //=>BUTTON
 });
 ```
@@ -1474,10 +1474,10 @@ container.addEventListener('click', function(event) {
 ## `event`-objektet
 
 ```javascript
-let container = document.querySelector('#buttons');
+var container = document.querySelector('#buttons');
 
 container.addEventListener('click', function(event) {
-  let element = event.target;
+  var element = event.target;
   if(element.classList.contains("btn") {
     doIncrement();
   } else {
@@ -1529,9 +1529,9 @@ class: middle center
 ```
 --
 ```javascript
-let button = document.querySelector("#btn1");
+var button = document.querySelector("#btn1");
 
-let number = button.dataset.number;
+var number = button.dataset.number;
 console.log(number); //=> 1
 ```
 ---
@@ -1633,7 +1633,7 @@ while(true) {
 --
 ```javascript
 function printNumbersUntil(number) {
-  for (let i = 0; i < number; i++) {
+  for (var i = 0; i < number; i++) {
     console.log(i);
   }
 }
@@ -1643,7 +1643,7 @@ function printNumbersUntil(number) {
 
 ```javascript
 function printNumbersUntil(number) {
-  for (let i = 0; i < number; i++) {
+  for (var i = 0; i < number; i++) {
     console.log(i);
   }
 }
@@ -1775,7 +1775,7 @@ function printHeia() {
   console.log('heia');
 }
 
-let id = setInterval(printHeia, 1000);
+var id = setInterval(printHeia, 1000);
 ```
 ---
 # Funksjoner
@@ -1785,7 +1785,7 @@ function printHeia() {
   console.log('heia');
 }
 
-let id = setInterval(printHeia, 1000);
+var id = setInterval(printHeia, 1000);
 
 stopInterval(id);
 ```
