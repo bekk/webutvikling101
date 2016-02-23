@@ -782,7 +782,7 @@ div {
 ---
 
 
-#Display
+#Flyt
 
 ```html
 <div>
@@ -812,6 +812,52 @@ Som man kan se, vises det man har i html-en etterhverandre i den rekkefølge det
 Det man også kan se, er at det noen ganger havner under hverandre, og andre ganger ved siden av hverandre. Mange elementer kalles for blokk-elementer, og når nettleseren viser de vil de alltid havne på en egen linje. Når nettleseren derimot skal vise inline-elementer ser den om det er plass på samme linje, og om det er det puttes det der.
 
 Blir jo ikke veldig spenstige design når alt bare kommer slik etter hverandre, så det skal vi gjøre noe med.
+
+---
+
+# Midtstilling
+
+```html
+<div class="midtstilt">Midtstilt?</div>
+```
+```css
+.midtstilt { text-align: center; }
+```
+<div style="background: black; text-align: center;">Overskrift</div>
+
+
+--
+
+&nbsp;
+
+```html
+<span class="midstilt">Midtstilt?</span>
+```
+```css
+.midtstilt { text-align: center; }
+```
+<div>
+<span style="background: black; text-align: center;">Overskrift</span>
+</div>
+
+---
+
+# Midtstilling
+
+```html
+<div class="midtstilt-blokk">Midtstilt?</div>
+```
+```css
+.midtstilt-blokk {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+```
+<div style="background: black; width: 400px; margin: 0 auto;">Overskrift</div>
+
+
+
 
 ---
 class: split
