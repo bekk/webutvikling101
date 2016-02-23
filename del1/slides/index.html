@@ -862,6 +862,37 @@ Blir jo ikke veldig spenstige design når alt bare kommer slik etter hverandre, 
 ---
 class: split
 
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+  <div>E</div>
+</div>
+```
+
+```css
+.container {
+}
+```
+
+<div class="i-gokk">
+  <div class="container">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+  </div>
+</div>
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+
+---
+class: split
 
 # Grunnleggende Flexbox
 
@@ -870,6 +901,41 @@ class: split
   <div>A</div>
   <div>B</div>
   <div>C</div>
+  <div>D</div>
+  <div>E</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+}
+```
+
+<div class="i-gokk">
+  <div class="container" style="display: flex;">
+    <div style="display: inline-block; padding-left: 40px; padding-right: 40px;">A</div>
+    <div style="display: inline-block; padding-left: 40px; padding-right: 40px;">B</div>
+    <div style="display: inline-block; padding-left: 40px; padding-right: 40px;">C</div>
+    <div style="display: inline-block; padding-left: 40px; padding-right: 40px;">D</div>
+    <div style="display: inline-block; padding-left: 40px; padding-right: 40px;">E</div>
+  </div>
+</div>
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+
+---
+class: split
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+  <div>E</div>
 </div>
 ```
 
@@ -877,15 +943,140 @@ class: split
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 ```
 
-<img src="resources/justify-content.svg" style="width: 40%; padding-right: 20px;">
+<div class="i-gokk">
+  <div class="container" style="
+  display: flex;
+  flex-wrap: wrap;">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+  </div>
+</div>
 
 .source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
 
-???
+---
+class: split
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+  <div>E</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+```
+
+<div class="i-gokk">
+  <div class="container" style="
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+  </div>
+</div>
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+
+---
+
+class: split
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+  <div>E</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+```
+
+<div class="i-gokk">
+  <div class="container" style="
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+  </div>
+</div>
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+
+---
+
+class: split
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+  <div>E</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+```
+
+<div class="i-gokk">
+  <div class="container" style="
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row-reverse;">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+  </div>
+</div>
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
 
 ---
 
