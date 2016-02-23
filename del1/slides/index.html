@@ -227,56 +227,176 @@ class: center middle
 --
 
 ```javascript
-  function hello(name) {                          var hello = function() {
-    return `Hello, ${name}!`;                       return `Hello, ${name}!`;
-  }                                               }
-
-  var hello = (name) => {                         var hello = name => `Hello, ${name}!`;
+  function hello(name) {
     return `Hello, ${name}!`;
-  };
+  }
+
+  var hello = function(name) {
+    return `Hello, ${name}!`;
+  }
 
   hello('Bob'); // Hello, Bob!
+```
+---
+
+# JavaScript casting
+
+```javascript
+  var n = 1;
+  typeof n; // number
+```
+
+--
+
+```javascript
+  var n = '1';
+  typeof n; // string
+```
+
+--
+
+```javascript
+  var n = 1;
+  typeof String(1); // string
+```
+
+--
+
+```javascript
+  var n = '1';
+  typeof Number(1); // number
 ```
 
 ---
 
-# JavaScript
+# JavaScript funksjoner
 
-  <img id="danse-ape" src="resources/danse-ape.png" style="display:block;margin:80px auto;cursor:pointer">
+```javascript
+  var name = 'kent';
+```
+--
+```javascript
+  var someFunction = function() {
+    // gjør noe gøy
+  };
+```
+--
+```javascript
+  someFunction(name);
+```
+--
+```javascript
+  someOtherFunction(someFunction);
+```
+--
+```javascript
+  someOtherFunction(function() {
+    // gjør noe gøy
+  });
+```
+
+---
+
+# JavaScript funksjoner
+
+```javascript
+  var name = 'kent';
+
+  var someFunction = function() {
+    console.log(name);
+  };
+```
+--
+```
+  // kent
+```
+
+---
+# JavaScript i nettleseren
+```html
+  <!doctype html>
+  <html lang="en">
+
+    <head>
+      <title>En enkel HTML-side</title>
+    </head>
+
+    <body>
+      <h1>Her er min fantastisk enkle HTML-side</h1>
+
+      <script type="text/javascript">
+        console.log('her er mitt lille JavaScript!');
+      </script>
+    </body>
+
+  </html>
+```
+
+???
+Forklar når scriptet blir kjørt
 
 ---
 
 # JavaScript DOM-api
 
 ```javascript
-  var boks = document.querySelector('.boks'); // HTMLElement
-  var bokser = document.querySelectorAll('.boks'); // NodeList
+  var boks = document.querySelector('#boks');
 ```
 
 --
 
 ```javascript
-  document.querySelector('.boks').innerHTML;
+  var boks = document.querySelector('#boks');
+  boks.innerHTML;
   // <a href="mer.html">Klikk her</a> for å lære mer
 ```
 --
 
 ```javascript
-  document.querySelector('.boks').textContent;
+  var boks = document.querySelector('#boks');
+  boks.textContent;
   // Klikk her for å lære mer
 ```
 
 --
 
 ```javascript
-  document.querySelector('#danse-ape').addEventListener('click', function(event) {
-    var el = event.currentTarget;
+  var boks = document.querySelector('#boks').textContent;
+  // Klikk her for å lære mer
+```
+
+---
+# JavaScript DOM-api
+
+```javascript
+  document.querySelector('#boks').addEventListener('click', function() {
+    // Gjør noe gøy når boks har blitt trykket på!
+  });
+```
+
+---
+# JavaScript DOM-api
+
+```javascript
+  document.querySelector('#danse-ape').addEventListener('click', function() {
+    var el = document.querySelector('#danse-ape');
     var src = el.getAttribute('src').replace('.png', '.gif');
     el.setAttribute('src', src);
   });
 ```
 
+<div class="col" style="overflow: hidden;">
+  <img id="danse-ape" src="resources/danse-ape.png" style="
+    display:block;
+    margin:-100px auto 0;
+    cursor:pointer;" />
+</div>
+
+???
+Nevn at vi gjør to oppslag, og at vi skal lære senere hvor unngå det
+
 ---
+
 
 class: center middle
 
@@ -301,31 +421,6 @@ class: center middle
 class: center middle
 
 ![](resources/remove-element-result.png)
-
----
-
-class: center middle
-
-![](resources/youmightnotneedjquery.png)
-.source[http://youmightnotneedjquery.com]
-
----
-class: center middle
-
-![](resources/youmightnotneedjquery-result.png)
-.source[http://youmightnotneedjquery.com]
-
----
-
-class: center middle
-
-![](resources/online.png)
-
----
-
-class: center middle
-
-![](resources/online-devtool.png)
 
 ---
 class: middle center
