@@ -1629,9 +1629,10 @@ while(true) {
 //Ingenting!
 ```
 ---
-# Funksjoner
+# Kalle funksjoner
 
 --
+
 ```javascript
 function printNumbersUntil(number) {
   for (var i = 0; i < number; i++) {
@@ -1640,7 +1641,13 @@ function printNumbersUntil(number) {
 }
 ```
 ---
-# Funksjoner
+# Vil du vite mer?
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
+
+---
+
+# Kalle funksjoner
 
 ```javascript
 function printNumbersUntil(number) {
@@ -1664,9 +1671,51 @@ printNumbersUntil(10);
 8
 9
 ```
----
-# Funksjoner
 
+---
+# Kalle funksjoner
+
+```javascript
+function hello() {
+  return 'Hello you!';
+}
+
+console.log(hello);
+```
+--
+```javascript
+function hello() {
+  return 'Hello you!';
+}
+```
+---
+# Kalle funksjoner
+```javascript
+function hello() {
+  return 'Hello you!';
+}
+
+console.log(hello());
+```
+--
+```javascript
+Hello you!
+```
+---
+# Kalle funksjoner
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setTimeout(printHeia(), 1000);
+```
+--
+```javascript
+heia
+```
+---
+# Kalle funksjoner
 ```javascript
 function printHeia() {
   console.log('heia');
@@ -1679,7 +1728,10 @@ setTimeout(printHeia, 1000);
 heia
 ```
 ---
-# Funksjoner
+class: middle center
+# Bonus: <span style="text-transform: none;">setInterval</span>
+---
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1693,7 +1745,8 @@ setInterval(printHeia, 1000);
 heia
 ```
 ---
-# Funksjoner
+
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1708,7 +1761,7 @@ heia
 heia
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1724,7 +1777,7 @@ heia
 heia
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1741,7 +1794,7 @@ heia
 heia
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1759,7 +1812,7 @@ heia
 ...
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1769,7 +1822,7 @@ function printHeia() {
 setInterval(printHeia, 1000);
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1779,7 +1832,7 @@ function printHeia() {
 var id = setInterval(printHeia, 1000);
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1790,11 +1843,6 @@ var id = setInterval(printHeia, 1000);
 
 stopInterval(id);
 ```
----
-# Vil du vite mer?
-
-<iframe width="854" height="480" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
-
 ---
 class: split
 # Oppgave
