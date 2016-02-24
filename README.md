@@ -34,7 +34,7 @@ med spisskompetanse og dere stiller med nysgjerrighet og ståpå-vilje.
 Kursets tre deler er fordelt på hver sine mapper. Du finner nærmere instrukser i
 de mappene.
 
-### [Del1](https://github.com/bekk/webutvikling101/tree/master/del1)
+### [Del1](./del1)
 
 ### TBA: Del2
 
