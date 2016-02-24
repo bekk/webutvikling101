@@ -670,31 +670,119 @@ Pakke-metafor.
 ```css
 div {
   width: 300px;
-  padding: 20px;
-  border: 5px solid #FD5158;
+  height: 100px;
+  padding: 0px;
+  border: 0px solid #FD5158;
 }
 ```
 
-<div style="width: 300px;
-  padding: 20px;
-  border: 5px solid #FD5158;">Lorem ipsum</div>
+<div style="width: 300px; height: 100px;
+  padding: 0px;
+  background: black;
+  border: 0px solid #FD5158;">Lorem ipsum</div>
 
+---
+
+#Box sizing
+
+```css
+div {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 0px solid #FD5158;
+}
+```
+
+<div style="width: 300px;  height: 100px;
+  padding: 20px;
+  background: black;
+  border: 0px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+#Box sizing
+
+```css
+div {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid #FD5158;
+}
+```
+
+<div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+#Box sizing: border-box
 
 ```css
 div {
   box-sizing: border-box;
   width: 300px;
-  padding: 20px;
-  border: 5px solid #FD5158;
+  height: 100px;
+  padding: 0px;
+  border: 0px solid #FD5158;
 }
 ```
-<div style="box-sizing:border-box; width: 300px;
-  padding: 20px;
-  border: 5px solid #FD5158;">Lorem ipsum</div>
+<div style="box-sizing:border-box; width: 300px; height: 100px;
+  padding: 0px;
+  background: black;
+  border: 0px solid #FD5158;">Lorem ipsum</div>
 
 ---
 
-#Display
+#Box sizing: border-box
+
+```css
+div {
+  box-sizing: border-box;
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 0px solid #FD5158;
+}
+```
+<div style="box-sizing:border-box; width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 0px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+#Box sizing: border-box
+
+```css
+div {
+  box-sizing: border-box;
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid #FD5158;
+}
+```
+<div style="box-sizing:border-box; width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158;">Lorem ipsum</div>
+
+--
+
+
+<div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+
+#Flyt
 
 ```html
 <div>
@@ -726,8 +814,53 @@ Det man også kan se, er at det noen ganger havner under hverandre, og andre gan
 Blir jo ikke veldig spenstige design når alt bare kommer slik etter hverandre, så det skal vi gjøre noe med.
 
 ---
-class: split
 
+# Midtstilling
+
+```html
+<div class="midtstilt">Midtstilt?</div>
+```
+```css
+.midtstilt { text-align: center; }
+```
+<div style="background: black; text-align: center;">Overskrift</div>
+
+
+--
+
+&nbsp;
+
+```html
+<span class="midstilt">Midtstilt?</span>
+```
+```css
+.midtstilt { text-align: center; }
+```
+<div>
+<span style="background: black; text-align: center;">Overskrift</span>
+</div>
+
+---
+
+# Midtstilling
+
+```html
+<div class="midtstilt-blokk">Midtstilt?</div>
+```
+```css
+.midtstilt-blokk {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+```
+<div style="background: black; width: 400px; margin: 0 auto;">Overskrift</div>
+
+
+
+
+---
+class: split
 
 # Grunnleggende Flexbox
 
@@ -736,6 +869,73 @@ class: split
   <div>A</div>
   <div>B</div>
   <div>C</div>
+  <div>D</div>
+  <div>E</div>
+</div>
+```
+
+```css
+.container {
+}
+```
+
+<div class="i-gokk">
+  <div class="container">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+  </div>
+</div>
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+
+---
+class: split
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+  <div>E</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+}
+```
+
+<div class="i-gokk">
+  <div class="container" style="display: flex;">
+    <div style="display: inline-block; padding-left: 40px; padding-right: 40px;">A</div>
+    <div style="display: inline-block; padding-left: 40px; padding-right: 40px;">B</div>
+    <div style="display: inline-block; padding-left: 40px; padding-right: 40px;">C</div>
+    <div style="display: inline-block; padding-left: 40px; padding-right: 40px;">D</div>
+    <div style="display: inline-block; padding-left: 40px; padding-right: 40px;">E</div>
+  </div>
+</div>
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+
+---
+class: split
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+  <div>E</div>
 </div>
 ```
 
@@ -743,15 +943,140 @@ class: split
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 ```
 
-<img src="resources/justify-content.svg" style="width: 40%; padding-right: 20px;">
+<div class="i-gokk">
+  <div class="container" style="
+  display: flex;
+  flex-wrap: wrap;">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+  </div>
+</div>
 
 .source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
 
-???
+---
+class: split
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+  <div>E</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+```
+
+<div class="i-gokk">
+  <div class="container" style="
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+  </div>
+</div>
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+
+---
+
+class: split
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+  <div>E</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+```
+
+<div class="i-gokk">
+  <div class="container" style="
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+  </div>
+</div>
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
+
+---
+
+class: split
+
+# Grunnleggende Flexbox
+
+```html
+<div class="container">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+  <div>E</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+```
+
+<div class="i-gokk">
+  <div class="container" style="
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row-reverse;">
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    <div>E</div>
+  </div>
+</div>
+
+.source[https://css-tricks.com/snippets/css/a-guide-to-flexbox/]
 
 ---
 

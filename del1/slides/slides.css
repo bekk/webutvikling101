@@ -13,6 +13,26 @@
     color: white;
 }
 
+.i-gokk {
+    position: absolute; top: 110px; right: 150px;
+}
+
+.i-gokk .container {
+    background: black;
+    width: 250px;
+}
+
+.i-gokk .container div {
+    width: 100px;
+    height: 70px;
+    text-align: center;
+    font-size: 32px;
+    padding-top: 30px;
+    background: grey;
+    margin: 5px;
+
+}
+
 @keyframes hvr-wobble-vertical {
     16.65% {
         -webkit-transform: translateY(8px);
