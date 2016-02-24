@@ -7,20 +7,25 @@
   </head>
   <body>
     <main>
-      <output class="console">0</output>
-      <div class="buttons">
-        <button type="button" class="button button--number">1</button>
-        <button type="button" class="button button--number">2</button>
-        <button type="button" class="button button--number">3</button>
-        <button type="button" class="button button--number">4</button>
-        <button type="button" class="button button--number">5</button>
-        <button type="button" class="button button--number">6</button>
-        <button type="button" class="button button--number">7</button>
-        <button type="button" class="button button--number">8</button>
-        <button type="button" class="button button--number">9</button>
-        <button type="button" class="button button--number">0</button>
-      </div>
-      <button id="start" type="button" class="button button--main">Start</button>
+      <button id="decrease" class="button" type="button">-</button>
+      <output id="output" class="console">0</output>
+      <button id="increase" class="button" type="button">+</button>
     </main>
+    <script type="text/javascript">
+      'use strict';
+      let decrease = document.querySelector('#decrease');
+      let increase = document.querySelector('#increase');
+      let output = document.querySelector('#output');
+
+      decrease.addEventListener('click', function() {
+        let currentNumber = Number(output.textContent);
+        output.textContent = currentNumber - 1;
+      });
+
+      increase.addEventListener('click', function() {
+        let currentNumber = Number(output.textContent);
+        output.textContent = currentNumber + 1;
+      });
+    </script>
   </body>
 </html>
