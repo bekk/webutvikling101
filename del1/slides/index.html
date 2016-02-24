@@ -15,6 +15,14 @@ class: front-page
 
   <span class="today-date"></span>
 
+---
+#Webutvikling 101
+
+##Repo
+<div style="font-size: 2em">
+  <a href="https://github.com/bekk/webutvikling101">http://tiny.cc/bekkweb101</a>
+</div>
+
 
 ---
 class: middle center
@@ -68,6 +76,18 @@ class: fullscreen
 
   <iframe src="resources/abakus.no.html" />
 
+---
+class: center middle
+<img src="resources/apple-pages.png"/>
+.source[https://www.icloud.com/#pages]
+---
+class: center middle
+<img src="resources/google-maps.png"/>
+.source[https://maps.google.com/]
+---
+class: center middle
+<img src="resources/spotify.png"/>
+.source[https://play.spotify.com/]
 ---
 
 class: center middle
@@ -188,16 +208,20 @@ class: center middle
 # DevTool
 
 ## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
+???
+vis at man kan kjøre en fil i chorme
+vis hvordan devtools fungerer
+
 
 ---
 class: split
 
 # Oppgave
 
-Bruk html for å lage dette eksemplet til høyre
+* Ta utgangspunkt i filen: `del1/assignment/index.html`
+* Bruk html-elementene `<button>` og `<output>` for å lage layouten til høyre
 
 <iframe src="../solutions/1/index.html" style="width: 50%; background-color:#fff" />
-
 
 ---
 class: center middle
@@ -227,56 +251,176 @@ class: center middle
 --
 
 ```javascript
-  function hello(name) {                          var hello = function() {
-    return `Hello, ${name}!`;                       return `Hello, ${name}!`;
-  }                                               }
-
-  var hello = (name) => {                         var hello = name => `Hello, ${name}!`;
+  function hello(name) {
     return `Hello, ${name}!`;
-  };
+  }
+
+  var hello = function(name) {
+    return `Hello, ${name}!`;
+  }
 
   hello('Bob'); // Hello, Bob!
+```
+---
+
+# JavaScript casting
+
+```javascript
+  var n = 1;
+  typeof n; // number
+```
+
+--
+
+```javascript
+  var n = '1';
+  typeof n; // string
+```
+
+--
+
+```javascript
+  var n = 1;
+  typeof String(1); // string
+```
+
+--
+
+```javascript
+  var n = '1';
+  typeof Number(1); // number
 ```
 
 ---
 
-# JavaScript
+# JavaScript funksjoner
 
-  <img id="danse-ape" src="resources/danse-ape.png" style="display:block;margin:80px auto;cursor:pointer">
+```javascript
+  var name = 'kent';
+```
+--
+```javascript
+  var someFunction = function() {
+    // gjør noe gøy
+  };
+```
+--
+```javascript
+  someFunction(name);
+```
+--
+```javascript
+  someOtherFunction(someFunction);
+```
+--
+```javascript
+  someOtherFunction(function() {
+    // gjør noe gøy
+  });
+```
+
+---
+
+# JavaScript funksjoner
+
+```javascript
+  var name = 'kent';
+
+  var someFunction = function() {
+    console.log(name);
+  };
+```
+--
+```
+  // kent
+```
+
+---
+# JavaScript i nettleseren
+```html
+  <!doctype html>
+  <html lang="en">
+
+    <head>
+      <title>En enkel HTML-side</title>
+    </head>
+
+    <body>
+      <h1>Her er min fantastisk enkle HTML-side</h1>
+
+      <script type="text/javascript">
+        console.log('her er mitt lille JavaScript!');
+      </script>
+    </body>
+
+  </html>
+```
+
+???
+Forklar når scriptet blir kjørt
 
 ---
 
 # JavaScript DOM-api
 
 ```javascript
-  var boks = document.querySelector('.boks'); // HTMLElement
-  var bokser = document.querySelectorAll('.boks'); // NodeList
+  var boks = document.querySelector('#boks');
 ```
 
 --
 
 ```javascript
-  document.querySelector('.boks').innerHTML;
+  var boks = document.querySelector('#boks');
+  boks.innerHTML;
   // <a href="mer.html">Klikk her</a> for å lære mer
 ```
 --
 
 ```javascript
-  document.querySelector('.boks').textContent;
+  var boks = document.querySelector('#boks');
+  boks.textContent;
   // Klikk her for å lære mer
 ```
 
 --
 
 ```javascript
-  document.querySelector('#danse-ape').addEventListener('click', function(event) {
-    var el = event.currentTarget;
+  var boks = document.querySelector('#boks').textContent;
+  // Klikk her for å lære mer
+```
+
+---
+# JavaScript DOM-api
+
+```javascript
+  document.querySelector('#boks').addEventListener('click', function() {
+    // Gjør noe gøy når boks har blitt trykket på!
+  });
+```
+
+---
+# JavaScript DOM-api
+
+```javascript
+  document.querySelector('#danse-ape').addEventListener('click', function() {
+    var el = document.querySelector('#danse-ape');
     var src = el.getAttribute('src').replace('.png', '.gif');
     el.setAttribute('src', src);
   });
 ```
 
+<div class="col" style="overflow: hidden;">
+  <img id="danse-ape" src="resources/danse-ape.png" style="
+    display:block;
+    margin:-100px auto 0;
+    cursor:pointer;" />
+</div>
+
+???
+Nevn at vi gjør to oppslag, og at vi skal lære senere hvor unngå det
+
 ---
+
 
 class: center middle
 
@@ -303,41 +447,29 @@ class: center middle
 ![](resources/remove-element-result.png)
 
 ---
-
-class: center middle
-
-![](resources/youmightnotneedjquery.png)
-.source[http://youmightnotneedjquery.com]
-
----
-class: center middle
-
-![](resources/youmightnotneedjquery-result.png)
-.source[http://youmightnotneedjquery.com]
-
----
-
-class: center middle
-
-![](resources/online.png)
-
----
-
-class: center middle
-
-![](resources/online-devtool.png)
-
----
 class: middle center
 
 # DevTool
 
 ## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
 
+
+???
+Vis frem chaining av opperasjoner
+.replace(/\s+/g, ' '); for å strippe whitespace
+
 ---
+class: split
 
 #Oppgave
 
+* Forsett på løsningen fra forrige oppgave
+* Legg til en unik id på `output` og `button` elementene
+* Legg til click event handler som legger til 1 på tallet i `output` når man trykker på + knappen
+* Legg til click event handler som trekker fra 1 på tallet i `output` når man trykker på - knappen
+
+
+<iframe src="../solutions/1/index.html" style="width: 50%; background-color:#fff" />
 
 ---
 
@@ -1270,7 +1402,7 @@ class: center middle
 --
 
 ```javascript
-  let button = document.querySelector('#btn');
+  var button = document.querySelector('#btn');
 
   button.addEventListener('click', function() {
     console.log('heia');
@@ -1313,7 +1445,7 @@ class: middle center
 ```
 --
 ```javascript
-let container = document.querySelector('#buttons');
+var container = document.querySelector('#buttons');
 
 container.addEventListener('click', function() {
   console.log('heia');
@@ -1322,21 +1454,70 @@ container.addEventListener('click', function() {
 ---
 # Event Propagation
 
+<iframe src="../solutions/4/index.html" style="width: 100%; height: 100%;" />
+---
+# Event Propagation
+
 ## `event`-objektet
 
 ```javascript
-let container = document.querySelector('#buttons');
+var container = document.querySelector('#buttons');
 
 container.addEventListener('click', function(event) {
-  let element = event.target;
+  var element = event.target;
   console.log(element.nodeName) //=>BUTTON
+});
+```
+---
+# Event Propagation
+
+## `event`-objektet
+
+```javascript
+var container = document.querySelector('#buttons');
+
+container.addEventListener('click', function(event) {
+  var element = event.target;
+  if(element.classList.contains("btn") {
+    doIncrement();
+  } else {
+    //do nothing
+  }
 });
 ```
 --
 Les mer om Event på Mozilla Developer Network:
 
 https://developer.mozilla.org/en-US/docs/Web/API/Event
+---
+class: center middle
 
+# JavaScript-filer
+
+---
+# JavaScript-filer
+
+## `index.html`:
+```html
+<body>
+  <script type="text/javascript">
+    console.log('heia');
+  </script>
+</body>
+```
+---
+# JavaScript-filer
+
+## `index.html`:
+```html
+<body>
+  <script type="text/javascript" src="heia.js"></script>
+</body>
+```
+## `heia.js`:
+```js
+console.log('heia');
+```
 ---
 class: middle center
 # Bonus: Dataset
@@ -1348,18 +1529,24 @@ class: middle center
 ```
 --
 ```javascript
-let button = document.querySelector("#btn1");
+var button = document.querySelector("#btn1");
 
-let number = button.dataset.number;
+var number = button.dataset.number;
 console.log(number); //=> 1
 ```
 ---
+class: split
+
 # Oppgave
 
-Dere skal gjøre kalkulatoren interaktiv!
+Dere skal gjøre nedtelleren interaktiv!
 
+- Lag en ekstern JavaScript-fil som blir referert fra HTML
 - Fang opp klikk-events på knappene
-- Oppdatere konsollet på kalkulatoren med tall
+- Oppdatere konsollet på nedtelleren med tallet som ble klikket på
+
+
+<iframe src="../solutions/5/index.html" style="width: 50%" />
 ---
 class: center middle
 # Asynkronitet
@@ -1446,7 +1633,7 @@ while(true) {
 --
 ```javascript
 function printNumbersUntil(number) {
-  for (let i = 0; i < number; i++) {
+  for (var i = 0; i < number; i++) {
     console.log(i);
   }
 }
@@ -1456,7 +1643,7 @@ function printNumbersUntil(number) {
 
 ```javascript
 function printNumbersUntil(number) {
-  for (let i = 0; i < number; i++) {
+  for (var i = 0; i < number; i++) {
     console.log(i);
   }
 }
@@ -1571,17 +1758,52 @@ heia
 ...
 ```
 ---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setInterval(printHeia, 1000);
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+var id = setInterval(printHeia, 1000);
+```
+---
+# Funksjoner
+
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+var id = setInterval(printHeia, 1000);
+
+stopInterval(id);
+```
+---
 # Vil du vite mer?
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
 
 ---
+class: split
 # Oppgave
 
 Dere skal implementere nedtelling!
 
-- Lag en lytter til `Start`-knappen
-- Oppdater konsollet etterhvert som tiden teller ned
+- Starte nedtelling fra tallet i konsollet når du trykker på start
+- Stoppe nedtelling konsollet kommer til null
+
+<iframe src="../solutions/final/index.html" style="width: 50%" />
 
 ---
 
