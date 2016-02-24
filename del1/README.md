@@ -3,7 +3,7 @@
 Dette er introduksjonsdelen. Målet med denne delen er at du skal få en god feel
 på hvilke deler en webside består av og hvordan de henger sammen. Du finner
 slides på
-[bekk.github.io/webutvikling101/del1/slides](bekk.github.io/webutvikling101/del1/slides).
+[bekk.github.io/webutvikling101/del1/slides](http://bekk.github.io/webutvikling101/del1/slides).
 
 ## Oppgaver
 
