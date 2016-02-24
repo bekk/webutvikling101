@@ -39,18 +39,6 @@ main {
   border: 1px solid #c6c8ca;
   width: 28%;
   margin: 2%;
-  transition: background 0.2s ease-out, border 0.2s ease-out;
-}
-
-.button--number:hover {
-  background: #fd5158;
-  border-color: #fd5158;
-}
-
-.button--number:focus {
-    background: orange;
-    border-color: orange;
-    outline: none;
 }
 
 .button--main {
@@ -60,9 +48,4 @@ main {
   color: #ffffff;
   border: none;
   margin: 0 auto;
-}
-
-.button--main:hover {
-    background: white;
-    color: #000000;
 }

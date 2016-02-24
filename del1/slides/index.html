@@ -22,6 +22,11 @@ class: front-page
 <div style="font-size: 2em">
   <a href="https://github.com/bekk/webutvikling101">http://tiny.cc/bekkweb101</a>
 </div>
+<br>
+<br>
+<div style="font-size: 2em">
+  <a href="https://github.com/bekk/webutvikling101">github/bekk/webutvikling101</a>
+</div>
 
 
 ---
@@ -310,10 +315,6 @@ class: center middle
 ```
 --
 ```javascript
-  someOtherFunction(someFunction);
-```
---
-```javascript
   someOtherFunction(function() {
     // gjør noe gøy
   });
@@ -469,7 +470,7 @@ class: split
 * Legg til click event handler som trekker fra 1 på tallet i `output` når man trykker på - knappen
 
 
-<iframe src="../solutions/1/index.html" style="width: 50%; background-color:#fff" />
+<iframe src="../solutions/2/index.html" style="width: 50%; background-color:#fff" />
 
 ---
 
@@ -757,7 +758,7 @@ class: split
 
 
 
-<iframe src="../solutions/2/index.html" style="width: 50%" />
+<iframe src="../solutions/3/index.html" style="width: 50%" />
 
 
 
@@ -1230,7 +1231,7 @@ Farger:
 * Rødfarge: `#fd5158`
 
 
-<iframe src="../solutions/3/index.html" style="width: 50%" />
+<iframe src="../solutions/4/index.html" style="width: 50%" />
 
 
 ???
@@ -1369,17 +1370,13 @@ class: center middle
 ## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
 
 ---
-
+class: split
 # Oppgave
 ## 1.Endre bakgrunnsfarge på knappene ved hover
 ## 2.Legg til fokusmarkering for tabbing
 ## 3. Endre musepeker til en hånd ved hover
 
----
-exclude:true
-class: center middle
-
-![](resources/family-guy-css.gif)
+<iframe src="../solutions/5/index.html" style="width: 50%" />
 
 ---
 
@@ -1454,7 +1451,7 @@ container.addEventListener('click', function() {
 ---
 # Event Propagation
 
-<iframe src="../solutions/4/index.html" style="width: 100%; height: 100%;" />
+<iframe src="../solutions/5/index.html" style="width: 100%; height: 100%;" />
 ---
 # Event Propagation
 
@@ -1546,7 +1543,7 @@ Dere skal gjøre nedtelleren interaktiv!
 - Oppdatere konsollet på nedtelleren med tallet som ble klikket på
 
 
-<iframe src="../solutions/5/index.html" style="width: 50%" />
+<iframe src="../solutions/6/index.html" style="width: 50%" />
 ---
 class: center middle
 # Asynkronitet
@@ -1628,9 +1625,10 @@ while(true) {
 //Ingenting!
 ```
 ---
-# Funksjoner
+# Kalle funksjoner
 
 --
+
 ```javascript
 function printNumbersUntil(number) {
   for (var i = 0; i < number; i++) {
@@ -1639,7 +1637,13 @@ function printNumbersUntil(number) {
 }
 ```
 ---
-# Funksjoner
+# Vil du vite mer?
+
+<iframe width="854" height="480" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
+
+---
+
+# Kalle funksjoner
 
 ```javascript
 function printNumbersUntil(number) {
@@ -1663,9 +1667,51 @@ printNumbersUntil(10);
 8
 9
 ```
----
-# Funksjoner
 
+---
+# Kalle funksjoner
+
+```javascript
+function hello() {
+  return 'Hello you!';
+}
+
+console.log(hello);
+```
+--
+```javascript
+function hello() {
+  return 'Hello you!';
+}
+```
+---
+# Kalle funksjoner
+```javascript
+function hello() {
+  return 'Hello you!';
+}
+
+console.log(hello());
+```
+--
+```javascript
+Hello you!
+```
+---
+# Kalle funksjoner
+```javascript
+function printHeia() {
+  console.log('heia');
+}
+
+setTimeout(printHeia(), 1000);
+```
+--
+```javascript
+heia
+```
+---
+# Kalle funksjoner
 ```javascript
 function printHeia() {
   console.log('heia');
@@ -1678,7 +1724,10 @@ setTimeout(printHeia, 1000);
 heia
 ```
 ---
-# Funksjoner
+class: middle center
+# Bonus: <span style="text-transform: none;">setInterval</span>
+---
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1692,7 +1741,8 @@ setInterval(printHeia, 1000);
 heia
 ```
 ---
-# Funksjoner
+
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1707,7 +1757,7 @@ heia
 heia
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1723,7 +1773,7 @@ heia
 heia
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1740,7 +1790,7 @@ heia
 heia
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1758,7 +1808,7 @@ heia
 ...
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1768,7 +1818,7 @@ function printHeia() {
 setInterval(printHeia, 1000);
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1778,7 +1828,7 @@ function printHeia() {
 var id = setInterval(printHeia, 1000);
 ```
 ---
-# Funksjoner
+# <span style="text-transform: none;">setInterval</span>
 
 ```javascript
 function printHeia() {
@@ -1789,11 +1839,6 @@ var id = setInterval(printHeia, 1000);
 
 stopInterval(id);
 ```
----
-# Vil du vite mer?
-
-<iframe width="854" height="480" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
-
 ---
 class: split
 # Oppgave

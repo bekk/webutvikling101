@@ -19,21 +19,5 @@
       <output id="output">0</output>
       <button id="increase">+</button>
     </main>
-    <script type="text/javascript">
-      'use strict';
-      let decrease = document.querySelector('#decrease');
-      let increase = document.querySelector('#increase');
-      let output = document.querySelector('#output');
-
-      decrease.addEventListener('click', function() {
-        let currentNumber = Number(output.textContent);
-        output.textContent = currentNumber - 1;
-      });
-
-      increase.addEventListener('click', function() {
-        let currentNumber = Number(output.textContent);
-        output.textContent = currentNumber + 1;
-      });
-    </script>
   </body>
 </html>
