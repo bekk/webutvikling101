@@ -1,14 +1,14 @@
 'use strict';
 
-let buttonsContainer = document.querySelector('.buttons');
-let output = document.querySelector('#output');
+var buttonsContainer = document.querySelector('.buttons');
+var output = document.querySelector('#output');
 
 buttonsContainer.addEventListener('click', function(event) {
-  let element = event.target;
+  var element = event.target;
   if(element.nodeName !== 'BUTTON') { return; }
 
-  let number = element.dataset.number;
-  let originalNumber = output.textContent;
+  var number = element.dataset.number;
+  var originalNumber = output.textContent;
 
   output.textContent = originalNumber === '0' ? number : originalNumber += number;
 });

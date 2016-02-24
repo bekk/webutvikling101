@@ -1,22 +1,22 @@
 'use strict';
 
-let buttonsContainer = document.querySelector('.buttons');
-let output = document.querySelector('#output');
-let start = document.querySelector('#start');
+var buttonsContainer = document.querySelector('.buttons');
+var output = document.querySelector('#output');
+var start = document.querySelector('#start');
 
 function buttonsClickHandler(event) {
-  let element = event.target;
+  var element = event.target;
   if(element.nodeName !== 'BUTTON') { return; }
 
-  let number = element.dataset.number;
-  let currentNumber = output.textContent;
+  var number = element.dataset.number;
+  var currentNumber = output.textContent;
 
   output.textContent = currentNumber === '0' ? number : currentNumber += number;
 }
 
 function startClickHandler(event) {
-  let interval = setInterval(function() {
-    let currentNumber = output.textContent;
+  var interval = setInterval(function() {
+    var currentNumber = output.textContent;
 
     if(currentNumber === '0') {
       clearInterval(interval);
