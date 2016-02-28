@@ -1476,7 +1476,7 @@ var container = document.querySelector('#buttons');
 
 container.addEventListener('click', function(event) {
   var element = event.target;
-  if(element.classList.contains("btn") {
+  if(element.nodeName === 'BUTTON') {
     doIncrement();
   } else {
     //do nothing
