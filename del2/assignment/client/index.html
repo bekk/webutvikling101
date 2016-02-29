@@ -10,5 +10,18 @@
       <input type="text" name="sok" value="" />
       <button type="submit">Søk!</button>
     </form>
+    <script type="text/javascript">
+      function getPhotos(search) {
+        fetch('/sok', {
+          method: 'POST',
+          body: JSON.stringify({sok: search})
+        })
+        .then(function(response) {
+          return response.json().then(function(json) {
+            console.log(json);
+          });
+        });
+      }
+    </script>
   </body>
 </html>
