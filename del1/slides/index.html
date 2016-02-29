@@ -1618,32 +1618,27 @@ while(true) {
 <iframe width="854" height="480" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
 
 ---
-
-# Kalle funksjoner
+# Funksjoner
 
 ```javascript
-function printNumbersUntil(number) {
-  for (var i = 0; i < number; i++) {
-    console.log(i);
-  }
-}
-
-printNumbersUntil(10);
+document.querySelector("#button").addEventListener(function () {
+  console.log('hello');
+});
 ```
 --
 ```javascript
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
+document.querySelector("#button").addEventListener(function sayHello() {
+  console.log('hello');
+});
 ```
+--
+```javascript
+function sayHello() {
+  console.log('hello');
+}
 
+document.querySelector("#button").addEventListener(sayHello);
+```
 ---
 # Kalle funksjoner
 
@@ -1676,30 +1671,46 @@ Hello you!
 ---
 # Kalle funksjoner
 ```javascript
-function printHeia() {
-  console.log('heia');
+function sayHello() {
+  console.log('Hello you!');
 }
 
-setTimeout(printHeia(), 1000);
+setTimeout(sayHello(), 1000);
 ```
 --
 ```javascript
-heia
+Hello you!
 ```
 ---
 # Kalle funksjoner
 ```javascript
-function printHeia() {
-  console.log('heia');
+function sayHello() {
+  console.log('Hello you!');
 }
 
-setTimeout(printHeia, 1000);
+setTimeout(sayHello, 1000);
 ```
 --
 ```javascript
-heia
+//Etter 1s
+Hello you!
 ```
 ---
+# Kalle funksjoner
+```javascript
+function sayHello() {
+  console.log('hello');
+}
+```
+--
+```javascript
+document.querySelector("#button").addEventListener(sayHello);
+```
+```javascript
+sayHello();
+```
+---
+
 class: middle center
 # Bonus: <span style="text-transform: none;">setInterval</span>
 ---
