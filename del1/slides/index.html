@@ -1536,8 +1536,14 @@ class: center middle
 ---
 # Asynkronitet
 
-Hva vil bli printet til konsollet?
+JavaScript er et asynkront språk. Hva betyr det?
 --
+<br><br><br>
+## Kode kan bli kjørt ved vilkårlige tidspunkt som reaksjoner på hendelser utenfor programmet ditt.
+---
+# Asynkronitet
+
+Hva vil bli printet til konsollet?
 
 ```javascript
 console.log('hello');
@@ -1559,7 +1565,6 @@ asyncronous
 # Asynkronitet
 
 Hva vil bli printet til konsollet?
---
 
 ```javascript
 console.log('hello');
@@ -1594,8 +1599,6 @@ siden kodesnutten ble lagt på stacken så er det OK å kjøre den koden.
 
 Hva vil bli printet til konsollet?
 
---
-
 ```javascript
 setTimeout(function() {
   console.log('heia');
@@ -1608,18 +1611,6 @@ while(true) {
 --
 ```
 //Ingenting!
-```
----
-# Kalle funksjoner
-
---
-
-```javascript
-function printNumbersUntil(number) {
-  for (var i = 0; i < number; i++) {
-    console.log(i);
-  }
-}
 ```
 ---
 # Vil du vite mer?
