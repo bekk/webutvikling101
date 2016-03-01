@@ -3,6 +3,6 @@
     "start": "node server/server.js"
   },
   "dependencies": {
-    "hyperstream": "^1.2.2"
+    "node-flickr": "^1.0.0"
   }
 }
