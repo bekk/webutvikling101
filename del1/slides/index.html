@@ -547,13 +547,13 @@ selector {
   border-color: rgba(255, 0, 0, 0.3);
 
   width: 200px;
-  width: 20rem;
   width: 50%;
+  width: 20rem;
   width: 25vw;
 
   margin: 5px;
-  margin: 5px 10px;
-  margin-top: 20px;
+  padding: 10px;
+  opacity: 0.5;
 
   border-width: 1px;
   border-style: solid;
@@ -776,36 +776,15 @@ class: center middle
 
 ---
 
-#Box model
-
-```css
-.min-boks {
-  width: 200px;
-  height: 50px;
-  padding: 10px;
-  border: 5px solid red;
-  margin: 20px;
-}
-```
-
-<img src="resources/boxmodel.png" style="width: 50%; position: absolute; right: 50px; top: 120px;">
-
-
-???
-
-
-Pakke-metafor.
-
----
-
 #Box sizing
 
 ```css
-div {
+.min-boks {
   width: 300px;
   height: 100px;
   padding: 0px;
   border: 0px solid #FD5158;
+  margin: 0px;
 }
 ```
 
@@ -819,11 +798,12 @@ div {
 #Box sizing
 
 ```css
-div {
+.min-boks {
   width: 300px;
   height: 100px;
   padding: 20px;
   border: 0px solid #FD5158;
+  margin: 0px;
 }
 ```
 
@@ -837,11 +817,12 @@ div {
 #Box sizing
 
 ```css
-div {
+.min-boks {
   width: 300px;
   height: 100px;
   padding: 20px;
   border: 15px solid #FD5158;
+  margin: 0px;
 }
 ```
 
@@ -849,9 +830,52 @@ div {
   padding: 20px;
   background: black;
   border: 15px solid #FD5158;">Lorem ipsum</div>
+---
+
+#Box sizing
+
+```css
+.min-boks {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid #FD5158;
+  margin: 0px;
+}
+```
+
+<div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158; display: inline-block;">Lorem ipsum</div><div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158; display: inline-block;">Lorem ipsum</div>
 
 ---
 
+#Box sizing
+
+```css
+.min-boks {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid #FD5158;
+  margin: 30px;
+}
+```
+
+<div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158; display: inline-block; margin: 20px;">Lorem ipsum</div><div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158; display: inline-block; margin: 20px;">Lorem ipsum</div>
+
+---
+exclude:true
 #Box sizing: border-box
 
 ```css
@@ -870,6 +894,7 @@ div {
 
 ---
 
+exclude:true
 #Box sizing: border-box
 
 ```css
@@ -887,7 +912,7 @@ div {
   border: 0px solid #FD5158;">Lorem ipsum</div>
 
 ---
-
+exclude:true
 #Box sizing: border-box
 
 ```css
@@ -905,12 +930,40 @@ div {
   border: 15px solid #FD5158;">Lorem ipsum</div>
 
 --
-
+exclude:true
 
 <div style="width: 300px; height: 100px;
   padding: 20px;
   background: black;
   border: 15px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+#Box model
+
+```css
+.min-boks {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid #FD5158;
+  margin: 30px;
+}
+```
+
+<div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158; display: inline-block; margin: 20px;">Lorem ipsum</div>
+  
+
+<img src="resources/boxmodel.png" style="width: 50%; position: absolute; right: 50px; top: 120px;">
+
+
+???
+
+
+Pakke-metafor.
 
 ---
 
@@ -928,6 +981,10 @@ div {
 </div>
 ```
 
+```css
+h1 { display: block; }
+```
+
 <div style="background-color: #1a1a1a; font-size: 25px;">
   <h1 style="margin-bottom: 5px;">Overskrift</h1>
   <p>Litt tekst</p>
@@ -936,6 +993,7 @@ div {
   <a href="#">Lenke</a>
   <div>mer tekst</div>
 </div>
+
 
 ???
 
@@ -978,7 +1036,7 @@ Blir jo ikke veldig spenstige design når alt bare kommer slik etter hverandre, 
 # Midtstilling
 
 ```html
-<div class="midtstilt-blokk">Midtstilt?</div>
+<div class="midtstilt-blokk">Midstilt blokk</div>
 ```
 ```css
 .midtstilt-blokk {
@@ -987,7 +1045,7 @@ Blir jo ikke veldig spenstige design når alt bare kommer slik etter hverandre, 
   margin-right: auto;
 }
 ```
-<div style="background: black; width: 400px; margin: 0 auto;">Overskrift</div>
+<div style="background: black; width: 400px; margin: 0 auto;">Midtstilt blokk</div>
 
 
 
@@ -1218,11 +1276,9 @@ class: split
 # Oppgave
 
 * Ta utgangspunkt i `nedteller.html`-fila i `/assignment`-mappa.
-* Lag et `<main>`-element og putt alt innholdet i det.
- *  Gi det en bredde og midtstill det
-* Midtstill telleren og gi den en stor skriftstørrelse.
-* Lag en div og putt 10 stk `<button>` inni den
- * Bruk flexbox på diven for å få knappene til å ligge som til høyre
+* Gi `<main>`-elementet en bredde og midtstill det.
+* Midtstill teksten til telleren
+* Bruk flexbox på div-en med alle knappene (`.buttons`) for å få knappene til å ligge som vist til høyre
 * Midtstill og style start-knappen
 
 
