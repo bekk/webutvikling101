@@ -312,24 +312,20 @@ class: center middle
 
 ```javascript
   var n = 1;
-  typeof String(1); // string
+  typeof String(n); // string
 ```
 
 --
 
 ```javascript
   var n = '1';
-  typeof Number(1); // number
+  typeof Number(n); // number
 ```
 
 ---
 
 # JavaScript funksjoner
 
-```javascript
-  var name = 'kent';
-```
---
 ```javascript
   var someFunction = function() {
     // gjør noe gøy
@@ -412,7 +408,7 @@ Forklar når scriptet blir kjørt
 --
 
 ```javascript
-  var boks = document.querySelector('#boks').textContent;
+  var text = document.querySelector('#boks').textContent;
   // Klikk her for å lære mer
 ```
 
@@ -981,7 +977,7 @@ exclude:true
   padding: 20px;
   background: black;
   border: 15px solid #FD5158; display: inline-block; margin: 20px;">Lorem ipsum</div>
-  
+
 
 <img src="resources/boxmodel.png" style="width: 50%; position: absolute; right: 50px; top: 120px;">
 
