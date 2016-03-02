@@ -9,9 +9,16 @@
   <body class="bekk-black">
     <textarea id="source">
 
+exclude:true
 class: front-page
   # Webutvikling 101
   ## NTNU
+
+  <span class="today-date"></span>
+---
+class: front-page
+  # Webutvikling 101
+  ## UiO
 
   <span class="today-date"></span>
 
@@ -57,21 +64,29 @@ class: center middle
 ![](resources/browser-layered-cake.jpeg)
 
 ---
-
+exclude:true
 class: fullscreen
 
 ![](resources/abakus.png)
 
+---
+class: fullscreen
+
+![](resources/uio.png)
 
 ---
-
+exclude:true
 class: fullscreen
 
 ![](resources/abakus-html.png)
 
+---
+class: fullscreen
+
+![](resources/uio-html.png)
 
 ---
-
+exclude:true
 class: fullscreen
 
 ![](resources/abakus-uten-css.png)
@@ -79,7 +94,18 @@ class: fullscreen
 ---
 class: fullscreen
 
+![](resources/uio-uten-css.png)
+
+---
+exclude:true
+class: fullscreen
+
   <iframe src="resources/abakus.no.html" />
+
+---
+class: fullscreen
+
+  <iframe src="http://www.uio.no/studier/program/#topic=&type=" />
 
 ---
 class: center middle
@@ -223,10 +249,10 @@ class: split
 
 # Oppgave
 
-* Ta utgangspunkt i filen: `del1/assignment/index.html`
+* Ta utgangspunkt i filen: `del1/assignment/teller.html`
 * Bruk html-elementene `<button>` og `<output>` for å lage layouten til høyre
 
-<iframe src="../solutions/1/index.html" style="width: 50%; background-color:#fff" />
+<iframe src="../solutions/1/teller.html" style="width: 50%; background-color:#fff" />
 
 ---
 class: center middle
@@ -470,7 +496,7 @@ class: split
 * Legg til click event handler som trekker fra 1 på tallet i `output` når man trykker på - knappen
 
 
-<iframe src="../solutions/2/index.html" style="width: 50%; background-color:#fff" />
+<iframe src="../solutions/2/teller.html" style="width: 50%; background-color:#fff" />
 
 ---
 
@@ -547,13 +573,13 @@ selector {
   border-color: rgba(255, 0, 0, 0.3);
 
   width: 200px;
-  width: 20rem;
   width: 50%;
+  width: 20rem;
   width: 25vw;
 
   margin: 5px;
-  margin: 5px 10px;
-  margin-top: 20px;
+  padding: 10px;
+  opacity: 0.5;
 
   border-width: 1px;
   border-style: solid;
@@ -758,7 +784,7 @@ class: split
 
 
 
-<iframe src="../solutions/3/index.html" style="width: 50%" />
+<iframe src="../solutions/3/teller.html" style="width: 50%" />
 
 
 
@@ -776,36 +802,15 @@ class: center middle
 
 ---
 
-#Box model
-
-```css
-.min-boks {
-  width: 200px;
-  height: 50px;
-  padding: 10px;
-  border: 5px solid red;
-  margin: 20px;
-}
-```
-
-<img src="resources/boxmodel.png" style="width: 50%; position: absolute; right: 50px; top: 120px;">
-
-
-???
-
-
-Pakke-metafor.
-
----
-
 #Box sizing
 
 ```css
-div {
+.min-boks {
   width: 300px;
   height: 100px;
   padding: 0px;
   border: 0px solid #FD5158;
+  margin: 0px;
 }
 ```
 
@@ -819,11 +824,12 @@ div {
 #Box sizing
 
 ```css
-div {
+.min-boks {
   width: 300px;
   height: 100px;
   padding: 20px;
   border: 0px solid #FD5158;
+  margin: 0px;
 }
 ```
 
@@ -837,11 +843,12 @@ div {
 #Box sizing
 
 ```css
-div {
+.min-boks {
   width: 300px;
   height: 100px;
   padding: 20px;
   border: 15px solid #FD5158;
+  margin: 0px;
 }
 ```
 
@@ -849,9 +856,52 @@ div {
   padding: 20px;
   background: black;
   border: 15px solid #FD5158;">Lorem ipsum</div>
+---
+
+#Box sizing
+
+```css
+.min-boks {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid #FD5158;
+  margin: 0px;
+}
+```
+
+<div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158; display: inline-block;">Lorem ipsum</div><div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158; display: inline-block;">Lorem ipsum</div>
 
 ---
 
+#Box sizing
+
+```css
+.min-boks {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid #FD5158;
+  margin: 30px;
+}
+```
+
+<div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158; display: inline-block; margin: 20px;">Lorem ipsum</div><div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158; display: inline-block; margin: 20px;">Lorem ipsum</div>
+
+---
+exclude:true
 #Box sizing: border-box
 
 ```css
@@ -870,6 +920,7 @@ div {
 
 ---
 
+exclude:true
 #Box sizing: border-box
 
 ```css
@@ -887,7 +938,7 @@ div {
   border: 0px solid #FD5158;">Lorem ipsum</div>
 
 ---
-
+exclude:true
 #Box sizing: border-box
 
 ```css
@@ -905,12 +956,40 @@ div {
   border: 15px solid #FD5158;">Lorem ipsum</div>
 
 --
-
+exclude:true
 
 <div style="width: 300px; height: 100px;
   padding: 20px;
   background: black;
   border: 15px solid #FD5158;">Lorem ipsum</div>
+
+---
+
+#Box model
+
+```css
+.min-boks {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid #FD5158;
+  margin: 30px;
+}
+```
+
+<div style="width: 300px; height: 100px;
+  padding: 20px;
+  background: black;
+  border: 15px solid #FD5158; display: inline-block; margin: 20px;">Lorem ipsum</div>
+  
+
+<img src="resources/boxmodel.png" style="width: 50%; position: absolute; right: 50px; top: 120px;">
+
+
+???
+
+
+Pakke-metafor.
 
 ---
 
@@ -928,6 +1007,10 @@ div {
 </div>
 ```
 
+```css
+h1 { display: block; }
+```
+
 <div style="background-color: #1a1a1a; font-size: 25px;">
   <h1 style="margin-bottom: 5px;">Overskrift</h1>
   <p>Litt tekst</p>
@@ -936,6 +1019,7 @@ div {
   <a href="#">Lenke</a>
   <div>mer tekst</div>
 </div>
+
 
 ???
 
@@ -978,7 +1062,7 @@ Blir jo ikke veldig spenstige design når alt bare kommer slik etter hverandre, 
 # Midtstilling
 
 ```html
-<div class="midtstilt-blokk">Midtstilt?</div>
+<div class="midtstilt-blokk">Midstilt blokk</div>
 ```
 ```css
 .midtstilt-blokk {
@@ -987,7 +1071,7 @@ Blir jo ikke veldig spenstige design når alt bare kommer slik etter hverandre, 
   margin-right: auto;
 }
 ```
-<div style="background: black; width: 400px; margin: 0 auto;">Overskrift</div>
+<div style="background: black; width: 400px; margin: 0 auto;">Midtstilt blokk</div>
 
 
 
@@ -1217,11 +1301,10 @@ class: split
 
 # Oppgave
 
-* Lag et `<main>`-element og putt alt innholdet i det.
- *  Gi det en bredde og midtstill det
-* Midtstill telleren og gi den en stor skriftstørrelse.
-* Lag en div og putt 10 stk `<button>` inni den
- * Bruk flexbox på diven for å få knappene til å ligge som til høyre
+* Ta utgangspunkt i `nedteller.html`-fila i `/assignment`-mappa.
+* Gi `<main>`-elementet en bredde og midtstill det.
+* Midtstill teksten til telleren
+* Bruk flexbox på div-en med alle knappene (`.buttons`) for å få knappene til å ligge som vist til høyre
 * Midtstill og style start-knappen
 
 
@@ -1231,7 +1314,7 @@ Farger:
 * Rødfarge: `#fd5158`
 
 
-<iframe src="../solutions/4/index.html" style="width: 50%" />
+<iframe src="../solutions/4/nedteller.html" style="width: 50%" />
 
 
 ???
@@ -1376,7 +1459,7 @@ class: split
 ## 2.Legg til fokusmarkering for tabbing
 ## 3. Endre musepeker til en hånd ved hover
 
-<iframe src="../solutions/5/index.html" style="width: 50%" />
+<iframe src="../solutions/5/nedteller.html" style="width: 50%" />
 
 ---
 
@@ -1451,7 +1534,7 @@ container.addEventListener('click', function() {
 ---
 # Event Propagation
 
-<iframe src="../solutions/5/index.html" style="width: 100%; height: 100%;" />
+<iframe src="../solutions/5/nedteller.html" style="width: 100%; height: 100%;" />
 ---
 # Event Propagation
 
@@ -1475,7 +1558,7 @@ var container = document.querySelector('#buttons');
 
 container.addEventListener('click', function(event) {
   var element = event.target;
-  if(element.classList.contains("btn") {
+  if(element.nodeName === 'BUTTON') {
     doIncrement();
   } else {
     //do nothing
@@ -1494,7 +1577,7 @@ class: center middle
 ---
 # JavaScript-filer
 
-## `index.html`:
+## `fil.html`:
 ```html
 <body>
   <script type="text/javascript">
@@ -1505,7 +1588,7 @@ class: center middle
 ---
 # JavaScript-filer
 
-## `index.html`:
+## `fil.html`:
 ```html
 <body>
   <script type="text/javascript" src="heia.js"></script>
@@ -1514,22 +1597,6 @@ class: center middle
 ## `heia.js`:
 ```js
 console.log('heia');
-```
----
-class: middle center
-# Bonus: Dataset
----
-# Dataset
-
-```html
-<button data-number="1" role="button" id="btn1">Element</button>
-```
---
-```javascript
-var button = document.querySelector("#btn1");
-
-var number = button.dataset.number;
-console.log(number); //=> 1
 ```
 ---
 class: split
@@ -1543,7 +1610,7 @@ Dere skal gjøre nedtelleren interaktiv!
 - Oppdatere konsollet på nedtelleren med tallet som ble klikket på
 
 
-<iframe src="../solutions/6/index.html" style="width: 50%" />
+<iframe src="../solutions/6/nedteller.html" style="width: 50%" />
 ---
 class: center middle
 # Asynkronitet
@@ -1551,8 +1618,14 @@ class: center middle
 ---
 # Asynkronitet
 
-Hva vil bli printet til konsollet?
+JavaScript er et asynkront språk. Hva betyr det?
 --
+<br><br><br>
+## Kode kan bli kjørt ved vilkårlige tidspunkt som reaksjoner på hendelser utenfor programmet ditt.
+---
+# Asynkronitet
+
+Hva vil bli printet til konsollet?
 
 ```javascript
 console.log('hello');
@@ -1574,7 +1647,6 @@ asyncronous
 # Asynkronitet
 
 Hva vil bli printet til konsollet?
---
 
 ```javascript
 console.log('hello');
@@ -1609,8 +1681,6 @@ siden kodesnutten ble lagt på stacken så er det OK å kjøre den koden.
 
 Hva vil bli printet til konsollet?
 
---
-
 ```javascript
 setTimeout(function() {
   console.log('heia');
@@ -1625,49 +1695,32 @@ while(true) {
 //Ingenting!
 ```
 ---
-# Kalle funksjoner
-
---
-
-```javascript
-function printNumbersUntil(number) {
-  for (var i = 0; i < number; i++) {
-    console.log(i);
-  }
-}
-```
----
 # Vil du vite mer?
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
 
 ---
-
-# Kalle funksjoner
+# Funksjoner
 
 ```javascript
-function printNumbersUntil(number) {
-  for (var i = 0; i < number; i++) {
-    console.log(i);
-  }
-}
-
-printNumbersUntil(10);
+document.querySelector("#button").addEventListener(function () {
+  console.log('hello');
+});
 ```
 --
 ```javascript
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
+document.querySelector("#button").addEventListener(function sayHello() {
+  console.log('hello');
+});
 ```
+--
+```javascript
+function sayHello() {
+  console.log('hello');
+}
 
+document.querySelector("#button").addEventListener(sayHello);
+```
 ---
 # Kalle funksjoner
 
@@ -1700,30 +1753,46 @@ Hello you!
 ---
 # Kalle funksjoner
 ```javascript
-function printHeia() {
-  console.log('heia');
+function sayHello() {
+  console.log('Hello you!');
 }
 
-setTimeout(printHeia(), 1000);
+setTimeout(sayHello(), 1000);
 ```
 --
 ```javascript
-heia
+Hello you!
 ```
 ---
 # Kalle funksjoner
 ```javascript
-function printHeia() {
-  console.log('heia');
+function sayHello() {
+  console.log('Hello you!');
 }
 
-setTimeout(printHeia, 1000);
+setTimeout(sayHello, 1000);
 ```
 --
 ```javascript
-heia
+//Etter 1s
+Hello you!
 ```
 ---
+# Kalle funksjoner
+```javascript
+function sayHello() {
+  console.log('hello');
+}
+```
+--
+```javascript
+document.querySelector("#button").addEventListener(sayHello);
+```
+```javascript
+sayHello();
+```
+---
+
 class: middle center
 # Bonus: <span style="text-transform: none;">setInterval</span>
 ---
@@ -1848,7 +1917,7 @@ Dere skal implementere nedtelling!
 - Starte nedtelling fra tallet i konsollet når du trykker på start
 - Stoppe nedtelling konsollet kommer til null
 
-<iframe src="../solutions/final/index.html" style="width: 50%" />
+<iframe src="../solutions/final/nedteller.html" style="width: 50%" />
 
 ---
 

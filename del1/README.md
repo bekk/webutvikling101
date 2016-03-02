@@ -11,9 +11,11 @@ Oppgavene finner du i slidene.
 
 ## Starter filer
 
-Starter filer finner du i `/assignment`-mappa. I denne delen kan du bruke
-samme fila i alle oppgavene. For å se hva du har laget så kan du åpne
-`index.html`-fila i en valgfri browser.
+Starter filer finner du i `/assignment`-mappa. Det finnes to filer der.
+`teller.html`-fila er for oppgave 1 til og med 3, `nedteller.html`-fila er for
+oppgave 4 og utover (fra og med CSS-layout oppgaven).
+
+For å se hva du har laget så kan du åpne `html`-fila i en valgfri browser.
 
 ## Løsningsforslag
 

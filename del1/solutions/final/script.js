@@ -8,7 +8,7 @@ function buttonsClickHandler(event) {
   var element = event.target;
   if(element.nodeName !== 'BUTTON') { return; }
 
-  var number = element.dataset.number;
+  var number = element.textContent;
   var currentNumber = output.textContent;
 
   output.textContent = currentNumber === '0' ? number : currentNumber += number;
