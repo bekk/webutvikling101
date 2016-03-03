@@ -3,25 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>Bildegalleri</title>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <h1>Bildegalleri</h1>
-    <form action="/sok.html" method="post">
-      <input type="text" name="sok" value="" />
-      <button type="submit">Søk!</button>
-    </form>
-    <script type="text/javascript">
-      function getPhotos(search) {
-        fetch('/sok', {
-          method: 'POST',
-          body: JSON.stringify({sok: search})
-        })
-        .then(function(response) {
-          return response.json().then(function(json) {
-            console.log(json);
-          });
-        });
-      }
-    </script>
+    <header>
+      <h1>Bildegalleri</h1>
+
+      <form action="/sok.html" method="post">
+        <input type="text" name="sok" value="" autocomplete="off"/>
+        <button type="submit">Søk</button>
+      </form>
+    </header>
+
+    <main>
+
+    </main>
+
+    <script type="text/javascript" src="/script.js"></script>
   </body>
 </html>
