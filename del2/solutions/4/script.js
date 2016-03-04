@@ -5,16 +5,19 @@ function getPhotos(tag) {
 }
 
 function renderImages(data) {
-  return data.map(function(img, index) {
-    return `
+  var html = '';
+  data.forEach(function(img, index) {
+    html += `
       <figure>
         <a href="${window.location.pathname}/${index}">
           <img src="${img.url}" />
         </a>
         <figcaption>${img.title}</figcaption>
       </figure>
-    `}).join('');
+    `
+  });
 
+  return html;
 }
 
 function renderOneImage(img) {

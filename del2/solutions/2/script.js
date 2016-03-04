@@ -5,14 +5,17 @@ function getPhotos(tag) {
 }
 
 function renderImages(data) {
-  return data.map(function(img, index) {
-    return `
+  var html = '';
+  data.forEach(function(img, index) {
+    html += `
       <figure>
         <img src="${img.url}" />
         <figcaption>${img.title}</figcaption>
       </figure>
-    `}).join('');
+    `
+  });
 
+  return html;
 }
 
 getPhotos('bekk').then(function(data) {
