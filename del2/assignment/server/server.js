@@ -8,7 +8,7 @@ var Flickr = require('node-flickr');
 
 var flickr = new Flickr({'api_key': 'ea97a6690f90a628b60e2fd79012c74c'});
 
-var siteRoot = path.join(__dirname, '..', 'client');
+var siteRoot = path.join(__dirname, '..', '..', 'solutions', 'final');
 var flickerCache = {};
 
 function fetchFlickerContent(tag) {
