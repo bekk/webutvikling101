@@ -30,7 +30,6 @@ function router() {
   var url = window.location.pathname.split('/');
 
   if(url.length === 1) {
-    document.querySelector('main').innerHTML = '';
     return;
   }
 
@@ -53,20 +52,5 @@ router();
 document.querySelector('form').addEventListener('submit', function(event) {
   event.preventDefault();
   var tag = event.target.querySelector('input').value;
-  history.pushState(undefined, '', '/' + tag);
-  router();
+  window.location.pathname = '/' + tag;
 });
-
-document.querySelector('main').addEventListener('click', function(event) {
-  var parent = event.target.parentNode;
-
-  if(parent.tagName === 'A') {
-    event.preventDefault();
-    var href = parent.getAttribute('href');
-    history.pushState(undefined, '', href);
-    router();
-  }
-});
-
-
-window.addEventListener('popstate', router);
