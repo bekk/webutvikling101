@@ -1,0 +1,9 @@
+.cols.two .col:nth-child(2n+2) {
+    margin-left: 0;
+}
+.cols.two .col:nth-child(1n+2) {
+    margin-bottom: 1rem;
+}
+div.col > pre {
+	margin-top: 0;
+}

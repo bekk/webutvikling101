@@ -16,6 +16,281 @@ class: front-page
   <span class="today-date"></span>
 
 ---
+class: center middle bekk-top
+
+#Forms
+
+---
+
+#Form
+
+Representerer en interaktiv del av siden, og brukes for å sende data til en server
+```html
+<form></form>
+```
+
+---
+
+#Form
+
+Representerer en interaktiv del av siden, og brukes for å sende data til en server
+```html
+<form></form>
+```
+
+*Noen nyttige attributter*
+```html
+<form action="url"></form>
+```
+
+---
+
+#Form
+
+Representerer en interaktiv del av siden, og brukes for å sende data til en server
+```html
+<form></form>
+```
+
+*Noen nyttige attributter*
+```html
+<form action="url"></form>
+```
+
+```html
+<form action="url" method="get"></form>   // url?key=value1&key2=value2
+<form action="url" method="post"></form>  // url
+```
+
+---
+
+#Form
+
+Representerer en interaktiv del av siden, og brukes for å sende data til en server
+```html
+<form></form>
+```
+
+*Noen nyttige attributter*
+```html
+<form action="url"></form>
+```
+
+```html
+<form action="url" method="get"></form>   // url?key=value1&key2=value2
+<form action="url" method="post"></form>  // url
+```
+
+*Noen ikke fullt like nyttige attributter*
+```
+accept-charset, autocomplete, enctype, name, novalidate, target, ...
+```
+Sjekk <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form" target="_blank">MDN form</a>
+
+---
+
+#Input
+
+Definerer hva som skal sendes til serveren
+```html
+<form action="url" method="get">
+  <input type="text" />
+</form>
+```
+
+---
+
+#Input
+
+Definerer hva som skal sendes til serveren
+```html
+<form action="url" method="get">
+  <input type="text" />
+</form>
+```
+
+```html
+<form action="url" method="get">
+  <input type="text" name="sok" value="" placeholder="Søk" /> 
+</form>
+```
+
+---
+
+#Input
+
+Definerer hva som skal sendes til serveren
+```html
+<form action="url" method="get">
+  <input type="text" />
+</form>
+```
+
+```html
+<form action="url" method="get">
+  <input type="text" name="sok" value="" placeholder="Søk" /> 
+</form>
+```
+
+<label><input type="checkbox" /> checkbox</label><br />
+<label><input type="radio" name="radio" /> radio1</label>
+<label><input type="radio" name="radio" /> radio2</label><br />
+<label><input type="date" /></label>
+
+---
+
+#Input
+
+Definerer hva som skal sendes til serveren
+```html
+<form action="url" method="get">
+  <input type="text" />
+</form>
+```
+
+```html
+<form action="url" method="get">
+  <input type="text" name="sok" value="" placeholder="Søk" /> 
+</form>
+```
+
+<label><input type="checkbox" /> checkbox</label><br />
+<label><input type="radio" name="radio" /> radio1</label>
+<label><input type="radio" name="radio" /> radio2</label><br />
+<label><input type="date" /></label>
+
+
+Sjekk <a href="https://developer.mozilla.org/en/docs/Web/HTML/Element/Input" target="_blank">MDN input</a>
+
+---
+class: cols two
+
+#Input
+
+.col[
+<input type="text" data-ex="1" data-listen-for="keyup" data-value-prop="value" />
+]
+.col[
+<span id="ex1"></span>
+]
+
+.col[
+<input type="checkbox" data-ex="2" data-listen-for="change" data-value-prop="checked" />
+]
+.col[
+<span id="ex2"></span>
+]
+
+Uthenting av verdien til ett element varierer.
+
+For tekstelement; 
+```javascript
+document.querySelector('#da-tekstelement').value
+```
+
+For checkbox; 
+```javascript
+document.querySelector('#da-checkbox').checked
+```
+
+---
+class: cols two
+
+#Browser default
+
+
+.col[
+<label><input type="checkbox" />Default</label>
+]
+.col[
+```html
+<input type="checkbox" />
+```
+]
+
+.col[
+<label><input type="checkbox" class="prevent" />Endret</label>
+]
+.col[
+```javascript
+document
+  .querySelector('.prevent')
+  .addEventListener('click', function(e) {
+    e.preventDefault();
+  });
+```
+```html
+<input type="checkbox" class="prevent"/>
+```
+]
+
+Form- og input-elementer kommer med en del *default behaviour* fra browseren.
+
+Denne oppførselen kan hindres ved hjelp av `preventDefault()`
+
+---
+
+#Submit
+
+*Submit*-knapp
+```html
+<form action="/sok.html" method="post">
+  <input type="text" name="sok" value="" autocomplete="off"/>
+  <button type="submit">Søk</button>
+</form>
+```
+
+---
+
+#Submit
+
+*Submit*-knapp
+```html
+<form action="/sok.html" method="post">
+  <input type="text" name="sok" value="" autocomplete="off"/>
+  <button type="submit">Søk</button>
+</form>
+``` 
+
+Det skjer en `submit`-event når `form` skal sendes til serveren.
+
+---
+
+#Submit
+
+*Submit*-knapp
+```html
+<form action="/sok.html" method="post">
+  <input type="text" name="sok" value="" autocomplete="off"/>
+  <button type="submit">Søk</button>
+</form>
+``` 
+
+Det skjer en `submit`-event når `form` skal sendes til serveren.
+
+Dette kan lyttes etter ved hjelp av `addEventListener`
+
+```javascript
+document.querySelector('.mitt-form').addEventListener('submit', function(event) {
+  // Stop default behaviour
+  // Do something
+});
+```
+
+---
+class: split
+
+# Oppgave
+
+* Forsett på løsningen fra forrige oppgave
+* Legg til submit event handler på form'et
+* Hent ut verdien som er skrevet inn i tekstfeltet
+* Bruk verdien til å hente ut og vise de nye bildene
+
+<iframe src="http://localhost:5000/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
+
+---
+
 #Webutvikling 101
 
 ##Repo
@@ -53,6 +328,28 @@ bekk.no/jobb
 
       document.querySelector('.today-date').textContent = dateStr;
     </script>
+    <script type="text/javascript">
+      "use strict";
+      // Uthenting av .value eksempel
+      Array.prototype.slice.call(document.querySelectorAll('[data-ex]'), 0)
+        .forEach((ex) => {
+          const view = document.querySelector('#ex' + ex.dataset.ex);
+          view.textContent = (''+ex[ex.dataset.valueProp]) || ' ';
 
+          ex.addEventListener(ex.dataset.listenFor, (e) => {
+            const value = e.target[ex.dataset.valueProp];
+            view.textContent = (''+value) || ' ';
+          });
+        });
+    </script>
+    <script type="text/javascript">
+      // Prevent default example
+      document
+        .querySelector('.prevent')
+        .addEventListener('click', function(e) {
+          e.preventDefault();
+        });
+    </script>
   </body>
 </html>
+
