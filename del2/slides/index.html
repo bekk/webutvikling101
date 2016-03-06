@@ -14,9 +14,271 @@ class: front-page
   ## NTNU
 
   <span class="today-date"></span>
+---
+#Webutvikling 101
+
+##Repo
+<div style="font-size: 2em">
+  <a href="https://github.com/bekk/webutvikling101">http://tiny.cc/bekkweb101</a>
+</div>
+<br>
+<br>
+<div style="font-size: 2em">
+  <a href="https://github.com/bekk/webutvikling101">github/bekk/webutvikling101</a>
+</div>
 
 ---
-class: center middle bekk-top
+class: center middle
+
+<button id="load-data" class="btn loud">Last mer data</button>
+---
+
+<div class="example-box" style="
+  top: 30%;
+  height: 200px;
+">
+  Klient
+</div>
+
+<div class="example-box" style="
+  top: 22%;
+  right: 2em;
+">
+  Server
+</div>
+
+--
+
+<div class="example-arrow arrow-right" style="top: 250px;">
+  Request
+</div>
+
+--
+
+<div class="example-arrow arrow-left" style="top: 350px;">
+  Response
+</div>
+
+---
+
+
+<div class="example-box" style="
+  top: 30%;
+  height: 200px;
+">
+  Klient
+</div>
+
+<div class="example-box" style="
+  top: 22%;
+  right: 2em;
+">
+  Server
+</div>
+
+<div class="example-arrow arrow-right" style="
+  top: 250px;
+  text-transform: lowercase;
+">
+  http://localhost:5000/sok?tag=bekk
+</div>
+
+<div class="example-arrow arrow-left" style="
+  top: 350px;
+  text-transform: none;
+  text-align: left;
+">
+  <pre style="
+  margin: 0;
+  padding: 0 1em;
+  font-size: 0.8em;
+">
+[{
+  "url":"https://flickr.com/bilde1.jpg",
+  "title":"Fint bilde av en bekker"
+},{...}]
+  </pre>
+</div>
+---
+# Laste data
+
+```javascript
+  var httpRequest = new XMLHttpRequest();
+
+  httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState === 4) {
+      if (httpRequest.status === 200) {
+        var data = JSON.parse(httpRequest.responseText);
+        console.log(data);
+      } else {
+        console.log('There was a problem with the request.');
+      }
+    }
+  }
+
+  httpRequest.open('GET', 'http://localhost:5000/sok?tag=bekk'); // Setter opp request
+  httpRequest.send(); // Sender request
+```
+
+---
+# Laste data
+
+```javascript
+  fetch('http://localhost:5000/sok?tag=bekk')
+```
+---
+# Laste data
+
+```javascript
+  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+    // her kan du gjøre noe med responsen
+  });
+```
+---
+# Laste data
+
+--
+## JSON
+
+```javascript
+  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+    return response.json();
+  });
+```
+
+--
+## Text
+
+```javascript
+  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+    return response.text();
+  });
+```
+
+--
+## Blob
+```javascript
+  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+    return response.blob();
+  });
+```
+
+---
+# Laste data
+
+```javascript
+  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    console.log(data);
+  });
+```
+--
+
+```
+  [{
+    "url":"https://flickr.com/bilde1.jpg",
+    "title":"Fint bilde av en bekker"
+  },{
+    "url":"https://flickr.com/bilde2.jpg",
+    "title":"Ikke fullt så fint bilde av en bekker"
+  },{
+    "url":"https://flickr.com/bilde3.jpg",
+    "title":"Rart bilde av en bekk"
+  },{
+    ...
+  }]
+```
+---
+# Laste data
+
+```javascript
+  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    console.log(data);
+  }).catch(function(error) {
+    throw error;
+  });
+```
+
+---
+# Same origin policy
+
+```javascript
+  fetch('https://ntnu.no');
+```
+--
+
+You will receive an error. `XMLHttpRequest` cannot load https://ntnu.no. No `'Access-Control-Allow-Origin'` header is present on the requested resource. Origin http://localhost:5000 is therefore not allowed access.
+
+--
+
+An origin is defined as a combination of URI scheme, hostname, and port number.
+
+---
+# Same origin policy
+
+<div class="example-same-origin">
+  http://localhost:5000
+</div>
+
+--
+<div class="example-same-origin">
+  https://ntnu.no:443
+</div>
+
+---
+
+# Same origin policy
+
+<div class="example-same-origin">
+  <span class="protocol">http</span>://<span class="domain">localhost</span>:<span class="port">5000</span>
+</div>
+
+<div class="example-same-origin">
+  <span class="protocol">https</span>://<span class="domain">ntnu.no</span>:<span class="port">443</span>
+</div>
+
+--
+<div style="margin-top:0.5em;font-size: 5em">&#128557;</div>
+
+
+
+---
+# Same origin policy
+
+<div class="example-same-origin">
+  <span class="protocol">http</span>://<span class="domain">localhost</span>:<span class="port">5000</span>
+</div>
+
+<div class="example-same-origin">
+  <span class="protocol">http</span>://<span class="domain">localhost</span>:<span class="port">5000</span>/sok?tag=bekk
+</div>
+
+--
+
+<div style="margin-top:0.5em;font-size: 5em">&#128571;</div>
+---
+class: center middle
+
+# DevTool
+
+## ⌘ + ⌥ + i &nbsp;/&nbsp; ctrl + ⇧ + i
+
+---
+class: split
+
+# Oppgave
+
+* Gjør en request mot `/sok?tag=bekk` når siden blir lastet
+* Logg ut resultatet i consollet
+
+<iframe src="http://localhost:5000/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
+
+
+---
+class: center middle
 
 #Forms
 
@@ -111,7 +373,7 @@ Definerer hva som skal sendes til serveren
 
 ```html
 <form action="url" method="get">
-  <input type="text" name="sok" value="" placeholder="Søk" /> 
+  <input type="text" name="sok" value="" placeholder="Søk" />
 </form>
 ```
 
@@ -128,7 +390,7 @@ Definerer hva som skal sendes til serveren
 
 ```html
 <form action="url" method="get">
-  <input type="text" name="sok" value="" placeholder="Søk" /> 
+  <input type="text" name="sok" value="" placeholder="Søk" />
 </form>
 ```
 
@@ -150,7 +412,7 @@ Definerer hva som skal sendes til serveren
 
 ```html
 <form action="url" method="get">
-  <input type="text" name="sok" value="" placeholder="Søk" /> 
+  <input type="text" name="sok" value="" placeholder="Søk" />
 </form>
 ```
 
@@ -183,12 +445,12 @@ class: cols two
 
 Uthenting av verdien til ett element varierer.
 
-For tekstelement; 
+For tekstelement;
 ```javascript
 document.querySelector('#da-tekstelement').value
 ```
 
-For checkbox; 
+For checkbox;
 ```javascript
 document.querySelector('#da-checkbox').checked
 ```
@@ -247,7 +509,7 @@ Denne oppførselen kan hindres ved hjelp av `preventDefault()`
   <input type="text" name="sok" value="" autocomplete="off"/>
   <button type="submit">Søk</button>
 </form>
-``` 
+```
 
 Det skjer en `submit`-event når `form` skal sendes til serveren.
 
@@ -261,7 +523,7 @@ Det skjer en `submit`-event når `form` skal sendes til serveren.
   <input type="text" name="sok" value="" autocomplete="off"/>
   <button type="submit">Søk</button>
 </form>
-``` 
+```
 
 Det skjer en `submit`-event når `form` skal sendes til serveren.
 
@@ -287,31 +549,16 @@ class: split
 <iframe src="http://localhost:5000/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
 
 ---
-
-#Webutvikling 101
-
-##Repo
-<div style="font-size: 2em">
-  <a href="https://github.com/bekk/webutvikling101">http://tiny.cc/bekkweb101</a>
-</div>
-<br>
-<br>
-<div style="font-size: 2em">
-  <a href="https://github.com/bekk/webutvikling101">github/bekk/webutvikling101</a>
-</div>
-
----
 class: center middle bekk-top
 
 # Takk for oss!
 
 bekk.no/jobb
 
-
-
     </textarea>
     <script src="https://cdn.rawgit.com/bekk/remark/master/vendor/remark.min.js" type="text/javascript"></script>
     <script type="text/javascript">
+      'use strict';
       var slideshow = remark.create({
         ratio: '16:9',
         highlightLanguage: 'javascript',
@@ -324,9 +571,11 @@ bekk.no/jobb
       var dateStr = new Date().toLocaleString('nb-NO', { year: 'numeric', month: 'long', day: 'numeric' });
 
       document.querySelector('.today-date').textContent = dateStr;
-    </script>
-    <script type="text/javascript">
-      "use strict";
+
+      document.querySelector('#load-data').addEventListener('click', event => {
+        event.target.outerHTML = '<img src="resources/spinner.svg" />';
+      });
+
       // Uthenting av .value eksempel
       Array.prototype.slice.call(document.querySelectorAll('[data-ex]'), 0)
         .forEach((ex) => {
@@ -349,4 +598,3 @@ bekk.no/jobb
     </script>
   </body>
 </html>
-
