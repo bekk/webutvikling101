@@ -18,12 +18,7 @@ function renderImages(data) {
   return html;
 }
 
-document.querySelector('form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  var tag = event.target.querySelector('input').value;
-
-  getPhotos(tag).then(function(data) {
-    html = renderImages(data);
-    document.querySelector('main').innerHTML = html;
-  });
+getPhotos('bekk').then(function(data) {
+  html = renderImages(data);
+  document.querySelector('main').innerHTML = html;
 });

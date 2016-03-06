@@ -9,9 +9,7 @@ function renderImages(data) {
   data.forEach(function(img, index) {
     html += `
       <figure>
-        <a href="${window.location.pathname}/${index}">
-          <img src="${img.url}" />
-        </a>
+        <img src="${img.url}" />
         <figcaption>${img.title}</figcaption>
       </figure>
     `
@@ -20,40 +18,12 @@ function renderImages(data) {
   return html;
 }
 
-function renderOneImage(img) {
-  return `
-    <figure class="fullwidth">
-      <img src="${img.url}" />
-      <figcaption>${img.title}</figcaption>
-    </figure>
-  `;
-}
-
-function router() {
-  var url = window.location.pathname.split('/');
-
-  if(url.length === 1) {
-    return;
-  }
-
-  getPhotos(url[1]).then(function(data) {
-    var index = Number(url[2]);
-    var html;
-
-    if (!isNaN(index)) {
-      html = renderOneImage(data[index]);
-    } else {
-      html = renderImages(data);
-    }
-
-    document.querySelector('main').innerHTML = html;
-  });
-}
-
-router();
-
 document.querySelector('form').addEventListener('submit', function(event) {
   event.preventDefault();
   var tag = event.target.querySelector('input').value;
-  window.location.pathname = '/' + tag;
+
+  getPhotos(tag).then(function(data) {
+    html = renderImages(data);
+    document.querySelector('main').innerHTML = html;
+  });
 });
