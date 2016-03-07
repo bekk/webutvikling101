@@ -8,7 +8,13 @@ var Flickr = require('node-flickr');
 
 var flickr = new Flickr({'api_key': 'ea97a6690f90a628b60e2fd79012c74c'});
 
-var siteRoot = path.join(__dirname, '..', 'client');
+var defaultSiteRoot = path.join(__dirname, '..', 'client');
+var solutionSiteRoot1 = path.join(__dirname, '..', '..', 'solutions', '1');
+var solutionSiteRoot2 = path.join(__dirname, '..', '..', 'solutions', '2');
+var solutionSiteRoot3 = path.join(__dirname, '..', '..', 'solutions', '3');
+var solutionSiteRoot4 = path.join(__dirname, '..', '..', 'solutions', '4');
+var solutionSiteRoot5 = path.join(__dirname, '..', '..', 'solutions', '5');
+var solutionSiteRoot6 = path.join(__dirname, '..', '..', 'solutions', 'final');
 var flickerCache = {};
 
 function fetchFlickerContent(tag) {
@@ -44,7 +50,7 @@ function handleError(err, response) {
   response.end();
 }
 
-function handleRequest(request, response) {
+function handleRequest(siteRoot, request, response) {
 
   if(/^\/sok\?/.test(request.url)) {
     var tag = url.parse(request.url, true).query.tag;
@@ -72,7 +78,12 @@ function handleRequest(request, response) {
   }
 }
 
-var server = http.createServer(handleRequest);
+http.createServer(handleRequest.bind(null, defaultSiteRoot)).listen(5000);
+http.createServer(handleRequest.bind(null, solutionSiteRoot1)).listen(5001);
+http.createServer(handleRequest.bind(null, solutionSiteRoot2)).listen(5002);
+http.createServer(handleRequest.bind(null, solutionSiteRoot3)).listen(5003);
+http.createServer(handleRequest.bind(null, solutionSiteRoot4)).listen(5004);
+http.createServer(handleRequest.bind(null, solutionSiteRoot5)).listen(5005);
+http.createServer(handleRequest.bind(null, solutionSiteRoot6)).listen(5006);
 
-server.listen(5000);
 console.log('Server started on http://localhost:5000');
