@@ -30,13 +30,12 @@ function renderOneImage(img) {
 }
 
 function router() {
-  var url = window.location.pathname.split('/');
-
-  if(url.length === 1) {
+  if(window.location.pathname === '/') {
     document.querySelector('main').innerHTML = '';
     return;
   }
 
+  var url = window.location.pathname.split('/');
   getPhotos(url[1]).then(function(data) {
     var index = Number(url[2]);
     var html;
