@@ -25,7 +25,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
   var tag = event.target.querySelector('input').value;
 
   getPhotos(tag).then(function(data) {
-    html = renderImages(data);
+    var html = renderImages(data);
     document.querySelector('main').innerHTML = html;
   });
 });
