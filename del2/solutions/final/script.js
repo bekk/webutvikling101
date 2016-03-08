@@ -6,16 +6,18 @@ function getPhotos(tag) {
 
 function renderImages(data) {
   var html = '';
-  data.forEach(function(img, index) {
+
+  for (var i = 0; i < data.length; i++) {
+    var img = data[i];
     html += `
       <figure>
-        <a href="${window.location.pathname}/${index}">
+        <a href="${window.location.pathname}/${i}">
           <img src="${img.url}" />
         </a>
         <figcaption>${img.title}</figcaption>
       </figure>
-    `
-  });
+    `;
+  }
 
   return html;
 }
