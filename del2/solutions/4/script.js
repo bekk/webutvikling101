@@ -6,14 +6,16 @@ function getPhotos(tag) {
 
 function renderImages(data) {
   var html = '';
-  data.forEach(function(img, index) {
+
+  for (var i = 0; i < data.length; i++) {
+    var img = data[i];
     html += `
       <figure>
         <img src="${img.url}" />
         <figcaption>${img.title}</figcaption>
       </figure>
-    `
-  });
+    `;
+  }
 
   return html;
 }
@@ -23,7 +25,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
   var tag = event.target.querySelector('input').value;
 
   getPhotos(tag).then(function(data) {
-    html = renderImages(data);
+    var html = renderImages(data);
     document.querySelector('main').innerHTML = html;
   });
 });
