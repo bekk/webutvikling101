@@ -824,6 +824,284 @@ class: split
 <iframe src="http://localhost:5004/" style="width: 50%; border-left: 1px solid #515151;" />
 
 ---
+
+class: center middle bekk-top
+
+# Navigasjon
+
+---
+
+# Navigasjon
+
+`Anchor`-tagen definerer en hyperkobling til en annen ressurs på weben
+
+```html
+<a>...</a>
+```
+
+--
+
+Nyttige attributter på `Anchor`
+
+```html
+<a href="...">...<a>
+<a href="..." target="_blank">...<a>
+<a href="..." download="AwesomeFil.zip">...<a>
+```
+
+--
+
+Lenke på bilder:
+```html
+<a href="/img/bilde.jpg">
+  <img src="/img/bilde.jpg" alt="Dette er et bilde">
+</a>
+```
+
+---
+
+# Navigasjon - Router
+
+_Routing_ bestemmer handlingen(e) som skal håndtere en forespørsel.
+
+--
+
+## Lokasjonsobjektet
+
+```javascript
+window.location
+```
+... returnerer et lokasjonsobjekt som inneholder informasjon om dokumentets _lokasjon_
+
+--
+
+## Stien
+
+```javascript
+window.location.pathname
+```
+... returnerer stien som ressursen du besøker ligger på
+
+---
+
+# Navigasjon - Router
+
+Oppdatere stien
+
+```javascript
+window.location.pathname = '/foo/bar';
+
+window.location.pathname; // /foo/bar
+```
+
+--
+
+Vi kan bruke dette til å feks. lagre unna tilstanden til applikasjonen.
+
+---
+
+# Navigasjon - Router
+
+Tolke stien ved å feks. splitte på `/`
+
+```javascript
+var path = window.location.pathname.split('/'); // ['', 'foo', 'bar']
+path[1]; // foo
+path[2]; // bar
+```
+
+---
+
+# Navigasjon - Router
+
+Håndtere tilstanden til applikasjonen
+
+```javascript
+// http://example.com/tech/19
+
+function router() {
+  var path = window.location.pathname.split('/');
+
+  var type = path[1]; // tech
+  var id = path[2]; // 19
+
+  getPost(type).then(function (data) {
+    var post = data[id];
+
+    // gjør noe med post nr 19
+  })
+}
+
+// kaller router
+router();
+```
+
+---
+
+class: split
+
+# Oppgave
+
+Forsett på løsningen fra forrige oppgave
+
+* Lag en `router`-funksjon som tolker stien med formatet: `http://host/søkertekst/indeks`
+  * om kun **søketekst** er oppgitt: vis alle resultatene
+  * om **søketekst** og **indeks** er oppgitt: vis bildet på gitt indeks
+* Få søkefunksjonen til å oppdatere stien ved søk
+* Lag bildene fra søkeresultatet klikkbare med stien: `/søketekst/indeks`
+
+Feks.: http://localhost:5000/norway/0 så skal du vise første bilde i resultatet når man søker etter **norway**
+
+<iframe src="http://localhost:5000/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
+
+---
+
+class: center middle bekk-top
+
+# Single-page application
+
+---
+
+class: center middle
+
+Lage nettsider / web-applikasjoner som passer inn på _én_ side.
+
+---
+class: center middle
+<img src="../../del1/slides/resources/apple-pages.png"/>
+.source[https://www.icloud.com/#pages]
+---
+class: center middle
+<img src="../../del1/slides/resources/google-maps.png"/>
+.source[https://maps.google.com/]
+---
+class: center middle
+<img src="../../del1/slides/resources/spotify.png"/>
+.source[https://play.spotify.com/]
+---
+
+# Single-page application
+
+## Hva?
+
+Vi ønsker:
+
+* unngå at siden lastes på ny når man klikker på en lenke
+* kunne gå frem og tilbake i historikken
+* kunne sende direktelenke til andre
+
+## Hvorfor?
+
+Vi får en bedre brukeropplevelse med en flyt som minner om en desktop applikasjon
+
+## Hvordan?
+
+History API
+
+---
+
+# Single-page application
+
+## History
+
+History lar det manipulere nettleserhistorikken for en nettside:
+
+* pushState
+* popstate
+
+---
+
+# Single-page application - pushState
+
+**pushState** lar en skrive til nettleserhistorikken for hvert operasjon vi utfører
+
+```javascript
+history.pushState(state, title, URL);
+```
+
+* **state:** tilstandsobjekt
+* **title:** tittel på siden
+* **URL:** sti til ressurs
+
+--
+
+Ikke alltid at man trenger å definere alle parametre:
+```
+history.pushState(undefined, '', 'foo/bar')
+```
+
+---
+
+# Single-page application - popstate
+
+For hver gang du går tilbake i historikken vil eventen **popstate** bli kalt. Vi kan lytte på denne, og kalle vår egen router-funksjon for å oppdatere innholdet i siden.
+
+```javascript
+window.addEventListener('popstate', router);
+```
+
+---
+
+# Single-page application
+
+## pushState / popstate vs window.location
+
+window.location holder deg i samme dokument kun om du endrer på hash-verdien. Med _History_ unngår du at nettleseren oppdaterer dokumentet.
+
+---
+
+# Single-page application - anchor hijacking
+
+Vi ønsker å unngå at nettleseren oppdaterer siden når vi besøker en ny lenke. Dette gjør vi ved å stoppe standard oppførsel som skjer når man klikker på lenkene:
+
+```javascript
+document.querySelector('main').addEventListener(function (event) {
+  if (event.target.tagName === 'A') {
+    event.preventDefault();
+
+    // Update history and call router
+  }
+});
+```
+
+---
+
+# Single-page application - Eksempel
+
+HTML:
+
+```html
+<a href="/foo/bar"><img src="..." alt="..."></a>
+```
+
+JavaScript:
+
+```javascript
+document.querySelector('main').addEventListener('click', function (event) {
+  var parent = event.target.parentNode;
+
+  if (parent.tagName === 'A') {
+    var href = parent.getAttribute('href');
+    history.pushState(undefined, '', href);
+    router();
+  }
+});
+```
+
+---
+
+class: split
+
+# Oppgave
+
+Forsett på løsningen fra forrige oppgave
+
+* Bytt ut oppdatering av window.location med pushState
+* Overstyr klikking på lenker slik at du unngår at nettleseren oppdaterer siden
+  * For hver gang du klikker på en lenke skal history oppdateres, og router() kalles
+
+---
+
 class: center middle bekk-top
 
 # Takk for oss!
