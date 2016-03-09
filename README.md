@@ -36,6 +36,6 @@ de mappene.
 
 ### [Del1](./del1)
 
-### TBA: Del2
+### [Del2](./del2)
 
 ### TBA: Del3
