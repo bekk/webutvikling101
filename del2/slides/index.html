@@ -1055,7 +1055,7 @@ window.location holder deg i samme dokument kun om du endrer på hash-verdien. M
 Vi ønsker å unngå at nettleseren oppdaterer siden når vi besøker en ny lenke. Dette gjør vi ved å stoppe standard oppførsel som skjer når man klikker på lenkene:
 
 ```javascript
-document.querySelector('main').addEventListener(function (event) {
+document.querySelector('main').addEventListener('click', function (event) {
   if (event.target.tagName === 'A') {
     event.preventDefault();
 
@@ -1081,6 +1081,7 @@ document.querySelector('main').addEventListener('click', function (event) {
   var parent = event.target.parentNode;
 
   if (parent.tagName === 'A') {
+    event.preventDefault();
     var href = parent.getAttribute('href');
     history.pushState(undefined, '', href);
     router();
