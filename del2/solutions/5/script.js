@@ -22,31 +22,15 @@ function renderImages(data) {
   return html;
 }
 
-function renderOneImage(img) {
-  return `
-    <figure class="fullwidth">
-      <img src="${img.url}" />
-      <figcaption>${img.title}</figcaption>
-    </figure>
-  `;
-}
-
 function router() {
-  if(window.location.pathname === '/') {
+  if (window.location.pathname === '/') {
     return;
   }
 
   var url = window.location.pathname.split('/');
+
   getPhotos(url[1]).then(function(data) {
-    var index = Number(url[2]);
-    var html;
-
-    if (!isNaN(index)) {
-      html = renderOneImage(data[index]);
-    } else {
-      html = renderImages(data);
-    }
-
+    var html = renderImages(data);
     document.querySelector('main').innerHTML = html;
   });
 }
