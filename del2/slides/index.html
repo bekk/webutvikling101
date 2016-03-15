@@ -827,7 +827,112 @@ class: split
 
 class: center middle bekk-top
 
+# Routing
+
+
+---
+
+# Routing
+
+_Routing_ bestemmer handlingen(e) som skal håndtere en forespørsel.
+
+--
+
+## Lokasjonsobjektet
+
+```javascript
+window.location
+```
+... returnerer et lokasjonsobjekt som inneholder informasjon om dokumentets _lokasjon_
+
+--
+
+## Stien
+
+```javascript
+window.location.pathname
+```
+... returnerer stien som ressursen du besøker ligger på
+
+---
+
+# Routing
+
+Oppdatere stien
+
+```javascript
+window.location.pathname = '/foo/bar';
+
+window.location.pathname; // /foo/bar
+```
+
+--
+
+Vi kan bruke dette til å feks. lagre unna tilstanden til applikasjonen.
+
+---
+
+# Routing
+
+Tolke stien
+
+```javascript
+var path = window.location.pathname.split('/'); // ['', 'foo', 'bar']
+path[1]; // foo
+path[2]; // bar
+```
+
+---
+
+# Routing
+
+Håndtere tilstanden til applikasjonen
+
+```javascript
+// http://example.com/tech/19
+
+function router() {
+  var path = window.location.pathname.split('/');
+
+  var type = path[1]; // tech
+  var id = path[2]; // 19
+
+  getPost(type).then(function (data) {
+    var post = data[id];
+
+    // gjør noe med post nr 19
+  })
+}
+
+// kaller router
+router();
+```
+
+---
+
+class: split
+
+# Oppgave
+
+Forsett på løsningen fra forrige oppgave
+
+* Lag en `router`-funksjon som tolker stien med formatet: `http://host/søkertekst`
+  * om **søketekst** er oppgitt: vis resultater for søketeksten
+  * Om **søketekst** ikke er oppgitt, vis kun søkefelt
+* Få søkefunksjonen til å oppdatere stien ved søk
+
+Feks.: når du søker etter **norway** skal stien bli: http://localhost:5000/norway. Da skal du vise alle resultater for søk på **norway**
+
+<iframe src="http://localhost:5005/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
+
+
+---
+
+
+class: center middle bekk-top
+
 # Navigasjon
+
 
 ---
 
@@ -860,83 +965,6 @@ Lenke på bilder:
 
 ---
 
-# Navigasjon - Router
-
-_Routing_ bestemmer handlingen(e) som skal håndtere en forespørsel.
-
---
-
-## Lokasjonsobjektet
-
-```javascript
-window.location
-```
-... returnerer et lokasjonsobjekt som inneholder informasjon om dokumentets _lokasjon_
-
---
-
-## Stien
-
-```javascript
-window.location.pathname
-```
-... returnerer stien som ressursen du besøker ligger på
-
----
-
-# Navigasjon - Router
-
-Oppdatere stien
-
-```javascript
-window.location.pathname = '/foo/bar';
-
-window.location.pathname; // /foo/bar
-```
-
---
-
-Vi kan bruke dette til å feks. lagre unna tilstanden til applikasjonen.
-
----
-
-# Navigasjon - Router
-
-Tolke stien ved å feks. splitte på `/`
-
-```javascript
-var path = window.location.pathname.split('/'); // ['', 'foo', 'bar']
-path[1]; // foo
-path[2]; // bar
-```
-
----
-
-# Navigasjon - Router
-
-Håndtere tilstanden til applikasjonen
-
-```javascript
-// http://example.com/tech/19
-
-function router() {
-  var path = window.location.pathname.split('/');
-
-  var type = path[1]; // tech
-  var id = path[2]; // 19
-
-  getPost(type).then(function (data) {
-    var post = data[id];
-
-    // gjør noe med post nr 19
-  })
-}
-
-// kaller router
-router();
-```
-
----
 
 class: split
 
@@ -944,15 +972,16 @@ class: split
 
 Forsett på løsningen fra forrige oppgave
 
-* Lag en `router`-funksjon som tolker stien med formatet: `http://host/søkertekst/indeks`
-  * om kun **søketekst** er oppgitt: vis alle resultatene
-  * om **søketekst** og **indeks** er oppgitt: vis bildet på gitt indeks
-* Få søkefunksjonen til å oppdatere stien ved søk
-* Lag bildene fra søkeresultatet klikkbare med stien: `/søketekst/indeks`
+* Lag en funksjon som viser kun ett bilde
+* Gjør bildene fra søkeresultatet klikkbare med stien: `/søketekst/indeks`
+* Oppdater router-funksjonen så den tolker stien med formatet: `http://host/søkertekst/indeks`
+  * om **søketekst** og **indeks** er oppgitt: vis kun dette bildet
 
-Feks.: http://localhost:5000/norway/0 så skal du vise første bilde i resultatet når man søker etter **norway**
 
 <iframe src="http://localhost:5005/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
+
+
+
 
 ---
 
