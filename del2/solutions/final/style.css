@@ -54,7 +54,7 @@ main {
   justify-content: space-between;
 }
 
-main figure {
+figure {
   width: 100%;
   margin: 1rem 0;
   padding-bottom: 1rem;
@@ -63,25 +63,25 @@ main figure {
   text-align: center;
 }
 
-main figure.fullwidth {
+figure.fullwidth {
   width: 100%;
 }
 
-main figure img {
+figure img {
   display: block;
   width: 100%;
   margin-bottom: 1rem;
 }
 
 @media (min-width: 480px) {
-  main figure {
+  figure {
     width: 48%;
   }
 }
 
 
 @media (min-width: 768px) {
-  main figure {
+  figure {
     width: 31%;
   }
 }
