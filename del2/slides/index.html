@@ -439,9 +439,29 @@ class: split
 * Sett HTML-en som `renderImages` returnerer som innhold til `<main>`-elementet
 
 
-<iframe src="http://localhost:5002/" style="width: 50%; border-left: 1px solid #515151;" />
 
+.wayright[```javascript
+function renderImages(data) {
+    var html = '';
+    // bruk en for-løkke for å fylle htmlen
+    // med en <figure> for hvert bilde i data
+    return html;
+}
 
+function getPhotos(tag) {
+    return fetch('/sok?tag=' + tag).then(function(resp) {
+        return resp.json();
+    });
+}
+
+getPhotos('bekk').then(function(data) {
+    // console.log(data);
+    var html = renderImages(data);
+    // hent ut main-elementet og sett
+    // innholdet til å være denne htmlen
+});
+
+```]
 
 
 

@@ -75,3 +75,9 @@ div.col > pre {
 .example-same-origin .port {
     color: #fd5158;
 }
+
+.wayright {
+  position: absolute;
+  right: 0;
+  top: 90px;
+}
