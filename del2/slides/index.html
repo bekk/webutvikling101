@@ -1203,18 +1203,18 @@ bekk.no/jobb
 
       document.querySelector('.today-date').textContent = dateStr;
 
-      document.querySelector('#load-data').addEventListener('click', event => {
+      document.querySelector('#load-data').addEventListener('click', function(event) {
         event.target.outerHTML = '<img src="resources/spinner.svg" />';
       });
 
       // Uthenting av .value eksempel
       Array.prototype.slice.call(document.querySelectorAll('[data-ex]'), 0)
-        .forEach((ex) => {
-          const view = document.querySelector('#ex' + ex.dataset.ex);
+        .forEach(function(ex) {
+          var view = document.querySelector('#ex' + ex.dataset.ex);
           view.textContent = (''+ex[ex.dataset.valueProp]) || ' ';
 
-          ex.addEventListener(ex.dataset.listenFor, (e) => {
-            const value = e.target[ex.dataset.valueProp];
+          ex.addEventListener(ex.dataset.listenFor, function(e) {
+            var value = e.target[ex.dataset.valueProp];
             view.textContent = (''+value) || ' ';
           });
         });
