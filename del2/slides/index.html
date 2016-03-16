@@ -134,10 +134,59 @@ class: center middle
     // her kan du gjøre noe med responsen
   });
 ```
----
-# Laste data
 
+---
+class: cols two
+# JavaScript Object Notation - JSON
 --
+
+.col[
+## JSON
+```json
+  {
+    "string": "en string",
+    "key2": 1.2,
+    "boolean": false,
+    "array": [1,2,3,4,5,6],
+    "object": {
+      "key": "value"
+    },
+    "empty": null
+  }
+```
+]
+
+.col[
+## JavaScript objekter
+```javascript
+  {
+    string: "en string",
+    key2: 1.2,
+    boolean: false,
+    array: [1,2,3,4,5,6],
+    object: {
+      key: "value"
+    },
+    empty: undefined
+  }
+```
+]
+---
+# Parse JSON
+```javascript
+  JSON.parse('{"key":"value"}'); // {key: "value"}
+```
+--
+
+```javascript
+  JSON.stringify({key:"value"}); // '{"key": "value"}'
+```
+
+
+---
+# Parse reposonsen
+
+
 ## JSON
 
 ```javascript
