@@ -126,13 +126,137 @@ document.querySelector('#nameform').addEventListener('submit', function (event) 
 Forrige kursdag brukte vi `fetch` for å søke etter bilder. Det å kalle fetch førte til en http-request til en server,
 som så svarte med en liste over bilder. Http fungerer alltid på denne måten, ved at klienten gjør et kall mot serveren og får data tilbake.
 Serveren kan aldri sende data til klienten uten at klienten har sendt en request først.
-Skal man lage en chat, er det ikke helt optimalt. Eneste måten å få nye meldinger på er å sende en request til serveren
+
+Skal man lage en chat, er dette ikke helt optimalt. Eneste måten å få nye meldinger på er å sende en request til serveren, så for å få til en
+chat der nye meldinger dukker opp med en gang, må man regelrett spamme serveren med requests. Er det mange brukere som gjør dette samtidig vil
+serveren fort krasje.
+
+Websockets, derimot, er en toveis protokoll. Etter at en tilkobling er opprettet, kan både klient og server sende data til hverandre når de ønsker.
+Det gir mulighet for real-time applikasjoner som chat, spill osv.
 
 ---
 
 # WebSockets API
 
+For å opprette en WebSocket-tilkobling, må man sende inn URLen til serveren man vil koble seg til.
+Merk at det brukes `ws` i URLen i stedet for `http`.
 
+```
+var websocket = new WebSocket('ws://bekk-chat.herokuapp.com');
+```
+
+--
+
+For å sende meldinger, kaller man `send` på websocket-objektet.
+
+```
+websocket.send('hei, hei');
+```
+
+--
+
+For å lytte på meldinger legger man til en funksjon som kalles hver gang websocketen får en melding fra serveren.
+Denne funksjonen får inn et event, og dataen fra serveren ligger på `.data` på dette eventet.
+
+```
+websocket.onmessage = function(event) {
+    console.log(event.data);
+}
+```
+
+---
+
+# JSON
+
+Websockets kan bare sende tekst frem og tilbake, mens man trenger ofte å sende mer avansert data.
+For å gjøre det kan man bruke JSON. JSON er et tekst-format som er lett å konvertere til og fra javascript-objekter.
+
+`JSON.stringify` konverterer et javascript-objekt om til JSON-tekst
+
+```
+var objekt = {
+    id: 33,
+    navn: 'Mats'
+}
+var tekst = JSON.stringify(objekt);
+// gir '{"id": 33, "navn": "Mats"}' som en tekststreng
+```
+
+Tilsvarende kan man konvertere tekst tilbake til javascript-objekt
+
+```
+var tekst2 = '{"id":99,"navn":"Kent"}';
+var objekt2 = JSON.parse(tekst2);
+// kan nå kalle objekt2.id og objekt2.navn
+```
+---
+
+# JOINE-protokoll
+
+For å bli med i chatten krever serveren at man har sagt hva man vil hete. Serveren forventer JSON-tekst som den
+kan konvertere til et objekt på formen
+
+```
+{
+    type: 'name',
+    name: 'Mats'
+}
+```
+
+Siden det skal sendes mye forskjellig data frem og tilbake etterhvert, har vi et type-felt som sier hva slags data det er.
+For å sette navn, skal typen være `name`. I tillegg må man sende med navnet man vil ha.
+
+---
+
+#Oppgave 2
+
+* I toppen av javascriptfilen, opprett en websocket-tilkobling til chatte-serveren
+ * Den ligger på URL `ws://bekk-chat.herokuapp.com`
+* Inne i eventlisteneren fra forrige oppgave (når brukeren har trykket join), send det valgte navnet til serveren via websocketen.
+ * Objektet må være på formen fra forrige slide
+ * Huske å gjøre objektet om til en tekst-streng før det sendes
+
+
+---
+class: center middle
+# Løsningsforslag 2
+
+Ny kode på formen
+
+```
+// gammel linje
+*// ny linje
+*// ny linje
+// gammel linje
+```
+
+---
+
+.losningsforslag[
+```
+*// oppretter en websocket-tilkobling til riktig url
+*var websocket = new WebSocket('ws://bekk-chat.herokuapp.com');
+
+document.querySelector('#nameform').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var name = document.querySelector('#name').value;
+
+    if (name !== '') {
+*       // lag et objekt på riktig form og med valgt navn
+*       var data = {
+*           type: 'name',
+*           name: name
+*       };
+*       // gjør det om til en tekststreng
+*       var dataString = JSON.stringify(data);
+*       // send tekststrengen via websocket
+*       websocket.send(dataString);
+
+        document.querySelector('#sendbutton').disabled = false;
+    }
+});
+```]
 
 ---
 
