@@ -14,26 +14,130 @@ class: front-page
   ## DEL 3<br>Chatteoppgave
 
 ---
-#Webutvikling 101
+#Introduksjon
 
-##Repo
-<div style="font-size: 2em">
-  <a href="https://github.com/bekk/webutvikling101">http://tiny.cc/bekkweb101</a>
-</div>
-<br>
-<br>
-<div style="font-size: 2em">
-  <a href="https://github.com/bekk/webutvikling101">github/bekk/webutvikling101</a>
-</div>
+Slidesettet ligner de tidligere presentasjonene, med litt teori og etterfølgende oppgaver.
+Siden det ikke blir felles gjennomgang av oppgavene, forklares løsningsforslaget etter hver oppgave.
+
+Eksempel på det som skal lages ligger på http://bekk-chat.herokuapp.com/
+Test det gjerne ut litt så du har et klart bilde av hva som skal lages.
+Man må velge et navn og trykke join for å se chatten og kunne chatte. Til høyre i bildet
+er det en liste over alle brukere som er tilstede. Meldinger vises når noen blir med, bytter navn eller forsvinner.
+Kan bytte navn ved å skrive inn et nytt navn og trykke join.
+
+I denne oppgaven er det selve chatte-klienten som skal lages. Klienten kobles opp mot en felles server slik at
+alle deler samme chat.
 
 ---
-#Test
-Hva slidesettet består av
-Intro til oppgaven med lenke, info om å prøve den ut (med to vinduer)
-Beskrivelse av interaksjon, joine, sende meldinger, joine/leave, rename
+# Kode
 
-        Intro til det man trenger til første oppgave
-        forms, queryselector, websocket
+I `assignment` mappa, kjør de samme kommandoene som tidligere for å få opp en server:
+
+```bash
+npm install
+npm start
+```
+
+Du kan deretter åpne klienten ved å gå til http://localhost:5000
+
+Klienten ligger i `assignment/client` mappen og består av 3 filer. Dere får ferdig oppsatt HTML og CSS, så i denne
+oppgaven er det i utgangspunktet bare Javascript i `script.js` som skal skrives. Det kan uansett være lurt å titte på HTML, for å vite
+hvilke elementer og IDer som kan hentes ut i Javascripten.
+
+
+---
+
+# DOM APIet - Repetisjon
+
+Kan hente ut elementer vha `queryselector`. `#` foran betyr man henter med id, `.` henter med klasse og ingenting er rett på element-type.
+
+```
+var el1 = document.querySelector('main'); // matcher <main>
+var el2 = document.querySelector('#name'); // matcher <input id="name">
+var el3 = document.querySelector('.klasse'); // matcher <div class=".klasse">
+```
+
+--
+
+Kan lese ut og endre forskjellige verdier
+
+```
+var inputText = el2.value; // henter ut verdien i input-felt
+el2.value = 'heihei'; // setter verdien
+
+var el2.disabled = true; // disabler input-felt, knapp e.l.
+
+var htmlInnhold = el1.innerHTML; // leser ut html fra et element
+el1.innerHTML = '<b>fet skrift</b>'; // setter innholdet til et element
+```
+
+---
+
+# Forms og eventlisteners - Repetisjon
+
+Det er forskjellige events man kan lytte på, f. eks. click på elementer eller submit av et form.
+Man legger til en funksjon som vil bli kalt når et event inntreffer
+
+```
+document.querySelector(`#minForm`).addEventListener('submit', function(event) {
+    event.preventDefault();
+    // gjør noe ved submit
+});
+```
+
+Ved submit må man kalle `preventDefault` på eventet om man ikke vil at nettleseren skal laste siden på nytt.
+
+---
+
+# Oppgave 1
+
+* Legg til submit-listener på `#nameform`. Den trigges når man trykker join-knappen.
+* Når submit trigges, les ut verdien fra navne-inputfeltet og log det til console
+* Om navnet ikke er tomt, aktiver `#sendbutton`.
+
+---
+class: center middle
+# Løsningsforslag 1
+
+---
+
+.losningsforslag[
+```
+// henter ut form-elementet og legger til en listener på submit
+document.querySelector('#nameform').addEventListener('submit', function (event) {
+    // hindrer refresh av siden
+    event.preventDefault();
+
+    // henter ut inputfeltet for navn og leser ut verdien
+    var name = document.querySelector('#name').value;
+    console.log(name);
+
+    if (name !== '') { // om navn ikke tomt
+        // hent ut send-knappen og sett disabled til false
+        document.querySelector('#sendbutton').disabled = false;
+    }
+});
+```]
+
+---
+
+# WebSockets Intro
+
+Forrige kursdag brukte vi `fetch` for å søke etter bilder. Det å kalle fetch førte til en http-request til en server,
+som så svarte med en liste over bilder. Http fungerer alltid på denne måten, ved at klienten gjør et kall mot serveren og får data tilbake.
+Serveren kan aldri sende data til klienten uten at klienten har sendt en request først.
+Skal man lage en chat, er det ikke helt optimalt. Eneste måten å få nye meldinger på er å sende en request til serveren
+
+---
+
+# WebSockets API
+
+
+
+---
+
+#Test
+Beskrivelse av interaksjon, joine, sende meldinger, joine/leave, rename
 
         Løsningsforslag med kommentarer
 
