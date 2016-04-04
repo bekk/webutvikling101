@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Webutvikling 101</title>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/bekk/remark/master/dist/bekk.css">
+    <link rel="stylesheet" href="slides.css">
+  </head>
+  <body class="bekk-black">
+    <textarea id="source">
+
+class: front-page
+  # Webutvikling 101
+  ## DEL 3<br>Chatteoppgave
+
+---
+#Webutvikling 101
+
+##Repo
+<div style="font-size: 2em">
+  <a href="https://github.com/bekk/webutvikling101">http://tiny.cc/bekkweb101</a>
+</div>
+<br>
+<br>
+<div style="font-size: 2em">
+  <a href="https://github.com/bekk/webutvikling101">github/bekk/webutvikling101</a>
+</div>
+
+---
+#Test
+Hva slidesettet består av
+Intro til oppgaven med lenke, info om å prøve den ut (med to vinduer)
+Beskrivelse av interaksjon, joine, sende meldinger, joine/leave, rename
+
+        Intro til det man trenger til første oppgave
+        forms, queryselector, websocket
+
+        Løsningsforslag med kommentarer
+
+        # queryselector, .value, .enabled, .innerHTML, eventlistener form preventdefault
+        - submit listener på form, lese ut verdi, sette enabled om ikke tom
+        # websockets intro, json/text parse stringify, intro til protkoll
+        - lage websocket, sende til websocket type joine med json stringify,
+        - onmessage, json parse, console.log
+        # forklare protokollen for message/messages, dom-strukturen det må være, for løkke, template strings
+        - om type messages, renderSingleMessage n ganger, obs ikke bry seg om dato feil
+        - renderSingleMessage
+        # server forventer type message
+        - form listener, les ut verdi, nullstill, send til websocket
+        # active users, type users, data.users liste med navn
+        - active users, rendre over løkke til #users
+        # active users, 3 actions som har forskjellig data
+        - connection beskjeder, legge til i chaten
+        # date
+        - visningslogikk
+
+---
+
+.losningsforslag[```javascript
+document.querySelector('#sendform').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var sendmessageInput = document.querySelector("#sendmessage");
+    var message = sendmessageInput.value;
+    sendmessageInput.value = ''; // reset
+
+*    websocket.send(JSON.stringify({
+*        type: 'message',
+*        message: message
+*    }));
+});
+
+
+websocket.onmessage = function(event) {
+    var data = JSON.parse(event.data);
+    console.log(data);
+
+    if (data.type === 'messages') {
+        renderMessages(data.messages);
+    } else if (data.type === 'message') {
+        renderSingleMessage(data);
+    } else if (data.type === 'users') {
+*       renderActiveUsers(data);
+        showConnectionMessage(data);
+    }
+};
+```]
+---
+
+class: center middle bekk-top
+
+# Takk for oss!
+
+bekk.no/jobb
+
+    </textarea>
+    <script src="https://cdn.rawgit.com/bekk/remark/master/vendor/remark.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      'use strict';
+      var slideshow = remark.create({
+        ratio: '16:9',
+        highlightLanguage: 'javascript',
+        highlightStyle: 'monokai',
+        navigation: {
+          scroll: false
+        },
+          highlightLines: true
+      });
+
+    </script>
+  </body>
+</html>
