@@ -95,6 +95,9 @@ Ved submit må man kalle `preventDefault` på eventet om man ikke vil at nettles
 * Når submit trigges, les ut verdien fra navne-inputfeltet og log det til console
 * Om navnet ikke er tomt, aktiver `#sendbutton`.
 
+Sjekk at du kan fylle i et navn og trykke join, og at det dukker opp i consolen før du går videre.
+Sjekk også at send-knappen blir aktivert etter å ha trykket join.
+
 ---
 class: center middle
 # Løsningsforslag 1
@@ -182,7 +185,7 @@ var tekst = JSON.stringify(objekt);
 // gir '{"id": 33, "navn": "Mats"}' som en tekststreng
 ```
 
-Tilsvarende kan man konvertere tekst tilbake til javascript-objekt
+Tilsvarende kan man konvertere tekst tilbake til javascript-objekt med `JSON.parse`
 
 ```
 var tekst2 = '{"id":99,"navn":"Kent"}';
@@ -216,6 +219,7 @@ For å sette navn, skal typen være `name`. I tillegg må man sende med navnet m
  * Objektet må være på formen fra forrige slide
  * Huske å gjøre objektet om til en tekst-streng før det sendes
 
+I denne oppgaven får man ikke et synlig resultat, men det kommer straks. Sjekk i console at ingen ting krasjer før du går videre.
 
 ---
 class: center middle
@@ -260,21 +264,277 @@ document.querySelector('#nameform').addEventListener('submit', function (event) 
 
 ---
 
+# Oppgave 3
+
+* Legg til en funksjon på websocketen sin `onmessage` som beskrevet tidligere.
+* I denne funksjonen, les ut data fra eventet og konverter det fra JSON til et objekt
+* Log dette objektet til console
+
+Om alt har gått riktig, skal man nå i det man trykker join få tilsendt litt data fra serveren.
+I console kan du se hva du mottar.
+
+
+---
+class: center middle
+# Løsningsforslag 3
+
+Her må du kanskje scrolle litt
+
+---
+
+.losningsforslag[
+```
+var websocket = new WebSocket('ws://bekk-chat.herokuapp.com');
+
+document.querySelector('#nameform').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var name = document.querySelector('#name').value;
+
+    if (name !== '') {
+        var data = {
+            type: 'name',
+            name: name
+        };
+
+        var dataString = JSON.stringify(data);
+        websocket.send(dataString);
+
+        document.querySelector('#sendbutton').disabled = false;
+    }
+});
+
+*// Legger til en funksjon på onmessage
+*websocket.onmessage = function(event) {
+*   // Leser ut data fra eventet og konverterer det til et objekt
+*   var data = JSON.parse(event.data);
+*   // Logger det vi mottar til console
+*   console.log(data);
+}
+```]
+---
+
+# Template String - Repetisjon
+
+Bruker `backticks` (shift + knappen før backspace), gjør at man kan fylle inn verdier med `${variabelnavn}`.
+
+```javascript
+var img = {
+    url: "http://flickr.com/bilde.jpg",
+    title: "Kult bilde"
+};
+
+var html = `
+    <figure>
+        <img src="${img.url}" />
+        <figcaption>${img.title}</figcaption>
+    </figure>
+        `;
+```
+
+---
+
+# Meldinger - Protokoll
+
+Som man kan se i console fra forrige oppgave, får man et objekt med type `messages` i det en bruker joiner.
+Dette objektet inneholder en liste over meldinger som har kommet før brukeren joinet, med den nyeste til slutt.
+
+```json
+{
+  "type": "messages",
+  "messages": [{
+      "name": "MM",
+      "message": "asdas",
+      "time": "2016-04-05T14:13:56.149Z"
+    }, {
+      "name": "Mats",
+      "message": "Hei",
+      "time": "2016-04-05T14:14:57.723Z"
+    },{
+      "name": "Kent",
+      "message": "Hei, hei",
+      "time": "2016-04-05T14:15:06.382Z"
+    }]
+}
+```
+
+---
+
+
+
+
+# Meldinger - Protokoll 2
+
+Når en bruker sender en ny melding i chaten, kommer det fra serveren på denne formen. Merk forskjell på type fra
+forrige slide (message vs messages)
+
+```
+{
+  "type": "message",
+  "name": "sd",
+  "message": "asdasd",
+  "time": "2016-04-05T16:30:56.907Z"
+}
+```
+
+---
+
+# Meldinger HTML
+
+Den medfølgende CSSen forventer at meldinger blir gjort om til HTML med følgende struktur:
+
+```html
+<div class="message">
+    <span class="name">Navn på avsender</span>
+    <span class="time">tidspunkt</span>
+    <span class="text">innhold</span>
+</div>
+```
+
+
+---
+
+# Oppgave 4
+
+* Lag en funksjon som tar inn en melding og legger til HTML lignende forrige slide øverst i `#messages`-elementet
+* I `onmessage` funksjonen, sjekk om typen er av `messages` og send i så fall hver melding til funksjonen du nettopp lagde.
+* Om typen er av `message`, send den til samme funksjon
+
+Om alt har gått riktig, skal man i det man trykker join nå se de siste meldingene. Tidspunktet kan
+kanskje være litt feil og stygt, det fikser vi senere.
+
+Nye meldinger skal også dukke opp fortløpende, gå til http://bekk-chat.herokuapp.com/ og send noen meldinger
+der og sjekk om de dukker opp i din klient.
+
+
+---
+class: center middle
+# Løsningsforslag 4
+---
+
+.losningsforslag[
+```
+var websocket = new WebSocket('ws://bekk-chat.herokuapp.com');
+
+document.querySelector('#nameform').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var name = document.querySelector('#name').value;
+
+    if (name !== '') {
+        var data = {
+            type: 'name',
+            name: name
+        };
+        var dataString = JSON.stringify(data);
+        websocket.send(dataString);
+
+        document.querySelector('#sendbutton').disabled = false;
+    }
+});
+
+websocket.onmessage = function(event) {
+    var data = JSON.parse(event.data);
+    console.log(data);
+
+*   // sjekker typen
+*   if (data.type === 'messages') {
+*       // henter meldingene fra data
+*       var messages = data.messages;
+*
+*       // iterer over hver melding med en for-løkke og rendrer den
+*       for (var i = 0; i < messages.length; i++) {
+*           var singleMessage = messages[i];
+*           renderMessage(singleMessage);
+*       }
+*   } else if (data.type === 'message') {
+*       // om det var en enkelt melding rendrer vi den bare
+*       renderMessage(data);
+*   }
+};
+
+*function renderMessage(message) {
+*   // henter ut elementet
+*   var messageElement = document.querySelector('#messages');
+*
+*   // lager HTMLen for en melding
+*   var messageHtml = `
+*       <div class="message">
+*           <span class="name">${message.name}</span>
+*           <span class="time">${message.time}</span>
+*           <span class="text">${message.message}</span>
+*       </div>
+*   `;
+*
+*   // Setter innholdet i elementet til å være meldingen pluss hva enn det var før
+*   messageElement.innerHTML = messageHtml + messageElement.innerHTML;
+*}
+```]
+
+---
+
+# Meldinger - Protokoll 3
+
+For å sende en melding til serveren skal objektet se slik ut:
+
+```
+{
+    type: 'message',
+    message: 'Min melding'
+}
+```
+
+Serveren legger selv på tidspunkt og hvem som sendte meldingen før den så sender meldingen videre
+til alle som er koblet på chaten (inkludert den som sendte meldingen).
+
+
+---
+
+#Oppgave 5
+
+* Legg til en submit-listener på meldinger-formet
+* Når denne trigges, send meldingen brukeren skrev inn til serveren og nullstill teksten i tekstfeltet
+
+
+
+---
+class: center middle
+# Løsningsforslag 5
+---
+
+.losningsforslag[
+```
+// resten av koden er lik, men nå med dette i bunn:
+
+// legger på submit-listener på formet
+document.querySelector('#sendform').addEventListener('submit', function (event) {
+    // hindrer refresh
+    event.preventDefault();
+
+    // henter ut input-elementet der brukeren skriver meldingen
+    var sendmessageInput = document.querySelector("#sendmessage");
+    // henter ut verdien
+    var message = sendmessageInput.value;
+    // nullstiller feltet
+    sendmessageInput.value = ''; // reset
+
+    // lager objektet, gjør det om til JSON og sender det, alt i samme slengen
+    websocket.send(JSON.stringify({
+        type: 'message',
+        message: message
+    }));
+});
+```]
+
+---
+
+
 #Test
 Beskrivelse av interaksjon, joine, sende meldinger, joine/leave, rename
 
         Løsningsforslag med kommentarer
 
-        # queryselector, .value, .enabled, .innerHTML, eventlistener form preventdefault
-        - submit listener på form, lese ut verdi, sette enabled om ikke tom
-        # websockets intro, json/text parse stringify, intro til protkoll
-        - lage websocket, sende til websocket type joine med json stringify,
-        - onmessage, json parse, console.log
-        # forklare protokollen for message/messages, dom-strukturen det må være, for løkke, template strings
-        - om type messages, renderSingleMessage n ganger, obs ikke bry seg om dato feil
-        - renderSingleMessage
-        # server forventer type message
-        - form listener, les ut verdi, nullstill, send til websocket
+
         # active users, type users, data.users liste med navn
         - active users, rendre over løkke til #users
         # active users, 3 actions som har forskjellig data
