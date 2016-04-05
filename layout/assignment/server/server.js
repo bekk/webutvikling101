@@ -68,7 +68,7 @@ function handleRequest(siteRoot, request, response) {
     }
 }
 
-http.createServer(handleRequest.bind(null, defaultSiteRoot)).listen(6000);
-http.createServer(handleRequest.bind(null, solutionSiteRoot1)).listen(6001);
+http.createServer(handleRequest.bind(null, defaultSiteRoot)).listen(6001);
+http.createServer(handleRequest.bind(null, solutionSiteRoot1)).listen(6002);
 
-console.log('Server started on http://localhost:6000');
+console.log('Server started on http://localhost:6001');
