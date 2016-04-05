@@ -712,14 +712,92 @@ websocket.onmessage = function(event) {
 ```]
 
 ---
-#Test
-Beskrivelse av interaksjon, joine, sende meldinger, joine/leave, rename
 
-        Løsningsforslag med kommentarer
+# Datoer i Javascript
+
+Datoene så langt er på formen `2016-04-05T19:34:54.406Z`, noe som ikke er veldig pent og troligvis feil med noen timer.
+Z-en bakerst betyr at det er i UTC-tidssone, mens det mest logiske er det å vise det i riktig tid for brukeren.
+
+Javascript har innebygd støtte for datoer, via `Date`-klassen. Om man sender inn en dato-tekststreng på formen over, vil
+den bli tolket automatisk til tidssonen til brukeren av nettleseren. Om man ikke sender inn noen ting får man datoen/tidspunktet
+her og nå. [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) har info om mange funksjoner som
+kan kalles på date-objekter.
+
+```
+var date1 = new Date(); // her og nå
+var date2 = new Date('2016-04-05T19:34:54.406Z'); // fra et spesifikt tidspunkt
+
+date2.getFullYear();
+date2.getMinutes();
+// osv.
+```
+
+---
+
+# Oppgave 8
+
+* Gjør slik at tidspunktene på meldinger er på formen hh:mm:ss, f. eks. 19:46:06
 
 
-        # date
-        - visningslogikk
+---
+class: center middle
+# Løsningsforslag 8
+
+---
+
+.losningsforslag[
+```
+function renderMessage(message) {
+*   // lager et dato-objekt utifra dato-teksten
+*   var time = new Date(message.time);
+*   // leser ut de forskjellige verdiene vi ønsker
+*   var hour = time.getHours();
+*   var minutes = time.getMinutes();
+*   var seconds = time.getSeconds();
+*
+*   // siden getHours f. eks. kan returnere 7, slenger
+*   // vi på en 0 foran slik at det står 07
+*   if (hour < 10) {
+*       hour = '0' + hour;
+*   }
+*   if (minutes < 10) {
+*       minutes = '0' + minutes;
+*   }
+*   if (seconds < 10) {
+*       seconds = '0' + seconds;
+*   }
+
+    var messageElement = document.querySelector('#messages');
+
+*   // bruker de nye verdiene for å vise tidspunkt
+    var messageHtml = `
+        <div class="message">
+            <span class="name">${message.name}</span>
+*           <span class="time">${hour}:${minutes}:${seconds}</span>
+            <span class="text">${message.message}</span>
+        </div>
+    `;
+
+    messageElement.innerHTML = messageHtml + messageElement.innerHTML;
+}
+
+// Resten er likt som før
+```]
+
+
+---
+#Ferdig!
+
+* Er du interessert i å se hvordan serveren er laget, kan du [se her](https://github.com/Matsemann/ws-chat).
+Sjekk ut index.js filen og chat.js. Det meste ligner, bortsett fra at APIet for websockets er litt annerledes enn
+i en nettleser, og vi her må holde styr på flere tilkoblinger samtidig.
+
+* Forslag til ting å gjøre videre
+ * Endre på stylingen, f. eks. få den til å ligne mer på andre chatte-programmer som Slack og Messenger. Der kommer nyeste
+meldinger nederst og man scrolles automatisk ned til nyeste melding, meldingsboksen ligger i bunn.
+ * Endre visningen av tidspunkt til å være "For 32 sekunder siden", "For 5 minutter siden" osv.
+ * Dine egne idéer.
+ * Se på en av de andre oppgavene
 
 ---
 
@@ -727,8 +805,6 @@ Beskrivelse av interaksjon, joine, sende meldinger, joine/leave, rename
 class: center middle bekk-top
 
 # Takk for oss!
-
-bekk.no/jobb
 
     </textarea>
     <script src="https://cdn.rawgit.com/bekk/remark/master/vendor/remark.min.js" type="text/javascript"></script>
