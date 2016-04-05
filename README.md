@@ -38,4 +38,4 @@ de mappene.
 
 ### [Del2](./del2)
 
-### TBA: Del3
+### [Del3](./del3)
