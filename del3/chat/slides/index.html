@@ -784,7 +784,21 @@ function renderMessage(message) {
 // Resten er likt som før
 ```]
 
+---
+# Bonus: Sikkerhet
 
+I denne oppgaven har vi tatt beskjeder fra andre brukere og puttet rett i HTMLen, kan du se hvorfor det kan være farlig?
+
+--
+
+Om brukeren sendte en beskjed med innholdet: `<b>Hei</b> på deg`<br>
+og vi dytter den rett inn i HTMLen, vil HTMLen faktisk tolkes og noe av skriften bli fet.
+
+Det er kanskje ikke så farlig, men hva om man skriver: `<script>alert('WARNING');</script>`<br>
+så kjøres faktisk den koden også når den dyttes inn i HTMLen! Så da kan ondsinnede brukere faktisk sende kode
+via chat som vil kjøres på andres maskiner. Dette er et typisk "XSS"-angrep.
+
+Denne hackingen vil ikke fungere her, da chatte-serveren tar hensyn til dette. Men det er noe å være obs på, aldri stol på brukerdata.
 ---
 #Ferdig!
 
