@@ -11,7 +11,7 @@
 
 class: front-page
   # Webutvikling 101
-  ## DEL 3<br>Chatteoppgave
+  ## DEL 3<br>Chatteoppgave<br><br>Mats Krüger Svensson
 
 ---
 #Introduksjon
@@ -529,51 +529,200 @@ document.querySelector('#sendform').addEventListener('submit', function (event) 
 ---
 
 
+# Brukere - Protokoll
+
+Når brukere joiner, forsvinner eller bytter navn blir det sendt data fra serveren til alle klienter.
+Denne dataen er av typen `users`, og inneholder en liste over navn på brukere som er tilkoblet.
+I tillegg er det en action som sier hva som har skjedd, og litt forskjellig data avhengig av hva som skjedde.
+
+```
+{
+    type: 'users',
+    users: ['Mats', 'Kent', 'Ingvild'],
+    ...
+}
+```
+---
+
+
+# Brukere Join - Protokoll
+
+Når en bruker joiner får man med navnet på den nye brukeren
+
+```
+{
+    type: 'users',
+    users: ['Mats', 'Kent', 'Ingvild'],
+    action: 'joined',
+    name: 'Mats'
+}
+```
+---
+
+
+# Brukere Forsvinner - Protokoll
+
+Når en bruker forsvinner får man navnet på hvem som forsvant
+
+```
+{
+    type: 'users',
+    users: ['Kent', 'Ingvild'],
+    action: 'left',
+    name: 'Mats'
+}
+```
+---
+
+
+# Brukere Endret Navn - Protokoll
+
+Om en bruker har byttet navn får man nytt og gammelt navn
+
+```
+{
+    type: 'users',
+    users: ['Mats2', 'Kent', 'Ingvild'],
+    action: 'renamed',
+    name: 'Mats2',
+    oldname: 'Mats'
+}
+```
+
+---
+
+# Oppgave 6
+
+* Når det kommer data av typen `users` fra serveren, hent ut navnene til de påloggede brukerne og vis dem i `#users`-elementet
+ * For å få riktig styling legg til HTML på formen `<span class="name">Navn</span>` for hver bruker
+
+Skal nå kunne se hvem som er tilstede. Åpne flere vinduer og join og lukk vinduer og sjekk at listen over brukere endres.
+
+
+---
+class: center middle
+# Løsningsforslag 6
+
+---
+
+
+.losningsforslag[
+```
+// endret litt inni her
+websocket.onmessage = function(event) {
+    var data = JSON.parse(event.data);
+    console.log(data);
+
+    if (data.type === 'messages') {
+        var messages = data.messages;
+        for (var i = 0; i < messages.length; i++) {
+            var singleMessage = messages[i];
+            renderMessage(singleMessage);
+        }
+    } else if (data.type === 'message') {
+        renderMessage(data);
+*   } else if (data.type === 'users') {
+*       // kaller funksjonen med de aktive brukerne
+*       renderActiveUsers(data.users);
+*   }
+};
+
+*function renderActiveUsers(activeUsers) {
+*   // henter elementet vi vil putte navnene i
+*   var usersElement = document.querySelector('#users');
+*
+*   var html = '';
+*
+*   // itererer over alle navnene og lager en stor html-string
+*   for (var i = 0; i < activeUsers.length; i++) {
+*       var name = activeUsers[i];
+*       html += `
+*           <span class="name">${name}</span>
+*       `;
+*   }
+*
+*   // setter innholdet til elementet til å være html vi har laget
+*   usersElement.innerHTML = html;
+*}
+
+// resten av koden er lik
+```]
+
+---
+
+# Oppgave 7
+
+* Sjekk hvilken action det er når det kommer inn data av typen `users` og vis en passende melding i chaten.
+ * Blir stylet riktig om HTMLen er på formen `<div class="connection">${message}</div>`
+
+F. eks. kan det når en bruker joiner komme en melding om "Mats har joinet",
+eller om det var navnebytte "Mats har byttet navn til Mats2".
+
+
+---
+class: center middle
+# Løsningsforslag 7
+
+---
+
+.losningsforslag[
+```
+// endret litt inni her
+websocket.onmessage = function(event) {
+    var data = JSON.parse(event.data);
+    console.log(data);
+
+    if (data.type === 'messages') {
+        var messages = data.messages;
+        for (var i = 0; i < messages.length; i++) {
+            var singleMessage = messages[i];
+            renderMessage(singleMessage);
+        }
+    } else if (data.type === 'message') {
+        renderMessage(data);
+    } else if (data.type === 'users') {
+        renderActiveUsers(data.users);
+
+*       // Kall vår nye funksjon
+*       showConnectionMessage(data);
+    }
+};
+
+*function showConnectionMessage(data) {
+*   var message;
+*
+*   // Sjekker hvilken action det var, og lager forskjellige beskjeder
+*   if (data.action === 'joined') {
+*       message = `${data.name} has joined`;
+*   } else if (data.action === 'left') {
+*       message = `${data.name} has left`;
+*   } else if (data.action === 'renamed') {
+*       message = `${data.oldname} has changed name to ${data.name}`;
+*   }
+*
+*   // Legger beskjeden inni litt HTML for stylingens skyld
+*   var html = `<div class="connection">${message}</div>`;
+*
+*   // Henter ut elementet og legger det nye innholdet inn i tillegg til hva enn som var der fra før
+*   var messageElement = document.querySelector('#messages');
+*   messageElement.innerHTML = html + messageElement.innerHTML;
+*}
+
+// Resten er likt som før
+```]
+
+---
 #Test
 Beskrivelse av interaksjon, joine, sende meldinger, joine/leave, rename
 
         Løsningsforslag med kommentarer
 
 
-        # active users, type users, data.users liste med navn
-        - active users, rendre over løkke til #users
-        # active users, 3 actions som har forskjellig data
-        - connection beskjeder, legge til i chaten
         # date
         - visningslogikk
 
 ---
 
-.losningsforslag[```javascript
-document.querySelector('#sendform').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    var sendmessageInput = document.querySelector("#sendmessage");
-    var message = sendmessageInput.value;
-    sendmessageInput.value = ''; // reset
-
-*    websocket.send(JSON.stringify({
-*        type: 'message',
-*        message: message
-*    }));
-});
-
-
-websocket.onmessage = function(event) {
-    var data = JSON.parse(event.data);
-    console.log(data);
-
-    if (data.type === 'messages') {
-        renderMessages(data.messages);
-    } else if (data.type === 'message') {
-        renderSingleMessage(data);
-    } else if (data.type === 'users') {
-*       renderActiveUsers(data);
-        showConnectionMessage(data);
-    }
-};
-```]
----
 
 class: center middle bekk-top
 
