@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #262626;
+    color: #eee;
+    font-family: Arial, sans-serif;
+}
+
+.wrapper {
+    width: 45rem;
+    margin: 0 auto;
+}
+
+header {
+    margin: 1.5rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+form {
+    margin: 1.5rem auto;
+}
+
+input {
+    vertical-align: top;
+    padding: 0 .5rem;
+    height: 2rem;
+    font-size: 1rem;
+    background: #eee;
+    color: #1b1b1b;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    width: 12rem;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #df565b;
+}
+
+#sendmessage {
+    width: 35rem;
+}
+
+
+button {
+    vertical-align: top;
+    background: transparent;
+    border: 1px solid #c6c8ca;
+    color: #ebebeb;;
+    height: 2rem;
+    padding: 0 1rem;
+    font-size: 1rem;
+    width: 5rem;
+    box-sizing: content-box;
+    margin: 0 0.5rem;
+    transition: all 0.2s;
+}
+
+button:hover, button:focus {
+    background: #df565b;
+    cursor: pointer;
+    border-color: #df565b;
+}
+
+button:focus {
+    outline: none;
+}
+
+button[disabled] {
+    color: #515151;
+    border-color: #515151;
+    background: transparent;
+}
+
+
+#messages, #users {
+    height: 30rem;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
+
+#messages {
+    width: 72%;
+    float: left;
+}
+
+.message {
+    margin: 1rem 0;
+}
+
+.message .name {
+    color: #df565b;
+    font-weight: bold;
+}
+
+.message .time {
+    font-size: 0.75rem;
+    color: #BBB0A3;
+}
+
+.message .text {
+    display: block;
+}
+
+#messages .connection {
+    color: #BBB0A3;
+    font-style: italic;
+}
+
+.users {
+    width: 25%;
+    float: right;
+}
+
+.users .name {
+    display: block;
+    padding: 0.25rem 0;
+    color: #df565b;
+    font-weight: bold;
+}

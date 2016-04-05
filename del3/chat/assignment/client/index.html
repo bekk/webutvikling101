@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="wrapper">
+
+
+    <header>
+        <h1>Chat</h1>
+    </header>
+
+    <div>
+        <form id="nameform">
+            <input type="text" id="name" placeholder="Your name"/>
+            <button type="submit">JOIN</button>
+        </form>
+
+        <form id="sendform" autocomplete="off">
+            <input type="text" id="sendmessage" placeholder="Message" />
+            <button type="submit" id="sendbutton" disabled>SEND</button>
+        </form>
+    </div>
+
+    <main id="messages"></main>
+
+    <aside class="users">
+        <h2>Online</h2>
+        <div id="users"></div>
+    </aside>
+
+</div>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
