@@ -175,12 +175,12 @@ så bruke pil-opp/ned til å justere verdien) så du kan se effekten real-time.
 
 ### Saturation
 
-Nå kan vi også se litt på `saturation`-filteret.
+Nå kan vi også se litt på `saturate`-filteret.
 
 ```css
 figure.fullwidth img {
-  -webkit-filter: saturation(50%);
-  filter: saturation(50%);
+  -webkit-filter: saturate(50%);
+  filter: saturate(50%);
 }
 ```
 
@@ -215,7 +215,7 @@ figure.fullwidth img {
 }
 ```
 
-Her gjelder samme prisnipp som med `saturation`-filteret. `100%` contrast vil
+Her gjelder samme prisnipp som med `saturate`-filteret. `100%` contrast vil
 ikke gi noen effekt. Denne effekten er det enklest å få en feel for hvis du
 endrer litt på verdien i DeveloperTools.
 
