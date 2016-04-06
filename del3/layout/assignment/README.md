@@ -64,9 +64,9 @@ Forventet resultat er en liste med annonser hvor hver annonse inneholder en ny l
 
 ### Oppgave 2 - vis bildene
 1. I script.js lager du en ny funksjon som heter lagAnnonser(annonser) som tar inn alle annonsene. Denne funksjonen skal returnere html-markup. Forelløpig skal den kun vise første bilde for hver annonse.
-2. Lag en for-løkke som for hver annonse lager en <div> med en <img> inni.
+2. Lag en for-løkke som for hver annonse lager en `<div>` med en `<img>` inni.
 3. src-attributtet til img-elementet skal settes til den første url-en i annonsen.
-4. I index-html lag et <main>-element
+4. I index-html lag et `<main>`-element
 5. Sett html-en som lagAnnonser() returnerer som innhold i main-elementet
 
 tips:
