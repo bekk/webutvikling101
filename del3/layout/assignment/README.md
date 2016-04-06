@@ -3,13 +3,15 @@ I denne oppgaven skal du lage en visning av leilighetsannonser alla finn.no/hybe
 
 ## Annonser
 Under mappen annonser finner du 8 forskjellige annonser hvor hver annonse inneholder et sett med bilder og en details.json-fil. jsonfilen beskriver nøkkelinformasjon til hver annonse. Se eksempelet under:
-{
-  "omradetittel": "Grunerløkka",
-  "tittel": "Rustikk og påkostet 2-roms med klassisk sjarm midt på Løkka! Sydvendt balkong. Peis. Fredelige omgivelser.",
-  "pris": "3 000 000",
-  "kvm": "51",
-  "adresse": "Helgesens gate 5a, 0563 Oslo"
-}
+```javascript
+    {
+      "omradetittel": "Grunerløkka",
+      "tittel": "Rustikk og påkostet 2-roms med klassisk sjarm midt på Løkka! Sydvendt balkong. Peis. Fredelige omgivelser.",
+      "pris": "3 000 000",
+      "kvm": "51",
+      "adresse": "Helgesens gate 5a, 0563 Oslo"
+    }
+```
 
 ## Løsningsforslaget
 I denne oppgaven står du helt fritt til å lage det designet du vil. Forslag til løsning ligger under solutions. For å se løsningforslaget - følg stegene under "For å starte opp serveren" og i stedet for å åpne localhost:6001 åpner du localhost:6002
@@ -30,11 +32,11 @@ Hvis du ønsker kan denne oppgaven løses helt uten javascript, dog må man skri
 * legg på klassenavn du føler gir mening - tenk på gjenbrukbarhet
 * style innholdet ditt slik du ønsker det i styling.css-filen
 * gjør nødvendige endringer så det ser bra ut på forskjellige skjermstørrelser
-    ```css
+```css
     @media (min-width: 48rem) {
         //styling her
     }
-    ```
+```
 * se under for stylingstips
 
 ## Oppgave med javascript
@@ -53,11 +55,11 @@ Gå deretter til http://localhost:6001 i nettleseren din. Da skal alt være klar
 2. Når dataen er hentet logg ut resultatet i consollet
 
 Tips: fra del2 gjorde vi requester ved å bruke fetch:
-```sh
-fetch('/sok?tag=bekk').then(function(response) {
-    return response.json();
-  })
-  ```
+```javascript
+    fetch('/sok?tag=bekk').then(function(response) {
+        return response.json();
+    })
+```
 Forventet resultat er en liste med annonser hvor hver annonse inneholder en ny liste (url) med urler til annonsebildene, og et objekt (details) som inneholder infromasjon om annonsen. Denne informasjonen skal brukes i neste oppgave til å vise annonsene på siden.
 
 ### Oppgave 2 - vis bildene
@@ -120,7 +122,11 @@ tips: for å skjule elementer kan man sette display:none
 1. For at brukeren skal skjønne at det går an å bla i bildene må det finnes noe som vedkommende kan klikke på. Legg til et "bla-fremover"-ikon og "bla-bakover"-ikon. Under img-mappen ligger to pil-ikon som kan brukes.
 2. utvid lagAnnonser-funksjonen med de to nye bilde-ikonene.
 3. Style de nye ikonene så de plasseres fint for hver annonse
-tips: for å ta i bruk bilde-ikonene som ligger i img-mappen setter man src-attributtet til filnavnet - <img src="left.png" />. Vil man bruke noen andre ikoner kan disse legges under img-mappen.
+tips: for å ta i bruk bilde-ikonene som ligger i img-mappen setter man src-attributtet til filnavnet -
+```html
+    <img src="left.png" />.
+```
+Vil man bruke noen andre ikoner kan disse legges under img-mappen.
 
 ### Oppgave 3 - bla fremover og bakover
 1. Legg til en eventListener som lytter på click-eventer på main-elementet
@@ -141,10 +147,11 @@ Er det mer tid til overs kan du utvide html-siden med f.eks filtervalg, eller kl
 ### Absolutt posisjonering
 Av og til ønsker man å plassere elementer oppå hverandre eller faste steder på siden. Da kan man bruke en css-egenskap som heter position. Denne kan settes til bla "absolute". Da kan man flytte elementet rundt på siden ved å sette verdier for top, bottom, right, left. F.eks kan jeg plassere annonsenene mine oppe i venstre hjørnet ved å gjøre følgende:
 ```css
-.annonse {
-    position: absolute;
-    top: 0;
-    left: 0
+    .annonse {
+        position: absolute;
+        top: 0;
+        left: 0
+    }
 ```
 Endrer jeg right til 0 i stedet blir elementet vist på høyresiden. Det viktigste når det gjelder absolutt-posisjonering er å sette hvilket foreldreelement som skal bestemme "koordinatsystemet" - altså hvor topp, bunn, venstre og høyre er. Som oftes vil man unngå å måtte plassere elementer i forhold til hele vinduet man ser i nettleseren men heller innen for foreldrelementet sitt. Da er man sikker på at elementet alltid står riktig selv om foreldreelementet vil endre seg. Ved å sette position:relative på et foreldreelement så vil top:0 ikke lenger være oppe i toppen av siden men toppen av foreldrelementet. Se gjerne https://developer.mozilla.org/en-US/docs/Web/CSS/position for mer informasjon og eksempler.
 
