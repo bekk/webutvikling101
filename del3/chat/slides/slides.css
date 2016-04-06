@@ -1,0 +1,39 @@
+
+.cols.two .col:nth-child(2n+2) {
+    margin-left: 0;
+}
+.cols.two .col:nth-child(1n+2) {
+    margin-bottom: 1rem;
+}
+div.col > pre {
+	margin-top: 0;
+}
+
+.example-box {
+  position: absolute;
+  background-color: #fd5158;
+  width: 150px;
+  height: 300px;
+  color: #fff;
+  font-family: Conduit;
+  font-size: 2em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1em;
+}
+
+.example-box:before {
+  content: "";
+  display: block;
+  height: calc(50% - 0.5em);
+}
+
+
+.losningsforslag {
+  height: 620px;
+  overflow: auto;
+}
+
+.remark-code-line-highlighted {
+  background-color: rgb(74, 74, 74);
+}
