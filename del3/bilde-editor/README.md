@@ -149,7 +149,7 @@ definere farger på. Tidligere har vi benyttet oss av RGB, som angir farger
 utifra sammensetningen av Rødt, Grønt og Blått. I HSL benytter vi isteden
 komponentene Hue, Saturation og Lightness. Basisen for HSL er en fargesirkel:
 
-![fargesirkel](./assets/huecircle.png?raw=true)
+![fargesirkel](./assets/huecircle.jpg?raw=true)
 
 Når vi bruker HSL til å forklare farger beskriver Hue-komponenten plasseringen
 langs omkretsen til sirkelen. Saturation-komponenten beskriver avstanden fra
