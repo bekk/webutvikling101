@@ -9,7 +9,6 @@ var Flickr = require('node-flickr');
 var flickr = new Flickr({'api_key': 'ea97a6690f90a628b60e2fd79012c74c'});
 
 var defaultSiteRoot = path.join(__dirname, '..', 'client');
-var solutionSiteRoot = path.join(__dirname, '..', '..', 'solutions');
 var flickerCache = {};
 
 function fetchFlickerContent(tag) {
@@ -74,6 +73,5 @@ function handleRequest(siteRoot, request, response) {
 }
 
 http.createServer(handleRequest.bind(null, defaultSiteRoot)).listen(5000);
-http.createServer(handleRequest.bind(null, solutionSiteRoot)).listen(5001);
 
 console.log('Server started on http://localhost:5000');
