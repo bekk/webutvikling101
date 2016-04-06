@@ -19,15 +19,18 @@ Hvis du ønsker kan denne oppgaven løses helt uten javascript, dog må man skri
 
 * ta utgangspunt i home.html-filen under client-mappen
 * bygg opp annonseelementene med html - ta med den informasjonen du mener er viktigst å ha med i en annonse. For å vise første bilde i den første annonsen kan du legge til denne html-en:
-     ```sh
+     ```html
     <img src="../../annonser/annonse1/1.jpg" />
     ```
     Siden annonser ligger høyere oppe i mappestrukturen enn home.html (som er utgangspunktet vårt),  må vi skrive ../ foran for å finne riktig fil. Første ../ vil gå ett steg opp i mappestrukturen. Da vil man kunne aksessere mappen client, server osv. Derfor må vi skrive ../-to ganger får å komme til mappen annonser. Deretter kan vi traversere oss ned til det første bildet.
-* html-elementer som kan være nyttig er - <section>, <img>, <main>, <h1>, <h2>, <h3>, <a>, <div>, <p>
+* html-elementer som kan være nyttig er -
+    ```html
+        <section>, <img>, <main>, <h1>, <h2>, <h3>, <a>, <div>, <p>
+    ```
 * legg på klassenavn du føler gir mening - tenk på gjenbrukbarhet
 * style innholdet ditt slik du ønsker det i styling.css-filen
 * gjør nødvendige endringer så det ser bra ut på forskjellige skjermstørrelser
-    ```sh
+    ```css
     @media (min-width: 48rem) {
         //styling her
     }
@@ -92,7 +95,7 @@ var html = `
   "adresse": "Helgesens gate 5a, 0563 Oslo"
 }
 ```
-tips: her er det lurt å tenke litt på overskriftshiearki (<h1>,<h2>, <h3>) - hvilken informasjon du mener er viktigst osv.
+tips: her er det lurt å tenke litt på overskriftshiearki (h1,h2,h3) - hvilken informasjon du mener er viktigst osv.
 
 ### Oppgave 4 - styling
 1. Du står helt fritt til å designe annonsene som du selv vil, men det er ingenting i veien for å kopiere løsningsforslaget. I løsningsforslaget så er det brukt css som ikke har blitt brukt tidligere bla hvordan posisjonere elementer absolutt. Se gjerne nedenfor for tips til fremgangsmåte.
@@ -137,7 +140,7 @@ Er det mer tid til overs kan du utvide html-siden med f.eks filtervalg, eller kl
 
 ### Absolutt posisjonering
 Av og til ønsker man å plassere elementer oppå hverandre eller faste steder på siden. Da kan man bruke en css-egenskap som heter position. Denne kan settes til bla "absolute". Da kan man flytte elementet rundt på siden ved å sette verdier for top, bottom, right, left. F.eks kan jeg plassere annonsenene mine oppe i venstre hjørnet ved å gjøre følgende:
-```sh
+```css
 .annonse {
     position: absolute;
     top: 0;
@@ -147,7 +150,7 @@ Endrer jeg right til 0 i stedet blir elementet vist på høyresiden. Det viktigs
 
 ### Tegne sirkler
 Hvis man skal tegne sirkler kan man bruke en css-egenskap som heter border-radius for å få avrundet hjørner (https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius).  Setter man denne til 50% vil hjørnene bli så avrundet at det vil se ut som en sirkel/ellipse. Om den blir seendes ut som en fin sirkel avhengiger av flere egenskaper. For at sirkelen skal være rundt uansett innhold kan følgende triks brukes
-```sh
+```css
     border-radius: 50%; //for å få avrundet hjører
     line-height: 60px; // linjeavstand samme som høyden (gitt at det er tekst i sirkelen)
     height: 60px; //høyde og bredde like stort
@@ -157,12 +160,15 @@ Hvis man skal tegne sirkler kan man bruke en css-egenskap som heter border-radiu
 ```
 ### Rendre bilder
 For å ta være på bilde-ration men allikevel sette en bredde eller høyde på bilde-containeren kan man bruke:
-```sh
-img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; //sørger for at ration blir bevart
+```css
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; //sørger for at ration blir bevart
     }
 ```
-### m2
-For å få 2-tallet opphøyd kan man bruke html-tagen <sup>2</sup>
+### m<sup>2</sup>
+For å få 2-tallet opphøyd kan man bruke html-tagen
+ ```html
+        <sup>2</sup>
+ ```
