@@ -39,3 +39,8 @@ de mappene.
 ### [Del2](./del2)
 
 ### [Del3](./del3)
+
+## Lyst til å lære enda mer javascript?
+
+### [Funksjonell javascript](http://bekk.github.io/functional-js/workshop/)
+### [Funksjonell javascript med React](https://github.com/bekk/funksjonell-frontend)
