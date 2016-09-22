@@ -86,4 +86,4 @@ http.createServer(handleRequest.bind(null, solutionSiteRoot4)).listen(6004);
 http.createServer(handleRequest.bind(null, solutionSiteRoot5)).listen(6005);
 http.createServer(handleRequest.bind(null, solutionSiteRoot6)).listen(6006);
 
-console.log('Server started on http://localhost:5000');
+console.log('Server started on http://localhost:6000');
