@@ -94,7 +94,7 @@ class: center middle
   top: 250px;
   text-transform: lowercase;
 ">
-  http://localhost:5000/sok?tag=bekk
+  http://localhost:6000/sok?tag=bekk
 </div>
 
 <div class="example-arrow arrow-left" style="
@@ -130,7 +130,7 @@ class: center middle
     }
   }
 
-  httpRequest.open('GET', 'http://localhost:5000/sok?tag=bekk'); // Setter opp request
+  httpRequest.open('GET', 'http://localhost:6000/sok?tag=bekk'); // Setter opp request
   httpRequest.send(); // Sender request
 ```
 
@@ -138,13 +138,13 @@ class: center middle
 # Laste data
 
 ```javascript
-  fetch('http://localhost:5000/sok?tag=bekk')
+  fetch('http://localhost:6000/sok?tag=bekk')
 ```
 ---
 # Laste data
 
 ```javascript
-  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+  fetch('http://localhost:6000/sok?tag=bekk').then(function(response) {
     // her kan du gjøre noe med responsen
   });
 ```
@@ -204,7 +204,7 @@ class: cols two
 ## JSON
 
 ```javascript
-  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+  fetch('http://localhost:6000/sok?tag=bekk').then(function(response) {
     return response.json();
   });
 ```
@@ -213,7 +213,7 @@ class: cols two
 ## Text
 
 ```javascript
-  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+  fetch('http://localhost:6000/sok?tag=bekk').then(function(response) {
     return response.text();
   });
 ```
@@ -221,7 +221,7 @@ class: cols two
 --
 ## Blob
 ```javascript
-  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+  fetch('http://localhost:6000/sok?tag=bekk').then(function(response) {
     return response.blob();
   });
 ```
@@ -230,7 +230,7 @@ class: cols two
 # Laste data
 
 ```javascript
-  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+  fetch('http://localhost:6000/sok?tag=bekk').then(function(response) {
     return response.json();
   }).then(function(data) {
     console.log(data);
@@ -256,7 +256,7 @@ class: cols two
 # Laste data
 
 ```javascript
-  fetch('http://localhost:5000/sok?tag=bekk').then(function(response) {
+  fetch('http://localhost:6000/sok?tag=bekk').then(function(response) {
     return response.json();
   }).then(function(data) {
     console.log(data);
@@ -273,7 +273,7 @@ class: cols two
 ```
 --
 
-You will receive an error. `XMLHttpRequest` cannot load https://ntnu.no. No `'Access-Control-Allow-Origin'` header is present on the requested resource. Origin http://localhost:5000 is therefore not allowed access.
+You will receive an error. `XMLHttpRequest` cannot load https://ntnu.no. No `'Access-Control-Allow-Origin'` header is present on the requested resource. Origin http://localhost:6000 is therefore not allowed access.
 
 --
 
@@ -283,7 +283,7 @@ An origin is defined as a combination of URI scheme, hostname, and port number.
 # Same origin policy
 
 <div class="example-same-origin">
-  http://localhost:5000
+  http://localhost:6000
 </div>
 
 --
@@ -296,7 +296,7 @@ An origin is defined as a combination of URI scheme, hostname, and port number.
 # Same origin policy
 
 <div class="example-same-origin">
-  <span class="protocol">http</span>://<span class="domain">localhost</span>:<span class="port">5000</span>
+  <span class="protocol">http</span>://<span class="domain">localhost</span>:<span class="port">6000</span>
 </div>
 
 <div class="example-same-origin">
@@ -312,11 +312,11 @@ An origin is defined as a combination of URI scheme, hostname, and port number.
 # Same origin policy
 
 <div class="example-same-origin">
-  <span class="protocol">http</span>://<span class="domain">localhost</span>:<span class="port">5000</span>
+  <span class="protocol">http</span>://<span class="domain">localhost</span>:<span class="port">6000</span>
 </div>
 
 <div class="example-same-origin">
-  <span class="protocol">http</span>://<span class="domain">localhost</span>:<span class="port">5000</span>/sok?tag=bekk
+  <span class="protocol">http</span>://<span class="domain">localhost</span>:<span class="port">6000</span>/sok?tag=bekk
 </div>
 
 --
@@ -337,7 +337,7 @@ class: split
 * Gjør en request mot `/sok?tag=bekk` når siden blir lastet
 * Logg ut resultatet i consollet
 
-<iframe src="http://localhost:5001/" style="width: 50%; border-left: 1px solid #515151;" />
+<iframe src="http://localhost:6001/" style="width: 50%; border-left: 1px solid #515151;" />
 
 
 
@@ -351,7 +351,7 @@ class: center middle
 
 #Ønsket resultat
 
-<iframe src="http://localhost:5002" style="height: 80%; width: 50%;" />
+<iframe src="http://localhost:6002" style="height: 80%; width: 50%;" />
 
 ---
 
@@ -545,7 +545,7 @@ class: center middle
 Sammenligne vg.no med abakus.no evt ifinavet.no
 vise smal/stor side horisontal scroll, zoom
 
-Videre vise hva vi ønsker å oppnå, localhost:5003
+Videre vise hva vi ønsker å oppnå, localhost:6003
 Vise ser bra ut i mobilbredde, dårlig i fullbredde
 Sette til 50/49%, vise ser bedre ut. Sette 30% fullbredde, vise ser bra ut
 Men da dårlig på mobil!
@@ -631,7 +631,7 @@ class: split
  * Vise 3 bilder i bredden ved enda bredere skjerm
 
 
-<iframe src="http://localhost:5003/" style="width: 50%; border-left: 1px solid #515151;" />
+<iframe src="http://localhost:6003/" style="width: 50%; border-left: 1px solid #515151;" />
 
 
 
@@ -880,7 +880,7 @@ class: split
 * Hent ut verdien som er skrevet inn i tekstfeltet
 * Bruk verdien til å hente ut og vise de nye bildene
 
-<iframe src="http://localhost:5004/" style="width: 50%; border-left: 1px solid #515151;" />
+<iframe src="http://localhost:6004/" style="width: 50%; border-left: 1px solid #515151;" />
 
 ---
 
@@ -980,9 +980,9 @@ Forsett på løsningen fra forrige oppgave
   * Om **søketekst** ikke er oppgitt, vis kun søkefelt
 * Få søkefunksjonen til å oppdatere stien ved søk
 
-Feks.: når du søker etter **norway** skal stien bli: http://localhost:5000/norway. Da skal du vise alle resultater for søk på **norway**
+Feks.: når du søker etter **norway** skal stien bli: http://localhost:6000/norway. Da skal du vise alle resultater for søk på **norway**
 
-<iframe src="http://localhost:5005/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
+<iframe src="http://localhost:6005/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
 
 
 ---
@@ -1037,7 +1037,7 @@ Forsett på løsningen fra forrige oppgave
   * om **søketekst** og **indeks** er oppgitt: vis kun dette bildet
 
 
-<iframe src="http://localhost:5005/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
+<iframe src="http://localhost:6005/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
 
 
 
@@ -1189,7 +1189,7 @@ Forsett på løsningen fra forrige oppgave
 * Overstyr klikking på lenker slik at du unngår at nettleseren oppdaterer siden
 * For hver gang du klikker på en lenke skal history oppdateres, og router() kalles
 
-<iframe src="http://localhost:5006/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
+<iframe src="http://localhost:6006/sok.html" scrolling="no" style="width: 50%; background-color:#fff" />
 
 ---
 
